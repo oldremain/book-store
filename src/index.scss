@@ -1,0 +1,34 @@
+@import url("./normalize.scss");
+@import url("http://fonts.cdnfonts.com/css/bebas-neue"); //font-family: 'Bebas Neue', sans-serif;
+@import url("http://fonts.cdnfonts.com/css/helios-antique?styles=48839,48838,48831,48857,48856,48849"); //font-family: 'Helios Antique', sans-serif; font-family: 'Helios Stencil', sans-serif;
+
+:root {
+    --system-primary: #313037;
+    --system-primary2: #5b5a62;
+    --system-secondary: #a8a8a8;
+
+    --bg-primary: #ffffff; //white
+    --bg-primary2: #e7e7e7; //gray
+    --bg-secondary: #f7f7f7; //light
+
+    --contextual-color: #fc857f; //red
+
+    --additional-orange: #fee9e2;
+    --additional-purple: #f4eefd;
+    --additional-blue: #d7e4fd;
+    --additional-green: #caeff0;
+}
+
+body {
+    font-family: "Helios Antique", "Helios Stencil", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--system-primary);
+    font-weight: 400;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
