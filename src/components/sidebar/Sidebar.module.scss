@@ -1,5 +1,6 @@
 .sidebar {
     position: fixed;
+    z-index: 100;
     top: 0;
     right: 0;
     left: 0;
@@ -16,13 +17,15 @@
         right: 0;
         left: 0;
         bottom: 0;
-        background-color: rgba(128, 128, 128, 0.3);
+        background: rgba(49, 48, 55, 0.5);
     }
 
     .sidebar_content {
         height: 100%;
-        width: 30%;
+        width: 368px;
         padding: 40px 40px 56px;
+        background-color: var(--bg-primary);
+        animation: show 0.5s ease;
     }
 
     .sidebar_nav {
@@ -33,26 +36,44 @@
         padding-bottom: 39px;
 
         .logo {
+            display: none;
         }
 
         .nav_link {
+            display: none;
         }
 
         .close_menu {
+            margin-left: auto;
+            background-color: transparent;
         }
     }
-
-    .sidebar_search {
-        margin-bottom: 48px;
-    }
-
     .sidebar_links {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+        margin-top: 48px;
+        gap: 48px;
 
         .link {
+            font-family: "Bebas Neue";
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 138%;
+
+            &:visited {
+                color: inherit;
+            }
         }
+    }
+}
+
+@keyframes show {
+    from {
+        width: 0px;
+    }
+    to {
+        width: 368px;
     }
 }

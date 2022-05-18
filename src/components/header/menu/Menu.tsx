@@ -14,7 +14,6 @@ interface IMenuProps {
 const Menu: React.FC<IMenuProps> = ({ onClick }) => {
     return (
         <>
-            <MenuBtn cName={s.burger_menu} children={<MenuBurgerIcon />} onClick={onClick} />
             <nav className={s.nav_menu}>
                 <ul className={s.menu_items}>
                     {menuData.map((item, i) => (
@@ -28,6 +27,7 @@ const Menu: React.FC<IMenuProps> = ({ onClick }) => {
                     ))}
                 </ul>
             </nav>
+            <MenuBtn cName={s.burger_menu} children={<MenuBurgerIcon />} onClick={onClick} />
         </>
     );
 };
