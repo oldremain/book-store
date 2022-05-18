@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { ReactComponent as MenuBurgerIcon } from "../../../assets/headerIcons/MenuBurger.svg";
 import MenuItem from "./MenuItem";
@@ -11,15 +11,16 @@ const Menu: React.FC = () => {
     const [show, setShow] = useState<boolean>(false);
 
     const showSidebar = () => {
-        setShow((prev) => !prev);
+        setShow((state) => !state);
     };
+
+    useEffect(() => {
+        console.log(show);
+    }, [show]);
 
     return (
         <>
             <MenuBtn cName={s.burger_menu} children={<MenuBurgerIcon />} onClick={showSidebar} />
-            {/* <button type="button" className={s.burger_menu}>
-                <MenuBurgerIcon onClick={showSidebar} />
-            </button> */}
             <nav className={s.nav_menu}>
                 <ul className={s.menu_items}>
                     {menuData.map((item, i) => (
