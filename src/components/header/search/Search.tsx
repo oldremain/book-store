@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { ReactComponent as SearchIcon } from "../../../assets/headerIcons/SearchIcon.svg";
 
@@ -18,8 +18,12 @@ const Search: React.FC = () => {
         }
     };
 
+    // useEffect(() => {
+    //     console.log(book);
+    // }, [book]);
+
     return (
-        <div className={s.header_search}>
+        <div className={s.search}>
             <form className={s.search_form} onSubmit={handleFormSubmit}>
                 <label htmlFor="search-input" hidden={true}>
                     Search by book title

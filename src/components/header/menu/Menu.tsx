@@ -12,16 +12,6 @@ interface IMenuProps {
 }
 
 const Menu: React.FC<IMenuProps> = ({ onClick }) => {
-    // const [show, setShow] = useState<boolean>(false);
-
-    // const showSidebar = () => {
-    //     setShow((state) => !state);
-    // };
-
-    // useEffect(() => {
-    //     console.log(show);
-    // }, [show]);
-
     return (
         <>
             <MenuBtn cName={s.burger_menu} children={<MenuBurgerIcon />} onClick={onClick} />
