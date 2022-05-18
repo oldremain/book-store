@@ -1,0 +1,18 @@
+.header {
+    height: 104px;
+    padding: 24px 0px;
+    border-bottom: 1px solid var(--bg-primary2);
+}
+
+.header_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_logo {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    color: var(--system-primary);
+}
