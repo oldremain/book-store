@@ -16,15 +16,17 @@ interface ISidebarProps {
 const Sidebar: React.FC<ISidebarProps> = ({ onClick }) => {
     return (
         <div className={s.sidebar}>
-            <div className={s.sidebar_nav}>
-                <Logo cName={s.logo} />
-                <MenuItem href="/cart" cName={s.nav_link} children={<CartIcon />} />
-                <MenuBtn cName={s.close_menu} children={<CloseMenuIcon />} onClick={onClick} />
-            </div>
-            <Search />
-            <div className={s.sidebar_links}>
-                <MenuItem href="/favourites" cName={s.link} children={"Favourites"} />
-                <MenuItem href="/cart" cName={s.link} children={"Cart"} />
+            <div className={s.sidebar_content}>
+                <div className={s.sidebar_nav}>
+                    <Logo cName={s.logo} />
+                    <MenuItem href="/cart" cName={s.nav_link} children={<CartIcon />} />
+                    <MenuBtn cName={s.close_menu} children={<CloseMenuIcon />} onClick={onClick} />
+                </div>
+                <Search />
+                <div className={s.sidebar_links}>
+                    <MenuItem href="/favourites" cName={s.link} children={"Favourites"} />
+                    <MenuItem href="/cart" cName={s.link} children={"Cart"} />
+                </div>
             </div>
         </div>
     );
