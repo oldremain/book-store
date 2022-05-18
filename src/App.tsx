@@ -18,7 +18,7 @@ const App: React.FC = () => {
     return (
         <div className={s.app_container}>
             <Header onClick={showSidebar} />
-            {show && <Sidebar onClick={showSidebar} />}
+            {show && <Sidebar onClick={showSidebar} open={show} />}
         </div>
     );
 };

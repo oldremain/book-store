@@ -50,3 +50,20 @@
         }
     }
 }
+
+@media (max-width: 768px) {
+    .search_header {
+        display: none;
+    }
+    .search_sidebar {
+        display: block;
+    }
+}
+
+// @media (max-width: 365px) {
+//     .search {
+//         .search_sidebar {
+//             flex-basis: 271px;
+//         }
+//     }
+// }

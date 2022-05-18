@@ -12,17 +12,17 @@ type MenuDataType = {
 };
 
 export const menuData: MenuDataType[] = [
-    { title: "Favourites", path: "/favourites", cName: "menu_link", icon: FavouritesIcon },
+    { title: "Favourites", path: "/favourites", cName: "fav_link", icon: FavouritesIcon },
     {
         title: "Cart",
         path: "/cart",
-        cName: "menu_link",
+        cName: "cart_link",
         icon: CartIcon,
     },
     {
         title: "Account",
         path: "/account",
-        cName: "menu_link",
+        cName: "acc_link",
         icon: UserIcon,
     },
 ];

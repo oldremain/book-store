@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import classnames from "classnames";
 
 import Logo from "./logo/Logo";
 import Search from "./search/Search";
@@ -15,7 +16,7 @@ const Header: React.FC<IHeaderProps> = ({ onClick }) => {
         <header className={s.header}>
             <div className={s.header_container}>
                 <Logo cName={s.header_logo} />
-                <Search />
+                <Search cName={["search", "search_header"]} />
                 <Menu onClick={onClick} />
             </div>
         </header>

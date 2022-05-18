@@ -8,6 +8,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 30px;
 }
 
 .header_logo {
@@ -15,4 +16,13 @@
     font-weight: 700;
     letter-spacing: -0.05em;
     color: var(--system-primary);
+}
+
+@media (max-width: 768px) {
+    .header_logo {
+        font-size: 26px;
+    }
+    .header_container {
+        gap: 0;
+    }
 }

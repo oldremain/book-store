@@ -2,7 +2,7 @@
     background-color: transparent;
     width: 34px;
     height: 34px;
-    //display: none;
+    display: none;
 }
 
 .nav_menu {
@@ -14,4 +14,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 30px;
+}
+
+@media (max-width: 768px) {
+    .burger_menu {
+        display: block;
+    }
+    .nav_menu {
+        margin-left: auto;
+    }
+    .menu_items {
+        justify-content: flex-end;
+        gap: 0;
+    }
+    .fav_link,
+    .acc_link {
+        display: none;
+    }
 }

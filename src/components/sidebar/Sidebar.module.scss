@@ -19,52 +19,60 @@
         bottom: 0;
         background: rgba(49, 48, 55, 0.5);
     }
+}
 
-    .sidebar_content {
-        height: 100%;
-        width: 368px;
-        padding: 40px 40px 56px;
-        background-color: var(--bg-primary);
-        animation: show 0.5s ease;
+.sidebar_content {
+    //position: relative;
+    height: 100%;
+    width: 368px;
+    //left: 0;
+    padding: 40px 40px 56px;
+    background-color: var(--bg-primary);
+    animation: show 0.3s ease;
+    // transition: all 0.3s;
+
+    // ._active {
+    //     transition: all 2s;
+    //     left: 368px;
+    // }
+}
+
+.sidebar_nav {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--bg-primary2);
+    margin-bottom: 56px;
+    padding-bottom: 39px;
+
+    .logo {
+        display: none;
     }
 
-    .sidebar_nav {
-        display: flex;
-        justify-content: space-between;
-        border-bottom: 1px solid var(--bg-primary2);
-        margin-bottom: 56px;
-        padding-bottom: 39px;
-
-        .logo {
-            display: none;
-        }
-
-        .nav_link {
-            display: none;
-        }
-
-        .close_menu {
-            margin-left: auto;
-            background-color: transparent;
-        }
+    .nav_link {
+        display: none;
     }
-    .sidebar_links {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 48px;
-        gap: 48px;
 
-        .link {
-            font-family: "Bebas Neue";
-            font-weight: 700;
-            font-size: 32px;
-            line-height: 138%;
+    .close_menu {
+        margin-left: auto;
+        background-color: transparent;
+    }
+}
+.sidebar_links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 48px;
+    gap: 48px;
 
-            &:visited {
-                color: inherit;
-            }
+    .link {
+        font-family: "Bebas Neue";
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 138%;
+
+        &:visited {
+            color: inherit;
         }
     }
 }
@@ -75,5 +83,11 @@
     }
     to {
         width: 368px;
+    }
+}
+
+@media (max-width: 365px) {
+    .sidebar_content {
+        width: 100%;
     }
 }
