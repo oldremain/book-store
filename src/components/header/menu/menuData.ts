@@ -13,17 +13,17 @@ type MenuDataType = {
 export const menuData: MenuDataType[] = [
     {
         path: "/favourites",
-        cName: "nav-text",
+        cName: "menu_link",
         icon: FavouritesIcon,
     },
     {
         path: "/cart",
-        cName: "nav-text",
+        cName: "menu_link",
         icon: CartIcon,
     },
     {
         path: "/account",
-        cName: "nav-text",
+        cName: "menu_link",
         icon: UserIcon,
     },
 ];

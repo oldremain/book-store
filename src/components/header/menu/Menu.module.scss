@@ -1,18 +1,17 @@
-.burger_btn {
+.burger_menu {
     background-color: transparent;
-    width: 24px;
-    height: 24px;
+    width: 34px;
+    height: 34px;
+    display: none;
 }
 
-.menu_buttons {
+.nav_menu {
     width: 184px;
     height: 56px;
     padding: 16px;
-    display: flex;
-    align-items: center;
-    gap: 28px;
 }
-
-.btn {
-    background-color: transparent;
+.menu_items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

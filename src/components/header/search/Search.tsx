@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 import { ReactComponent as SearchIcon } from "../../../assets/headerIcons/SearchIcon.svg";
 
-import s from "./Searchbar.module.scss";
+import s from "./Search.module.scss";
 
-const Searchbar: React.FC = () => {
+const Search: React.FC = () => {
     const [book, setBook] = useState<string>("");
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,4 +41,4 @@ const Searchbar: React.FC = () => {
     );
 };
 
-export default Searchbar;
+export default Search;

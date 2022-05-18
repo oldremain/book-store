@@ -1,7 +1,7 @@
 import React from "react";
 
 import Menu from "./menu/Menu";
-import Searchbar from "./searchbar/Searchbar";
+import Search from "./search/Search";
 
 import s from "./Header.module.scss";
 
@@ -12,7 +12,7 @@ const Header: React.FC = () => {
                 <div className={s.header_logo}>
                     <span>BOOKSTORE</span>
                 </div>
-                <Searchbar />
+                <Search />
                 <Menu />
             </div>
         </header>
