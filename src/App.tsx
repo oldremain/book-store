@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/header/Header";
-import Sidebar from "./components/header/sidebar/Sidebar";
+import Sidebar from "./components/sidebar/Sidebar";
 
 import s from "./App.module.scss";
 

@@ -1,11 +1,11 @@
 import React from "react";
 
-import Logo from "../logo/Logo";
-import MenuItem from "../menu/MenuItem";
-import Search from "../search/Search";
-import MenuBtn from "../menu/MenuBtn";
-import { ReactComponent as CartIcon } from "../../../assets/headerIcons/CartIcon.svg";
-import { ReactComponent as CloseMenuIcon } from "../../../assets/headerIcons/CloseMenu.svg";
+import Logo from "../header/logo/Logo";
+import MenuItem from "../header/menu/MenuItem";
+import Search from "../header/search/Search";
+import MenuBtn from "../header/menu/MenuBtn";
+import { ReactComponent as CartIcon } from "../../assets/headerIcons/CartIcon.svg";
+import { ReactComponent as CloseMenuIcon } from "../../assets/headerIcons/CloseMenu.svg";
 
 import s from "./Sidebar.module.scss";
 
