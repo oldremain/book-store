@@ -1,0 +1,52 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding: 40px 40px 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-color: rgba(128, 128, 128, 0.3);
+    }
+}
+.sidebar_nav {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid var(--bg-primary2);
+    margin-bottom: 56px;
+    padding-bottom: 39px;
+
+    .logo {
+    }
+
+    .nav_link {
+    }
+
+    .close_menu {
+    }
+}
+
+.sidebar_search {
+    margin-bottom: 48px;
+}
+
+.sidebar_links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    .link {
+    }
+}

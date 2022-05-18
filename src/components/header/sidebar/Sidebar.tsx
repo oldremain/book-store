@@ -10,27 +10,21 @@ import { ReactComponent as CloseMenuIcon } from "../../../assets/headerIcons/Clo
 import s from "./Sidebar.module.scss";
 
 interface ISidebarProps {
-    showSidebar: () => void;
+    onClick: () => void;
 }
 
-const Sidebar: React.FC<ISidebarProps> = ({ showSidebar }) => {
+const Sidebar: React.FC<ISidebarProps> = ({ onClick }) => {
     return (
         <div className={s.sidebar}>
             <div className={s.sidebar_nav}>
-                <Logo cName={s.sidebar_logo} />
-                <nav className={s.nav_items}>
-                    <MenuItem href="/cart" cName={s.nav_link} children={<CartIcon />} />
-                    <MenuBtn
-                        cName={s.close_menu}
-                        children={<CloseMenuIcon />}
-                        onClick={showSidebar}
-                    />
-                </nav>
+                <Logo cName={s.logo} />
+                <MenuItem href="/cart" cName={s.nav_link} children={<CartIcon />} />
+                <MenuBtn cName={s.close_menu} children={<CloseMenuIcon />} onClick={onClick} />
             </div>
             <Search />
             <div className={s.sidebar_links}>
-                <MenuItem href="/favourites" cName={s.sidebar_link} children={"Favourites"} />
-                <MenuItem href="/cart" cName={s.sidebar_link} children={"Cart"} />
+                <MenuItem href="/favourites" cName={s.link} children={"Favourites"} />
+                <MenuItem href="/cart" cName={s.link} children={"Cart"} />
             </div>
         </div>
     );

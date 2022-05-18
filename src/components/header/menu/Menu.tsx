@@ -7,20 +7,24 @@ import { menuData } from "./menuData";
 
 import s from "./Menu.module.scss";
 
-const Menu: React.FC = () => {
-    const [show, setShow] = useState<boolean>(false);
+interface IMenuProps {
+    onClick: () => void;
+}
 
-    const showSidebar = () => {
-        setShow((state) => !state);
-    };
+const Menu: React.FC<IMenuProps> = ({ onClick }) => {
+    // const [show, setShow] = useState<boolean>(false);
 
-    useEffect(() => {
-        console.log(show);
-    }, [show]);
+    // const showSidebar = () => {
+    //     setShow((state) => !state);
+    // };
+
+    // useEffect(() => {
+    //     console.log(show);
+    // }, [show]);
 
     return (
         <>
-            <MenuBtn cName={s.burger_menu} children={<MenuBurgerIcon />} onClick={showSidebar} />
+            <MenuBtn cName={s.burger_menu} children={<MenuBurgerIcon />} onClick={onClick} />
             <nav className={s.nav_menu}>
                 <ul className={s.menu_items}>
                     {menuData.map((item, i) => (
