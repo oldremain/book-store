@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-//import * as FaIcons from "react-icons/fa";
 
-import { ReactComponent as FavouritesIcon } from "../../../assets/headerIcons/FavouritesIcon.svg";
-import { ReactComponent as CartIcon } from "../../../assets/headerIcons/CartIcon.svg";
-import { ReactComponent as UserIcon } from "../../../assets/headerIcons/UserIcon.svg";
-import { ReactComponent as MenuBurger } from "../../../assets/headerIcons/MenuBurger.svg";
+import { ReactComponent as MenuBurgerIcon } from "../../../assets/headerIcons/MenuBurger.svg";
+import MenuItem from "./MenuItem";
+import MenuBtn from "./MenuBtn";
 import { menuData } from "./menuData";
 
 import s from "./Menu.module.scss";
@@ -18,16 +16,19 @@ const Menu: React.FC = () => {
 
     return (
         <>
-            <button type="button" className={s.burger_menu}>
-                <MenuBurger onClick={showSidebar} />
-            </button>
+            <MenuBtn cName={s.burger_menu} children={<MenuBurgerIcon />} onClick={showSidebar} />
+            {/* <button type="button" className={s.burger_menu}>
+                <MenuBurgerIcon onClick={showSidebar} />
+            </button> */}
             <nav className={s.nav_menu}>
                 <ul className={s.menu_items}>
-                    {menuData.map((item) => (
-                        <li className={s.menu_item}>
-                            <a href={item.path} className={s[item.cName]}>
-                                {<item.icon />}
-                            </a>
+                    {menuData.map((item, i) => (
+                        <li key={item.path + i} className={s.menu_item}>
+                            <MenuItem
+                                href={item.path}
+                                cName={s[item.cName]}
+                                children={<item.icon />}
+                            />
                         </li>
                     ))}
                 </ul>
