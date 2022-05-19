@@ -9,3 +9,16 @@
     grid-auto-rows: auto;
     gap: 48px 32px;
 }
+
+@media (max-width: 992px) {
+    .cards_container {
+        grid-template-columns: repeat(2, minmax(272px, 1fr));
+    }
+}
+
+@media (max-width: 670px) {
+    .cards_container {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+}
