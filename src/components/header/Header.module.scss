@@ -1,10 +1,13 @@
 #header {
-    height: 104px;
-    padding: 24px 0px;
-    border-bottom: 1px solid var(--bg-primary2);
+    // height: 104px;
+    // padding: 24px 0px;
+    // border-bottom: 1px solid var(--bg-primary2);
 }
 
 .header_container {
+    height: 104px;
+    padding: 24px 0px;
+    border-bottom: 1px solid var(--bg-primary2);
     display: flex;
     justify-content: space-between;
     align-items: center;

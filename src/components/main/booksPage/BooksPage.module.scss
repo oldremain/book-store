@@ -1,0 +1,11 @@
+.page_containter {
+    width: 100%;
+}
+
+.cards_container {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(272px, 1fr));
+    grid-auto-rows: auto;
+    gap: 48px 32px;
+}

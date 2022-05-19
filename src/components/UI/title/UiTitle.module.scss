@@ -1,0 +1,30 @@
+.title {
+    text-align: start;
+}
+.text {
+    font-family: "Bebas Neue";
+    font-weight: 700;
+}
+.text_large {
+    // font-family: "Bebas Neue";
+    // font-weight: 700;
+    font-size: 56px;
+    line-height: 114%;
+    color: var(--system-primary);
+}
+
+.text_medium {
+    // font-family: "Bebas Neue";
+    // font-weight: 700;
+    font-size: 40px;
+    line-height: 150%;
+    color: var(--system-primary);
+}
+
+.text_small {
+    // font-family: "Bebas Neue";
+    // font-weight: 700;
+    font-size: 24px;
+    line-height: 133%;
+    color: var(--system-primary);
+}
