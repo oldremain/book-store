@@ -17,7 +17,7 @@ const App: React.FC = () => {
     // }, [show]);
 
     return (
-        <div className={s.app_container}>
+        <div className={s.app_container} style={{ overflow: isShown ? "hidden" : "visible" }}>
             <Header onClick={handleShowSidebar} />
             {isShown && <Sidebar onClick={handleShowSidebar} open={isShown} />}
             <Main />
