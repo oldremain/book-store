@@ -22,19 +22,10 @@
 }
 
 .sidebar_content {
-    //position: relative;
     height: 100%;
     width: 368px;
-    //left: 0;
     padding: 40px 40px 56px;
     background-color: var(--bg-primary);
-    animation: show 0.3s ease;
-    // transition: all 0.3s;
-
-    // ._active {
-    //     transition: all 2s;
-    //     left: 368px;
-    // }
 }
 
 .sidebar_nav {
@@ -77,16 +68,7 @@
     }
 }
 
-@keyframes show {
-    from {
-        width: 0px;
-    }
-    to {
-        width: 368px;
-    }
-}
-
-@media (max-width: 365px) {
+@media (max-width: 500px) {
     .sidebar_content {
         width: 100%;
     }
