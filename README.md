@@ -1,7 +1,7 @@
 # Getting Started with Create React App
 
 This project is available by next link 
-### [book-srore](https://book-store-onl.netlify.app).
+### [book-srore-online.com](https://book-store-onl.netlify.app)
 
 ## Available Scripts
 
