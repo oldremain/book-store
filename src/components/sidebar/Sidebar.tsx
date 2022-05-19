@@ -17,19 +17,10 @@ interface ISidebarProps {
     onClick: () => void;
 }
 
-const variants = {
-    hidden: { x: ["0%", "100%"] },
-    visible: { x: ["100%", "0%"] },
-};
-
 const Sidebar: React.FC<ISidebarProps> = ({ open, onClick }) => {
     return (
         <>
-            <motion.div
-                className={s.sidebar}
-                variants={variants}
-                animate={open ? "visible" : "hidden"}
-            >
+            <motion.div className={s.sidebar} animate={{ x: ["100%", "0%"] }}>
                 <div className={s.sidebar_content}>
                     <div className={s.sidebar_nav}>
                         <Logo cName={s.logo} />

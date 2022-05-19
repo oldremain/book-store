@@ -1,8 +1,10 @@
-// #root {
-//     position: relative;
-// }
+#root {
+    // position: relative;
+    height: inherit;
+}
 .app_container {
     max-width: 1120px;
     padding: 0 15px;
     margin: 0 auto;
+    height: inherit;
 }

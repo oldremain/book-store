@@ -13,7 +13,7 @@ interface IHeaderProps {
 
 const Header: React.FC<IHeaderProps> = ({ onClick }) => {
     return (
-        <header className={s.header}>
+        <header id={s.header}>
             <div className={s.header_container}>
                 <Logo cName={s.header_logo} />
                 <Search cName={["search", "search_header"]} />

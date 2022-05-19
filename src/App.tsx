@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/header/Header";
+import Main from "./components/main/Main";
 import Sidebar from "./components/sidebar/Sidebar";
 
 import s from "./App.module.scss";
@@ -18,7 +19,8 @@ const App: React.FC = () => {
     return (
         <div className={s.app_container}>
             <Header onClick={handleShowSidebar} />
-            <Sidebar onClick={handleShowSidebar} open={isShown} />
+            {isShown && <Sidebar onClick={handleShowSidebar} open={isShown} />}
+            <Main />
         </div>
     );
 };
