@@ -1,10 +1,12 @@
 import React from "react";
 import cn from "classnames";
 
+import { UITitleSize } from "../../../enums/enums";
+
 import s from "./UiTitle.module.scss";
 
 interface ITitleProps {
-    size: "large" | "medium" | "small";
+    size: UITitleSize;
     children: React.ReactNode;
 }
 

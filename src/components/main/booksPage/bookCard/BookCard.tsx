@@ -1,5 +1,7 @@
 import React from "react";
+
 import UiTitle from "../../../UI/title/UiTitle";
+import { UITitleSize } from "../../../../enums/enums";
 
 import s from "./BookCard.module.scss";
 
@@ -10,7 +12,7 @@ const BookCard: React.FC = () => {
                 <img src="https://itbook.store/img/books/9781491954249.png" alt="card-image" />
             </div>
             <div className={s.book_details}>
-                <UiTitle size="small">Designing Across Senses </UiTitle>
+                <UiTitle size={UITitleSize.Small}>Designing Across Senses </UiTitle>
                 <div className={s.subtitle}>
                     <span>A Multimodal Approach to Product Design</span>
                 </div>
