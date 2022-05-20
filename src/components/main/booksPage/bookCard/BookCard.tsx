@@ -5,7 +5,7 @@ import { UITitleSize } from "../../../../enums/enums";
 
 import s from "./BookCard.module.scss";
 
-export interface IBookType {
+export interface IBookProps {
     image: string;
     title: string;
     subtitle: string;
@@ -14,16 +14,20 @@ export interface IBookType {
     url: string;
 }
 
-const BookCard: React.FC<IBookType> = ({ image, title, subtitle, price, isbn13 }) => {
+const BookCard: React.FC<IBookProps> = ({ image, title, subtitle, price, isbn13 }) => {
     return (
         <div className={s.book_card}>
             <div className={s.book_image}>
                 <img src={image} alt="card-image" />
             </div>
             <div className={s.book_details}>
-                <UiTitle size={UITitleSize.Small}>{title}</UiTitle>
-                <div className={s.subtitle}>
-                    <span>{subtitle}</span>
+                <div className={s.book_about}>
+                    <UiTitle size={UITitleSize.Small}>
+                        {title.length > 45 ? title.slice(0, 45) + "..." : title}
+                    </UiTitle>
+                    <div className={s.subtitle}>
+                        <span>{subtitle}</span>
+                    </div>
                 </div>
                 <div className={s.book_rates}>
                     <div className={s.price}>

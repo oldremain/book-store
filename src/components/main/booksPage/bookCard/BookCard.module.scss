@@ -1,9 +1,10 @@
 .book_card {
+    width: 100%;
     position: relative;
     z-index: -2;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    // justify-content: space-between;
     //gap: 20px;
     background-color: var(--bg-secondary);
     border-radius: 6px;
@@ -34,14 +35,19 @@
 }
 
 .book_details {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 15px;
 
     .subtitle {
-        margin: 20px 0 60px;
+        margin: 20px 0 40px;
 
         span {
-            font-size: 15px;
+            font-size: 14px;
             line-height: 150%;
+            font-style: italic;
             display: -webkit-box;
             -webkit-line-clamp: 1; // количество строк
             -webkit-box-orient: vertical;

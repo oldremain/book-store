@@ -18,7 +18,14 @@
 
 @media (max-width: 670px) {
     .cards_container {
-        grid-template-columns: 1fr;
-        justify-items: center;
+        grid-template-columns: 70%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 478px) {
+    .cards_container {
+        grid-template-columns: 90%;
+        justify-content: center;
     }
 }
