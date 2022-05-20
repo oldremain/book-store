@@ -9,22 +9,24 @@ import s from "./Pagination.module.scss";
 
 interface IPaginationProps {
     page: number;
+    pageSize: number;
     handleChange: (event: React.ChangeEvent<unknown>, value: number) => void;
     itemsCount: number;
 }
 
-const CustomPagination: React.FC<IPaginationProps> = ({ page, handleChange, itemsCount }) => {
-    // const [page, setPage] = useState(1);
-    // const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-    //     setPage(value);
-    // };
-
+const CustomPagination: React.FC<IPaginationProps> = ({
+    page,
+    pageSize,
+    handleChange,
+    itemsCount,
+}) => {
     return (
         <Stack spacing={2}>
             <Pagination
                 className={s.pagination}
+                size="small"
                 page={page}
-                count={Math.ceil(itemsCount / 10)}
+                count={Math.ceil(itemsCount / pageSize)}
                 onChange={handleChange}
                 renderItem={(item) => (
                     <PaginationItem

@@ -4,7 +4,8 @@ import { useFilter } from "../../../hooks/useFilter";
 
 import UiTitle from "../../UI/title/UiTitle";
 import BookCard from "./bookCard/BookCard";
-import CustomPagination from "../../../pagination/Pagination";
+import CustomPagination from "../../UI/pagination/Pagination";
+import SelectControl from "../../UI/select/Select";
 import Loader from "../../loader/Loader";
 
 import { UITitleSize } from "../../../enums/enums";
@@ -15,25 +16,27 @@ import s from "./BooksPage.module.scss";
 const BooksPage: React.FC = () => {
     const { newBooks, loading } = useNewBooks(`${BASE_URL}/new`);
 
-    const { page, handleChangePage } = useFilter();
+    const { page, pageSize, handleChangeSize, handleChangePage } = useFilter();
 
     // useEffect(() => {
     //     console.log(page);
     // }, [page]);
 
     const content = newBooks
-        .slice((page - 1) * 10, page * 10)
+        .slice((page - 1) * +pageSize, page * +pageSize)
         .map((book, i) => <BookCard key={book.isbn13 + i} {...book} />);
 
     return (
         <div className={s.page_containter}>
             <UiTitle size={UITitleSize.Large}>New Releases Books ({newBooks.length})</UiTitle>
+            <SelectControl pageSize={pageSize} handleChange={handleChangeSize} />
+            <div className={s.cards_container}>{loading ? <Loader /> : content}</div>
             <CustomPagination
                 page={page}
+                pageSize={+pageSize}
                 handleChange={handleChangePage}
                 itemsCount={newBooks.length}
             />
-            <div className={s.cards_container}>{loading ? <Loader /> : content}</div>
         </div>
     );
 };
