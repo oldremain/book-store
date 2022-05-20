@@ -22,7 +22,7 @@ export const useNewBooks = (URL: string) => {
             const response = await axios.get(URL);
             setStatus({
                 ...status,
-                newBooks: incrementArrayBy<IBookProps, number>(response.data.books, 3).filter(
+                newBooks: incrementArrayBy<IBookProps, number>(response.data.books, 9).filter(
                     (book) => +book.price.slice(1) //apply function and delete cards with price ($0.00)
                 ),
                 loading: false,
