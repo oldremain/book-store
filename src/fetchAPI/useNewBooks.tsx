@@ -5,13 +5,34 @@ import { IBookProps } from "../components/main/booksPage/bookCard/BookCard";
 //"https://api.itbook.store/1.0/new"
 
 export const useNewBooks = (URL: string) => {
-    const [books, setBooks] = useState<IBookProps[]>([]);
+    const [status, setStatus] = useState({
+        data: [] as IBookProps[],
+        loading: false,
+        error: false,
+    });
 
     const getBooks = async () => {
         try {
+            setStatus({
+                ...status,
+                loading: true,
+            });
+            await new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(1);
+                }, 3000);
+            });
             const response = await axios.get(URL);
-            setBooks(incrementArrayBy(response.data.books, 3));
+            setStatus({
+                ...status,
+                data: incrementArrayBy(response.data.books, 3),
+                loading: false,
+            });
         } catch (e: any) {
+            setStatus({
+                ...status,
+                error: true,
+            });
             return e.message;
         }
     };
@@ -20,7 +41,7 @@ export const useNewBooks = (URL: string) => {
         getBooks();
     }, []);
 
-    return { books };
+    return { ...status };
 };
 
 function incrementArrayBy<T, U extends number>(array: T[], value: U): T[] {
