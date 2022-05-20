@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { incrementArrayBy } from "../helpers/helpers";
 import { IBookProps } from "../components/main/booksPage/bookCard/BookCard";
 
 //"https://api.itbook.store/1.0/new"
@@ -16,12 +17,6 @@ export const useNewBooks = (URL: string) => {
             ...status,
             loading: true,
         });
-
-        // await new Promise((resolve) => {
-        //     setTimeout(() => {
-        //         resolve(1);
-        //     }, 3000);
-        // });
 
         try {
             const response = await axios.get(URL);
@@ -46,14 +41,3 @@ export const useNewBooks = (URL: string) => {
 
     return { ...status };
 };
-
-//Функция для увеличения длины массива, т.к изначально хотелось получить больше items
-function incrementArrayBy<T, U extends number>(array: T[], value: U): T[] {
-    let initial: T[] = [];
-
-    for (let i = 0; i < value; i++) {
-        initial = [...initial, ...array];
-    }
-
-    return initial;
-}
