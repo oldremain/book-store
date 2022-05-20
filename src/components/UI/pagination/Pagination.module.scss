@@ -2,11 +2,32 @@
     margin-top: 40px;
     ul {
         li {
+            &:not(:first-child) {
+                margin: 0 5px !important;
+            }
+            &:not(:last-child) {
+                margin: 0 5px !important;
+            }
             &:first-child {
                 margin-right: auto !important;
             }
             &:last-child {
                 margin-left: auto !important;
+            }
+        }
+    }
+}
+
+@media (max-width: 426px) {
+    .pagination {
+        ul {
+            li {
+                &:not(:first-child) {
+                    margin: 0px auto !important;
+                }
+                &:not(:last-child) {
+                    margin: 0px auto !important;
+                }
             }
         }
     }
