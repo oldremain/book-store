@@ -18,6 +18,12 @@ export const useNewBooks = (URL: string) => {
             loading: true,
         });
 
+        await new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(1);
+            }, 500);
+        });
+
         try {
             const response = await axios.get(URL);
             setStatus({
