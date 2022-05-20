@@ -6,26 +6,28 @@ import { IBookProps } from "../components/main/booksPage/bookCard/BookCard";
 
 export const useNewBooks = (URL: string) => {
     const [status, setStatus] = useState({
-        data: [] as IBookProps[],
+        newBooks: [] as IBookProps[],
         loading: false,
         error: false,
     });
 
     const getBooks = async () => {
+        setStatus({
+            ...status,
+            loading: true,
+        });
+
+        await new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(1);
+            }, 3000);
+        });
+
         try {
-            setStatus({
-                ...status,
-                loading: true,
-            });
-            await new Promise((resolve) => {
-                setTimeout(() => {
-                    resolve(1);
-                }, 3000);
-            });
             const response = await axios.get(URL);
             setStatus({
                 ...status,
-                data: incrementArrayBy(response.data.books, 3),
+                newBooks: incrementArrayBy(response.data.books, 3),
                 loading: false,
             });
         } catch (e: any) {
@@ -33,7 +35,6 @@ export const useNewBooks = (URL: string) => {
                 ...status,
                 error: true,
             });
-            return e.message;
         }
     };
 
@@ -44,6 +45,7 @@ export const useNewBooks = (URL: string) => {
     return { ...status };
 };
 
+//Функция для увеличения длины массива, т.к хотелось получить больше items
 function incrementArrayBy<T, U extends number>(array: T[], value: U): T[] {
     let initial: T[] = [];
 
