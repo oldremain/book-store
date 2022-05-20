@@ -28,7 +28,7 @@ export const useNewBooks = (URL: string) => {
             setStatus({
                 ...status,
                 newBooks: incrementArrayBy<IBookProps, number>(response.data.books, 3).filter(
-                    (book) => +book.price.slice(1) //delete cards with price ($0.00)
+                    (book) => +book.price.slice(1) //apply function and delete cards with price ($0.00)
                 ),
                 loading: false,
             });
@@ -47,7 +47,7 @@ export const useNewBooks = (URL: string) => {
     return { ...status };
 };
 
-//Функция для увеличения длины массива, т.к хотелось получить больше items
+//Функция для увеличения длины массива, т.к изначально хотелось получить больше items
 function incrementArrayBy<T, U extends number>(array: T[], value: U): T[] {
     let initial: T[] = [];
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNewBooks } from "../../../fetchAPI/useNewBooks";
 import { useFilter } from "../../../hooks/useFilter";
 
@@ -17,10 +17,6 @@ const BooksPage: React.FC = () => {
     const { newBooks, loading } = useNewBooks(`${BASE_URL}/new`);
 
     const { page, pageSize, handleChangeSize, handleChangePage } = useFilter();
-
-    // useEffect(() => {
-    //     console.log(page);
-    // }, [page]);
 
     const content = newBooks
         .slice((page - 1) * +pageSize, page * +pageSize)
