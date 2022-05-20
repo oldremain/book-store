@@ -1,0 +1,12 @@
+.pagination {
+    ul {
+        li {
+            &:first-child {
+                margin-right: auto !important;
+            }
+            &:last-child {
+                margin-left: auto !important;
+            }
+        }
+    }
+}

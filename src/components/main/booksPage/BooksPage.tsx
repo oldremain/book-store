@@ -3,6 +3,7 @@ import { useNewBooks } from "../../../fetchAPI/useNewBooks";
 
 import UiTitle from "../../UI/title/UiTitle";
 import BookCard from "./bookCard/BookCard";
+import CustomPagination from "../../../pagination/Pagination";
 
 import { UITitleSize } from "../../../enums/enums";
 import { BASE_URL } from "../../../constants/constants";
@@ -20,6 +21,7 @@ const BooksPage: React.FC = () => {
     return (
         <div className={s.page_containter}>
             <UiTitle size={UITitleSize.Large}>New Releases Books ({content.length})</UiTitle>
+            <CustomPagination />
             <div className={s.cards_container}>{loading ? <Loader /> : content}</div>
         </div>
     );
