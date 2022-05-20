@@ -1,5 +1,6 @@
 //Функция для увеличения длины массива, т.к изначально хотелось получить больше items
-export function incrementArrayBy<T, U extends number>(array: T[], value: U): T[] {
+
+export const incrementArrayBy = <T, U extends number>(array: T[], value: U): T[] => {
     let initial: T[] = [];
 
     for (let i = 0; i < value; i++) {
@@ -7,4 +8,4 @@ export function incrementArrayBy<T, U extends number>(array: T[], value: U): T[]
     }
 
     return initial;
-}
+};

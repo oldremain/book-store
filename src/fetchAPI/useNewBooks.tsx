@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { incrementArrayBy } from "../helpers/helpers";
+import { incrementArrayBy } from "../helpers/books";
 import { IBookProps } from "../components/main/booksPage/bookCard/BookCard";
 
 //"https://api.itbook.store/1.0/new"
