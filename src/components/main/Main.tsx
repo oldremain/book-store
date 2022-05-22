@@ -6,9 +6,7 @@ import s from "./Main.module.scss";
 const Main: React.FC = () => {
     return (
         <main id={s.main}>
-            <div className={s.main_container}>
-                <BooksPage />
-            </div>
+            <BooksPage />
         </main>
     );
 };

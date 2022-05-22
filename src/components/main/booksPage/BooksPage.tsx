@@ -23,8 +23,10 @@ const BooksPage: React.FC = () => {
         .map((book, i) => <BookCard key={book.isbn13 + i} {...book} />);
 
     return (
-        <div className={s.page_containter}>
-            <UiTitle size={UITitleSize.Large}>New Releases Books ({newBooks.length})</UiTitle>
+        <section className={s.page_containter}>
+            <h2>
+                <UiTitle size={UITitleSize.Large}>New Releases Books ({newBooks.length})</UiTitle>
+            </h2>
             <SelectControl pageSize={pageSize} handleChange={handleChangeSize} />
             <div className={s.cards_container}>{loading ? <Loader /> : content}</div>
             <CustomPagination
@@ -33,7 +35,7 @@ const BooksPage: React.FC = () => {
                 handleChange={handleChangePage}
                 itemsCount={newBooks.length}
             />
-        </div>
+        </section>
     );
 };
 
