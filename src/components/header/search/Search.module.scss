@@ -51,6 +51,10 @@
     }
 }
 
+.search_main {
+    margin-bottom: 30px;
+}
+
 @media (max-width: 768px) {
     .search_header {
         display: none;
@@ -60,10 +64,8 @@
     }
 }
 
-// @media (max-width: 365px) {
-//     .search {
-//         .search_sidebar {
-//             flex-basis: 271px;
-//         }
-//     }
-// }
+@media (min-width: 768px) {
+    .search_main {
+        display: none;
+    }
+}

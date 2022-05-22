@@ -1,7 +1,9 @@
 import React from "react";
 
-import UiTitle from "../../../UI/title/UiTitle";
-import { UITitleSize } from "../../../../enums/enums";
+import UITitle from "../../../UI/title/UITitle";
+import UIBookImage from "../../../UI/bookImage/UIBookImage";
+import UiBookRates from "../../../UI/bookRates/UIBookRates";
+import { UISize } from "../../../../enums/enums";
 
 import s from "./BookCard.module.scss";
 
@@ -17,26 +19,28 @@ export interface IBookProps {
 const BookCard: React.FC<IBookProps> = ({ image, title, subtitle, price, isbn13 }) => {
     return (
         <div className={s.book_card}>
-            <div className={s.book_image}>
+            <UIBookImage size={UISize.Medium} theme="blue" image={image} />
+            {/* <div className={s.book_image}>
                 <img src={image} alt="card-image" />
-            </div>
+            </div> */}
             <div className={s.book_details}>
                 <div className={s.book_about}>
-                    <UiTitle size={UITitleSize.Small}>
+                    <UITitle size={UISize.Small}>
                         {title.length > 45 ? title.slice(0, 45) + "..." : title}
-                    </UiTitle>
+                    </UITitle>
                     <div className={s.subtitle}>
                         <span>{subtitle}</span>
                     </div>
                 </div>
-                <div className={s.book_rates}>
+                <UiBookRates price={price} isbn13={isbn13} />
+                {/* <div className={s.book_rates}>
                     <div className={s.price}>
                         <span>{price} </span>
                     </div>
                     <div className={s.isbn}>
                         <span>ISBN: {isbn13}</span>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );

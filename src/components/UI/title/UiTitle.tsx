@@ -1,12 +1,12 @@
 import React from "react";
 import cn from "classnames";
 
-import { UITitleSize } from "../../../enums/enums";
+import { UISize } from "../../../enums/enums";
 
-import s from "./UiTitle.module.scss";
+import s from "./UITitle.module.scss";
 
 interface ITitleProps {
-    size: UITitleSize;
+    size: UISize;
     children: React.ReactNode;
     cName?: string;
 }

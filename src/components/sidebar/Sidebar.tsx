@@ -6,7 +6,7 @@ import Logo from "../header/logo/Logo";
 import MenuItem from "../header/menu/MenuItem";
 import Search from "../header/search/Search";
 import MenuBtn from "../header/menu/MenuBtn";
-import UiButton from "../UI/button/UiButton";
+import UIButton from "../UI/button/UIButton";
 import { ReactComponent as CartIcon } from "../../assets/headerIcons/CartIcon.svg";
 import { ReactComponent as CloseMenuIcon } from "../../assets/headerIcons/CloseMenu.svg";
 
@@ -36,7 +36,7 @@ const Sidebar: React.FC<ISidebarProps> = ({ open, onClick }) => {
                         <MenuItem href="/favourites" cName={s.link} children={"Favourites"} />
                         <MenuItem href="/cart" cName={s.link} children={"Cart"} />
                     </div>
-                    <UiButton text="Sign In" cNameBtn="ui_btn_sidebar" />
+                    <UIButton text="Sign In" cNameBtn="ui_btn_sidebar" />
                 </div>
             </motion.div>
         </>

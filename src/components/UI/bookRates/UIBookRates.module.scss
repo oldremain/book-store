@@ -1,0 +1,13 @@
+.book_rates {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Bebas Neue";
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 133%;
+
+    .isbn {
+        font-size: 15px;
+        font-weight: 400;
+    }
+}

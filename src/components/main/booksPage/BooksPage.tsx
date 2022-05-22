@@ -2,13 +2,14 @@ import React from "react";
 import { useNewBooks } from "../../../fetchAPI/useNewBooks";
 import { useFilter } from "../../../hooks/useFilter";
 
-import UiTitle from "../../UI/title/UiTitle";
+import Search from "../../header/search/Search";
+import UITitle from "../../UI/title/UITitle";
 import BookCard from "./bookCard/BookCard";
 import CustomPagination from "../../UI/pagination/Pagination";
 import SelectControl from "../../UI/select/Select";
 import Loader from "../../loader/Loader";
 
-import { UITitleSize } from "../../../enums/enums";
+import { UISize } from "../../../enums/enums";
 import { BASE_URL } from "../../../constants/constants";
 
 import s from "./BooksPage.module.scss";
@@ -24,8 +25,9 @@ const BooksPage: React.FC = () => {
 
     return (
         <section className={s.page_containter}>
+            <Search cName={["search", "search_main"]} />
             <h2>
-                <UiTitle size={UITitleSize.Large}>New Releases Books ({newBooks.length})</UiTitle>
+                <UITitle size={UISize.Large}>New Releases Books ({newBooks.length})</UITitle>
             </h2>
             <SelectControl pageSize={pageSize} handleChange={handleChangeSize} />
             <div className={s.cards_container}>{loading ? <Loader /> : content}</div>
