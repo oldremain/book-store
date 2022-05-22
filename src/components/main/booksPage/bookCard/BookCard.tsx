@@ -32,7 +32,7 @@ const BookCard: React.FC<IBookProps> = ({ image, title, subtitle, price, isbn13 
                         <span>{subtitle}</span>
                     </div>
                 </div>
-                <UiBookRates price={price} isbn13={isbn13} />
+                <UiBookRates price={price} isbn={isbn13} />
                 {/* <div className={s.book_rates}>
                     <div className={s.price}>
                         <span>{price} </span>

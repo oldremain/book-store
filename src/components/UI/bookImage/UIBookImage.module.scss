@@ -1,6 +1,6 @@
 .book_image {
     position: relative;
-    //height: 264px; //?
+    height: 100%;
     z-index: 2;
 
     &::after {
@@ -11,7 +11,6 @@
         bottom: 0;
         left: 0;
         right: 0;
-        // background-color: var(--additional-blue); //theme-props
     }
 
     & img {
@@ -28,4 +27,12 @@
 }
 .image_medium {
     height: 264px;
+}
+.image_large {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & img {
+        max-width: 300px;
+    }
 }

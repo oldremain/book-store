@@ -1,5 +1,4 @@
 import React from "react";
-import cn from "classnames";
 import { motion } from "framer-motion";
 
 import Logo from "../header/logo/Logo";

@@ -1,5 +1,6 @@
 import React from "react";
 
+import BookDetails from "./bookDetails/BookDetails";
 import { ReactComponent as ArrowBackIcon } from "../../../assets/cardIcons/ArrowBack.svg";
 import UITitle from "../../UI/title/UITitle";
 import UIBookImage from "../../UI/bookImage/UIBookImage";
@@ -10,22 +11,25 @@ import s from "./BookPage.module.scss";
 
 const BookPage: React.FC = () => {
     return (
-        <section className={s.page_containter}>
+        <section className={s.containter}>
             <button className={s.back_btn}>
                 <ArrowBackIcon />
             </button>
-            <h2>
+            <h2 className={s.title}>
                 <UITitle
                     size={UISize.Large}
                     children="Robot Operating System (ROS) for Absolute Beginners, 2nd Edition"
                 />
             </h2>
-            <div className={s.book_content}>
-                <UIBookImage
-                    size={UISize.Medium}
-                    theme="orange"
-                    image="https://itbook.store/img/books/9781484206485.png"
-                />
+            <div className={s.content}>
+                <div className={s.content_image}>
+                    <UIBookImage
+                        size={UISize.Large}
+                        theme="orange"
+                        image="https://itbook.store/img/books/9781484206485.png"
+                    />
+                </div>
+                <BookDetails price="$32.04" isbn="9781484206485" />
             </div>
         </section>
     );

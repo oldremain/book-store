@@ -1,20 +1,22 @@
 import React from "react";
+import cn from "classnames";
 
 import s from "./UIBookRates.module.scss";
 
-interface IBookRatesProps {
+export interface IBookRatesProps {
+    cName?: string;
     price: string;
-    isbn13: string;
+    isbn: string;
 }
 
-const UIBookRates: React.FC<IBookRatesProps> = ({ price, isbn13 }) => {
+const UIBookRates: React.FC<IBookRatesProps> = ({ price, isbn, cName = "" }) => {
     return (
-        <div className={s.book_rates}>
+        <div className={cn(s.book_rates, s[cName])}>
             <div className={s.price}>
                 <span>{price} </span>
             </div>
             <div className={s.isbn}>
-                <span>ISBN: {isbn13}</span>
+                <span>ISBN: {isbn}</span>
             </div>
         </div>
     );

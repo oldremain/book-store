@@ -1,7 +1,29 @@
-.page_containter {
+.containter {
     width: 100%;
+    padding: 0 0 70px 0;
 }
 .back_btn {
     padding: 15px 15px 15px 0;
     background-color: transparent;
+}
+.title {
+    margin-bottom: 48px;
+}
+.content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+.content_image {
+    flex: 0 1 50%;
+    background-color: var(--additional-orange);
+}
+
+@media (max-width: 930px) {
+    .content {
+        flex-wrap: wrap;
+    }
+    .content_image {
+        flex: 0 1 100%;
+    }
 }
