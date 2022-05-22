@@ -16,14 +16,20 @@
 }
 .content_image {
     flex: 0 1 50%;
-    background-color: var(--additional-orange);
+    //background-color: var(--additional-orange);
 }
 
-@media (max-width: 930px) {
+@media (max-width: 994px) {
     .content {
         flex-wrap: wrap;
+        padding: 0 30px;
     }
     .content_image {
         flex: 0 1 100%;
+    }
+}
+@media (max-width: 472px) {
+    .content {
+        padding: 0px;
     }
 }
