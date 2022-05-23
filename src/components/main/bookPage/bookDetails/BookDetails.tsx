@@ -52,12 +52,12 @@ const BookDetails: React.FC<IBookDetailsProps> = ({ price, isbn }) => {
                             variants={variants}
                             animate={isMobile ? "mobile" : "desktop"}
                         >
-                            <li className={s.list_item}>isbn 10 :</li>
-                            <li className={s.list_item}> 1617294136</li>
-                            <li className={s.list_item}>isbn 13 :</li>
-                            <li className={s.list_item}> 9781617294136</li>
                             <li className={s.list_item}>pages</li>
                             <li className={s.list_item}>384</li>
+                            <li className={s.list_item}>ISBN-10</li>
+                            <li className={s.list_item}> 1617294136</li>
+                            <li className={s.list_item}>ISBN-13</li>
+                            <li className={s.list_item}> 9781617294136</li>
                         </motion.ul>
                     )}
                 </div>

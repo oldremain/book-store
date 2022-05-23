@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import cn from "classnames";
+import { fetchBooks } from "../../../features/books/booksSlice";
 
 import { ReactComponent as SearchIcon } from "../../../assets/headerIcons/SearchIcon.svg";
 
