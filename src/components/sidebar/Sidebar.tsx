@@ -5,7 +5,7 @@ import Logo from "../header/logo/Logo";
 import MenuItem from "../header/menu/MenuItem";
 import Search from "../header/search/Search";
 import MenuBtn from "../header/menu/MenuBtn";
-import UIButton from "../UI/button/UIButton";
+import UIButton from "../UI/button/UiButton";
 import { ReactComponent as CartIcon } from "../../assets/headerIcons/CartIcon.svg";
 import { ReactComponent as CloseMenuIcon } from "../../assets/headerIcons/CloseMenu.svg";
 

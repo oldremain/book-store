@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNewBooks } from "../../../../fetchAPI/useNewBooks";
 import { useFilter } from "../../../../hooks/useFilter";
 
-import UITitle from "../../../UI/title/UITitle";
+import UITitle from "../../../UI/title/UiTitle";
 import BookCard from "../bookCard/BookCard";
 import CustomPagination from "../../../UI/pagination/Pagination";
 import SelectControl from "../../../UI/select/Select";
@@ -27,7 +27,7 @@ const InitialPage: React.FC = () => {
         .map((book, i) => <BookCard key={book.isbn13 + i} {...book} />);
 
     return (
-        <section className={s.page_containter}>
+        <>
             <h2>
                 <UITitle size={UISize.Large}>New Releases Books ({newBooks.length})</UITitle>
             </h2>
@@ -39,7 +39,7 @@ const InitialPage: React.FC = () => {
                 handleChange={handleChangePage}
                 itemsCount={newBooks.length}
             />
-        </section>
+        </>
     );
 };
 

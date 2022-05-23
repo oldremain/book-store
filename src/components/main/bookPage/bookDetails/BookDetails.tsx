@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
 import UIBookRates, { IBookRatesProps } from "../../../UI/bookRates/UIBookRates";
-import UIButton from "../../../UI/button/UIButton";
+import UIButton from "../../../UI/button/UiButton";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 

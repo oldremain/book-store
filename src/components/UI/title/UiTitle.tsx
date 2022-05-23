@@ -3,7 +3,7 @@ import cn from "classnames";
 
 import { UISize } from "../../../enums/enums";
 
-import s from "./UITitle.module.scss";
+import s from "./UiTitle.module.scss";
 
 interface ITitleProps {
     size: UISize;
@@ -11,7 +11,7 @@ interface ITitleProps {
     cName?: string;
 }
 
-const Title: React.FC<ITitleProps> = ({ size, children, cName = "" }) => {
+const UITitle: React.FC<ITitleProps> = ({ size, children, cName = "" }) => {
     return (
         <div className={cn(s.title, s[cName])}>
             <span className={cn(s[`text_${size}`], s.text)}>{children}</span>
@@ -19,4 +19,4 @@ const Title: React.FC<ITitleProps> = ({ size, children, cName = "" }) => {
     );
 };
 
-export default Title;
+export default UITitle;

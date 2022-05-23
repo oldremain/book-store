@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/reduxHooks";
 import { fetchBooks } from "../../../../features/books/booksSlice";
 
-import UITitle from "../../../UI/title/UITitle";
+import UITitle from "../../../UI/title/UiTitle";
 import BookCard from "../bookCard/BookCard";
 import CustomPagination from "../../../UI/pagination/Pagination";
 import SelectControl from "../../../UI/select/Select";
@@ -32,7 +32,7 @@ const ResultsPage: React.FC = () => {
     const content = foundBooks.map((book, i) => <BookCard key={book.isbn13 + i} {...book} />);
 
     return (
-        <section className={s.page_containter}>
+        <>
             <h2>
                 <UITitle size={UISize.Large}>{`"${searchField}" Search Results`}</UITitle>
             </h2>
@@ -41,13 +41,15 @@ const ResultsPage: React.FC = () => {
             </div>
             {/* <SelectControl pageSize={pageSize} handleChange={handleChangeSize} /> */}
             <div className={s.cards_container}>{isLoading ? <Loader /> : content}</div>
-            <CustomPagination
-                page={paginationPage}
-                pageSize={10}
-                handleChange={handleChangePage}
-                itemsCount={+total}
-            />
-        </section>
+            {!!foundBooks.length && (
+                <CustomPagination
+                    page={paginationPage}
+                    pageSize={10}
+                    handleChange={handleChangePage}
+                    itemsCount={+total}
+                />
+            )}
+        </>
     );
 };
 

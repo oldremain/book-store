@@ -2,7 +2,7 @@ import React from "react";
 
 import BookDetails from "./bookDetails/BookDetails";
 import { ReactComponent as ArrowBackIcon } from "../../../assets/cardIcons/ArrowBack.svg";
-import UITitle from "../../UI/title/UITitle";
+import UITitle from "../../UI/title/UiTitle";
 import UIBookImage from "../../UI/bookImage/UIBookImage";
 
 import { UISize } from "../../../enums/enums";

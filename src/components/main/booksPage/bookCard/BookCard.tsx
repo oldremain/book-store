@@ -1,6 +1,6 @@
 import React from "react";
 
-import UITitle from "../../../UI/title/UITitle";
+import UITitle from "../../../UI/title/UiTitle";
 import UIBookImage from "../../../UI/bookImage/UIBookImage";
 import UiBookRates from "../../../UI/bookRates/UIBookRates";
 import { UISize } from "../../../../enums/enums";
