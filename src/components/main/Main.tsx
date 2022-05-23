@@ -7,8 +7,8 @@ import s from "./Main.module.scss";
 const Main: React.FC = () => {
     return (
         <main id={s.main}>
-            {/* <BooksPage /> */}
-            <BookPage />
+            <BooksPage />
+            {/* <BookPage /> */}
         </main>
     );
 };

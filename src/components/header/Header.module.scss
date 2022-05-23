@@ -1,13 +1,12 @@
 #header {
-    // height: 104px;
-    // padding: 24px 0px;
-    // border-bottom: 1px solid var(--bg-primary2);
     position: fixed;
     top: 0;
-    width: 100%;
+    left: 15px;
+    right: 15px;
     background-color: var(--bg-primary);
     z-index: 10;
     max-width: 1090px;
+    margin: auto;
 }
 
 .header_container {
@@ -25,6 +24,10 @@
     font-weight: 700;
     letter-spacing: -0.05em;
     color: var(--system-primary);
+
+    & a {
+        color: inherit;
+    }
 }
 
 @media (max-width: 768px) {

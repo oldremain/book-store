@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface ILogoProps {
     cName: string;
@@ -7,7 +8,7 @@ interface ILogoProps {
 const Logo: React.FC<ILogoProps> = ({ cName }) => {
     return (
         <div className={cName}>
-            <span>BOOKSTORE</span>
+            <Link to="/">BOOKSTORE</Link>
         </div>
     );
 };

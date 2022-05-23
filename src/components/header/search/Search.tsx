@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import cn from "classnames";
-import { fetchBooks } from "../../../features/books/booksSlice";
+import { useAppDispatch } from "../../../hooks/reduxHooks";
+import { fetchBooks, setSearchField } from "../../../features/books/booksSlice";
 
 import { ReactComponent as SearchIcon } from "../../../assets/headerIcons/SearchIcon.svg";
 
@@ -13,15 +14,19 @@ interface ISearchProps {
 const Search: React.FC<ISearchProps> = ({ cName }) => {
     const [book, setBook] = useState<string>("");
 
+    const dispatch = useAppDispatch();
+
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setBook(e.target.value);
     };
 
     const handleFormSubmit = (e: React.FormEvent<EventTarget>) => {
         e.preventDefault();
-        if (book) {
-            setBook("");
+        if (book.trim()) {
+            dispatch(fetchBooks({ searchField: book, page: 1 }));
+            dispatch(setSearchField(book));
         }
+        setBook("");
     };
 
     // useEffect(() => {
