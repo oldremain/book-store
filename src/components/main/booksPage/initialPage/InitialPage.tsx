@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useNewBooks } from "../../../../fetchAPI/useNewBooks";
 import { useFilter } from "../../../../hooks/useFilter";
 
@@ -15,12 +16,17 @@ import s from "../BooksPage.module.scss";
 
 const InitialPage: React.FC = () => {
     const { newBooks, loading } = useNewBooks(`${BASE_URL}/new`);
-
     const { page, pageSize, handleChangeSize, handleChangePage } = useFilter();
 
-    // useEffect(() => {
-    //     console.log(searchBooks);
-    // }, [searchBooks]);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const params = useParams();
+    console.log(params.page);
+
+    useEffect(() => {
+        const navigateTo = `/new/${page}`;
+        navigate(navigateTo);
+    }, [page]);
 
     const content = newBooks
         .slice((page - 1) * +pageSize, page * +pageSize)

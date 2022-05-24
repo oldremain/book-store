@@ -35,20 +35,22 @@ const ResultsPage: React.FC = () => {
         dispatch(fetchBooks({ searchField, page: value }));
     };
 
-    const handleClickButton = () => {
+    const handleBackClick = () => {
         console.log("back");
-        navigate(-1);
+        //navigate(`/search/${location.state}`);
     };
 
     useEffect(() => {
-        navigate(`/search/${searchField}`);
-    }, [searchField]);
+        const navigateTo = searchField ? `/search/${searchField}/?page=${paginationPage}` : `/new`;
+
+        navigate(navigateTo);
+    }, [searchField, paginationPage]);
 
     const content = foundBooks.map((book, i) => <BookCard key={book.isbn13 + i} {...book} />);
 
     return (
         <>
-            <UIBackButton onClick={handleClickButton} />
+            <UIBackButton onClick={handleBackClick} />
             <h2>
                 <UITitle size={UISize.Large}>{`"${searchField}" Search Results`}</UITitle>
             </h2>

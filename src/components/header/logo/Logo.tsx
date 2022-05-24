@@ -8,7 +8,7 @@ interface ILogoProps {
 const Logo: React.FC<ILogoProps> = ({ cName }) => {
     return (
         <div className={cName}>
-            <Link to="/">BOOKSTORE</Link>
+            <Link to="/new/1">BOOKSTORE</Link>
         </div>
     );
 };

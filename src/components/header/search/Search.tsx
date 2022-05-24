@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import cn from "classnames";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../hooks/reduxHooks";
 import { fetchBooks, setSearchField } from "../../../features/books/booksSlice";
+import cn from "classnames";
 
 import { ReactComponent as SearchIcon } from "../../../assets/headerIcons/SearchIcon.svg";
 
@@ -16,6 +17,8 @@ const Search: React.FC<ISearchProps> = ({ cName }) => {
 
     const dispatch = useAppDispatch();
 
+    const navigate = useNavigate();
+
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setBook(e.target.value);
     };
@@ -26,6 +29,7 @@ const Search: React.FC<ISearchProps> = ({ cName }) => {
             dispatch(fetchBooks({ searchField: book, page: 1 }));
             dispatch(setSearchField(book));
         }
+        navigate(`/search/${book}`);
         setBook("");
     };
 
