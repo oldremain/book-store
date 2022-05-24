@@ -29,7 +29,7 @@ const Search: React.FC<ISearchProps> = ({ cName }) => {
             dispatch(fetchBooks({ searchField: book, page: 1 }));
             dispatch(setSearchField(book));
         }
-        navigate(`/search/${book}`);
+        navigate(`/search/${book}`); //search/${searchField}/?page=${paginationPage}
         setBook("");
     };
 

@@ -20,9 +20,6 @@ const BookCard: React.FC<IBookProps> = ({ image, title, subtitle, price, isbn13 
     return (
         <div className={s.book_card}>
             <UIBookImage size={UISize.Medium} theme="blue" image={image} />
-            {/* <div className={s.book_image}>
-                <img src={image} alt="card-image" />
-            </div> */}
             <div className={s.book_details}>
                 <div className={s.book_about}>
                     <UITitle size={UISize.Small}>
@@ -33,14 +30,6 @@ const BookCard: React.FC<IBookProps> = ({ image, title, subtitle, price, isbn13 
                     </div>
                 </div>
                 <UiBookRates price={price} isbn={isbn13} />
-                {/* <div className={s.book_rates}>
-                    <div className={s.price}>
-                        <span>{price} </span>
-                    </div>
-                    <div className={s.isbn}>
-                        <span>ISBN: {isbn13}</span>
-                    </div>
-                </div> */}
             </div>
         </div>
     );
