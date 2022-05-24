@@ -14,6 +14,11 @@
             &:last-child {
                 margin-left: auto !important;
             }
+            &:not(:first-child, :last-child) {
+                button:hover {
+                    background-color: var(--bg-primary2) !important;
+                }
+            }
         }
     }
 }

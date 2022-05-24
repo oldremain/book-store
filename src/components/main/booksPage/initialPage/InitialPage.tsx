@@ -20,8 +20,7 @@ const InitialPage: React.FC = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    // const params = useParams();
-    //console.log(location.pathname.endsWith("1"));
+    console.log(location);
 
     useEffect(() => {
         const path = `/new/${page}`;
