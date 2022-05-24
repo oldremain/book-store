@@ -1,7 +1,7 @@
 import React from "react";
 
 import BookDetails from "./bookDetails/BookDetails";
-import { ReactComponent as ArrowBackIcon } from "../../../assets/cardIcons/ArrowBack.svg";
+import BackButton from "../../UI/button/backButton/UiBackButton";
 import UITitle from "../../UI/title/UiTitle";
 import UIBookImage from "../../UI/bookImage/UIBookImage";
 
@@ -12,9 +12,7 @@ import s from "./BookPage.module.scss";
 const BookPage: React.FC = () => {
     return (
         <section className={s.containter}>
-            <button className={s.back_btn}>
-                <ArrowBackIcon />
-            </button>
+            <BackButton />
             <h2 className={s.title}>
                 <UITitle
                     size={UISize.Large}

@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/reduxHooks";
 import { fetchBooks } from "../../../../features/books/booksSlice";
 
-import UITitle from "../../../UI/title/UiTitle";
 import BookCard from "../bookCard/BookCard";
+import UITitle from "../../../UI/title/UiTitle";
 import CustomPagination from "../../../UI/pagination/Pagination";
 import SelectControl from "../../../UI/select/Select";
+import BackButton from "../../../UI/button/backButton/UiBackButton";
 import Loader from "../../../loader/Loader";
 
 import { UISize } from "../../../../enums/enums";
@@ -33,6 +34,7 @@ const ResultsPage: React.FC = () => {
 
     return (
         <>
+            <BackButton />;
             <h2>
                 <UITitle size={UISize.Large}>{`"${searchField}" Search Results`}</UITitle>
             </h2>
