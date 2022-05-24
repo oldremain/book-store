@@ -43,6 +43,10 @@ const ResultsPage: React.FC = () => {
     // };
 
     useEffect(() => {
+        setPaginationPage(1); // обновляем страницу когда вводим новое значение в searchField
+    }, [searchField]);
+
+    useEffect(() => {
         const path = searchField ? `/search/${searchField}/?page=${paginationPage}` : `/new/1`;
 
         navigate(path);
