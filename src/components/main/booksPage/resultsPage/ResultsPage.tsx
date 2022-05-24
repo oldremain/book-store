@@ -35,12 +35,12 @@ const ResultsPage: React.FC = () => {
         dispatch(fetchBooks({ searchField, page: value }));
     };
 
-    const handleBackClick = () => {
-        console.log("back");
-        navigate(-1);
+    // const handleBackClick = () => {
+    //     console.log("back");
+    //     navigate(-1);
 
-        // console.log(location);
-    };
+    //     // console.log(location);
+    // };
 
     useEffect(() => {
         const path = searchField ? `/search/${searchField}/?page=${paginationPage}` : `/new/1`;
@@ -52,7 +52,7 @@ const ResultsPage: React.FC = () => {
 
     return (
         <>
-            <UIBackButton onClick={handleBackClick} />
+            {/* <UIBackButton onClick={handleBackClick} /> */}
             <h2>
                 <UITitle size={UISize.Large}>{`"${searchField}" Search Results`}</UITitle>
             </h2>

@@ -19,9 +19,9 @@ const InitialPage: React.FC = () => {
     const { page, pageSize, handleChangeSize, handleChangePage } = useFilter();
 
     const navigate = useNavigate();
-    // const location = useLocation();
+    const location = useLocation();
     // const params = useParams();
-    // console.log(params.page);
+    //console.log(location.pathname.endsWith("1"));
 
     useEffect(() => {
         const path = `/new/${page}`;

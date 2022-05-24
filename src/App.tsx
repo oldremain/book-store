@@ -29,8 +29,6 @@ const App: React.FC = () => {
 
                 <Routes>
                     <Route path="/" element={<Main />}>
-                        {/* <Route path="new/:page" element={<InitialPage />} />
-                        <Route path="search/*" element={<ResultsPage />} /> */}
                         <Route path="/" element={<BooksPage />}>
                             <Route path="new/:page" element={<InitialPage />} />
                             <Route path="search/*" element={<ResultsPage />} />
