@@ -1,14 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface ILogoProps {
     cName: string;
 }
 
 const Logo: React.FC<ILogoProps> = ({ cName }) => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        setTimeout(() => {
+            navigate("/new/1");
+        }, 0);
+    };
+
     return (
-        <div className={cName}>
-            <Link to="/new/1">BOOKSTORE</Link>
+        <div className={cName} onClick={handleClick}>
+            <Link to="/new">BOOKSTORE</Link>
         </div>
     );
 };
