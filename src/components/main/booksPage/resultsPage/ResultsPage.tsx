@@ -27,8 +27,8 @@ const ResultsPage: React.FC = () => {
     } = useAppSelector((state) => state.books);
 
     const navigate = useNavigate();
-    const location = useLocation();
-    console.log(location);
+    // const location = useLocation();
+    // console.log(location);
 
     const handleChangePage = (event: React.ChangeEvent<unknown>, value: number) => {
         setPaginationPage(value);
@@ -40,7 +40,7 @@ const ResultsPage: React.FC = () => {
     }, [searchField]);
 
     useEffect(() => {
-        const path = searchField ? `/search/${searchField}/?page=${paginationPage}` : `/new/1`;
+        const path = searchField ? `/search/${searchField}?page=${paginationPage}` : `/new/1`;
 
         navigate(path);
     }, [searchField, paginationPage]);

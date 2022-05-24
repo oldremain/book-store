@@ -16,7 +16,7 @@
             }
             &:not(:first-child, :last-child) {
                 button:hover {
-                    background-color: var(--system-secondary) !important;
+                    background-color: var(--bg-primary2) !important;
                 }
             }
         }

@@ -4,6 +4,7 @@ import PaginationItem from "@mui/material/PaginationItem";
 import Stack from "@mui/material/Stack";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import s from "./Pagination.module.scss";
 
@@ -14,6 +15,14 @@ interface IPaginationProps {
     itemsCount: number;
 }
 
+const theme = createTheme({
+    palette: {
+        secondary: {
+            main: "#a8a8a8",
+        },
+    },
+});
+
 const CustomPagination: React.FC<IPaginationProps> = ({
     page,
     pageSize,
@@ -22,19 +31,22 @@ const CustomPagination: React.FC<IPaginationProps> = ({
 }) => {
     return (
         <Stack spacing={2}>
-            <Pagination
-                className={s.pagination}
-                size="small"
-                page={page}
-                count={Math.ceil(itemsCount / pageSize)}
-                onChange={handleChange}
-                renderItem={(item) => (
-                    <PaginationItem
-                        components={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
-                        {...item}
-                    />
-                )}
-            />
+            <ThemeProvider theme={theme}>
+                <Pagination
+                    className={s.pagination}
+                    color="secondary"
+                    size="small"
+                    page={page}
+                    count={Math.ceil(itemsCount / pageSize)}
+                    onChange={handleChange}
+                    renderItem={(item) => (
+                        <PaginationItem
+                            components={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
+                            {...item}
+                        />
+                    )}
+                />
+            </ThemeProvider>
         </Stack>
     );
 };
