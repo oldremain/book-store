@@ -35,13 +35,6 @@ const ResultsPage: React.FC = () => {
         dispatch(fetchBooks({ searchField, page: value }));
     };
 
-    // const handleBackClick = () => {
-    //     console.log("back");
-    //     navigate(-1);
-
-    //     // console.log(location);
-    // };
-
     useEffect(() => {
         setPaginationPage(1); // обновляем страницу когда вводим новое значение в searchField
     }, [searchField]);
