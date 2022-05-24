@@ -1,7 +1,7 @@
 import React from "react";
 import cn from "classnames";
 
-import s from "./UiButton.module.scss";
+import s from "./UiPrimaryButton.module.scss";
 
 interface IButtonProps {
     cNameBtn?: string;
@@ -10,7 +10,7 @@ interface IButtonProps {
     path?: string;
 }
 
-const UIButton: React.FC<IButtonProps> = ({ cNameBtn = "", text }) => {
+const UIPrimaryButton: React.FC<IButtonProps> = ({ cNameBtn = "", text }) => {
     return (
         <div className={cn(s.ui_btn, s[cNameBtn])}>
             <a href="#" className={s.ui_btn_link}>
@@ -20,4 +20,4 @@ const UIButton: React.FC<IButtonProps> = ({ cNameBtn = "", text }) => {
     );
 };
 
-export default UIButton;
+export default UIPrimaryButton;

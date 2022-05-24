@@ -4,12 +4,16 @@ import { ReactComponent as ArrowBackIcon } from "../../../../assets/cardIcons/Ar
 
 import s from "./UiBackButton.module.scss";
 
-const BackButton: React.FC = () => {
+interface IBackButton {
+    onClick?: () => void;
+}
+
+const UIBackButton: React.FC<IBackButton> = ({ onClick }) => {
     return (
-        <button className={s.back_btn}>
+        <button className={s.back_btn} onClick={onClick}>
             <ArrowBackIcon />
         </button>
     );
 };
 
-export default BackButton;
+export default UIBackButton;

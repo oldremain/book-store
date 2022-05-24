@@ -3,12 +3,16 @@ import BooksPage from "./booksPage/BooksPage";
 import BookPage from "./bookPage/BookPage";
 
 import s from "./Main.module.scss";
+import { Route, Routes } from "react-router-dom";
 
 const Main: React.FC = () => {
     return (
         <main id={s.main}>
-            <BooksPage />
-            {/* <BookPage /> */}
+            <Routes>
+                <Route path="/*" element={<BooksPage />} />
+                {/* <BooksPage /> */}
+                {/* <BookPage /> */}
+            </Routes>
         </main>
     );
 };

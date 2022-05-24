@@ -1,7 +1,7 @@
 import React from "react";
 
 import BookDetails from "./bookDetails/BookDetails";
-import BackButton from "../../UI/button/backButton/UiBackButton";
+import UIBackButton from "../../UI/button/backButton/UiBackButton";
 import UITitle from "../../UI/title/UiTitle";
 import UIBookImage from "../../UI/bookImage/UIBookImage";
 
@@ -12,7 +12,7 @@ import s from "./BookPage.module.scss";
 const BookPage: React.FC = () => {
     return (
         <section className={s.containter}>
-            <BackButton />
+            <UIBackButton />
             <h2 className={s.title}>
                 <UITitle
                     size={UISize.Large}

@@ -4,6 +4,7 @@ import Main from "./components/main/Main";
 import Sidebar from "./components/sidebar/Sidebar";
 
 import s from "./App.module.scss";
+import { Route, Routes } from "react-router-dom";
 
 const App: React.FC = () => {
     const [isShown, setShowSidebar] = useState<boolean>(false);
@@ -20,6 +21,11 @@ const App: React.FC = () => {
         <div className={s.app_container} style={{ overflow: isShown ? "hidden" : "visible" }}>
             <Header onClick={handleShowSidebar} />
             {isShown && <Sidebar onClick={handleShowSidebar} open={isShown} />}
+            {/* <Routes>
+                <Route >
+
+                </Route>
+            </Routes> */}
             <Main />
         </div>
     );

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
 import UIBookRates, { IBookRatesProps } from "../../../UI/bookRates/UIBookRates";
-import UIButton from "../../../UI/button/UiButton";
+import UIPrimaryButton from "../../../UI/button/UiPrimaryButton";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
@@ -61,7 +61,7 @@ const BookDetails: React.FC<IBookDetailsProps> = ({ price, isbn }) => {
                         </motion.ul>
                     )}
                 </div>
-                <UIButton text="Add to cart" />
+                <UIPrimaryButton text="Add to cart" />
             </div>
         </div>
     );
