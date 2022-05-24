@@ -19,13 +19,13 @@ const InitialPage: React.FC = () => {
     const { page, pageSize, handleChangeSize, handleChangePage } = useFilter();
 
     const navigate = useNavigate();
-    const location = useLocation();
-    const params = useParams();
-    console.log(params.page);
+    // const location = useLocation();
+    // const params = useParams();
+    // console.log(params.page);
 
     useEffect(() => {
-        const navigateTo = `/new/${page}`;
-        navigate(navigateTo);
+        const path = `/new/${page}`;
+        navigate(path);
     }, [page]);
 
     const content = newBooks

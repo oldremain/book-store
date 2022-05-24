@@ -37,13 +37,15 @@ const ResultsPage: React.FC = () => {
 
     const handleBackClick = () => {
         console.log("back");
-        //navigate(`/search/${location.state}`);
+        navigate(-1);
+
+        // console.log(location);
     };
 
     useEffect(() => {
-        const navigateTo = searchField ? `/search/${searchField}/?page=${paginationPage}` : `/new`;
+        const path = searchField ? `/search/${searchField}/?page=${paginationPage}` : `/new/1`;
 
-        navigate(navigateTo);
+        navigate(path);
     }, [searchField, paginationPage]);
 
     const content = foundBooks.map((book, i) => <BookCard key={book.isbn13 + i} {...book} />);
