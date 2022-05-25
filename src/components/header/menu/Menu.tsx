@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useAppDispatch } from "../../../hooks/reduxHooks";
+import { toggleVisibility } from "../../../features/sidebar/sidebarSlice";
 
-import { ReactComponent as MenuBurgerIcon } from "../../../assets/headerIcons/MenuBurger.svg";
 import MenuItem from "./MenuItem";
 import MenuBtn from "./MenuBtn";
 import { menuData } from "./menuData";
+import { ReactComponent as MenuBurgerIcon } from "../../../assets/headerIcons/MenuBurger.svg";
 
 import s from "./Menu.module.scss";
 
-interface IMenuProps {
-    onClick: () => void;
-}
+const Menu: React.FC = () => {
+    const dispatch = useAppDispatch();
 
-const Menu: React.FC<IMenuProps> = ({ onClick }) => {
+    const handleMenuClick = () => {
+        dispatch(toggleVisibility());
+    };
+
     return (
         <>
             <nav className={s.nav_menu}>
@@ -27,7 +31,11 @@ const Menu: React.FC<IMenuProps> = ({ onClick }) => {
                     ))}
                 </ul>
             </nav>
-            <MenuBtn cName={s.burger_menu} children={<MenuBurgerIcon />} onClick={onClick} />
+            <MenuBtn
+                cName={s.burger_menu}
+                children={<MenuBurgerIcon />}
+                onClick={handleMenuClick}
+            />
         </>
     );
 };

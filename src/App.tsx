@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useAppSelector } from "./hooks/reduxHooks";
 
 import Header from "./components/header/Header";
 import Main from "./components/main/Main";
@@ -11,15 +12,8 @@ import ResultsPage from "./components/main/booksPage/resultsPage/ResultsPage";
 import s from "./App.module.scss";
 
 const App: React.FC = () => {
-    const [showSidebar, setShowSidebar] = useState<boolean>(false);
-
-    const handleShowSidebar = () => {
-        setShowSidebar((state) => !state);
-    };
-
-    // useEffect(() => {
-    //     console.log(show);
-    // }, [show]);
+    const showSidebar = useAppSelector((state) => state.sidebar.show);
+    //console.log(showSidebar);
 
     return (
         <BrowserRouter>
@@ -27,9 +21,9 @@ const App: React.FC = () => {
                 className={s.app_container}
                 style={{ overflow: showSidebar ? "hidden" : "visible" }}
             >
-                <Header onClick={handleShowSidebar} />
+                <Header />
 
-                {showSidebar && <Sidebar onClick={handleShowSidebar} open={showSidebar} />}
+                {showSidebar && <Sidebar />}
 
                 <Main>
                     <Routes>

@@ -1,4 +1,6 @@
 import React from "react";
+import { useAppDispatch } from "../../hooks/reduxHooks";
+import { toggleVisibility } from "../../features/sidebar/sidebarSlice";
 import { motion } from "framer-motion";
 
 import Logo from "../header/logo/Logo";
@@ -11,12 +13,13 @@ import { ReactComponent as CloseMenuIcon } from "../../assets/headerIcons/CloseM
 
 import s from "./Sidebar.module.scss";
 
-interface ISidebarProps {
-    open: boolean;
-    onClick: () => void;
-}
+const Sidebar: React.FC = () => {
+    const dispatch = useAppDispatch();
 
-const Sidebar: React.FC<ISidebarProps> = ({ open, onClick }) => {
+    const handleBtnClick = () => {
+        dispatch(toggleVisibility());
+    };
+
     return (
         <>
             <motion.div className={s.sidebar} animate={{ x: ["100%", "0%"] }}>
@@ -27,7 +30,7 @@ const Sidebar: React.FC<ISidebarProps> = ({ open, onClick }) => {
                         <MenuBtn
                             cName={s.close_menu}
                             children={<CloseMenuIcon />}
-                            onClick={onClick}
+                            onClick={handleBtnClick}
                         />
                     </div>
                     <Search cName={["search", "search_sidebar"]} />

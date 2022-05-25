@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useNewBooks } from "../../../../fetchAPI/useNewBooks";
 import { useFilter } from "../../../../hooks/useFilter";
 
@@ -19,8 +19,6 @@ const InitialPage: React.FC = () => {
     const { page, pageSize, handleChangeSize, handleChangePage } = useFilter();
 
     const navigate = useNavigate();
-    const location = useLocation();
-    console.log(location);
 
     useEffect(() => {
         const path = `/new/${page}`;

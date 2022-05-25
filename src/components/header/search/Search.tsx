@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../hooks/reduxHooks";
 import { fetchBooks, setSearchField } from "../../../features/books/booksSlice";
+import { toggleVisibility } from "../../../features/sidebar/sidebarSlice";
 import cn from "classnames";
 
 import { ReactComponent as SearchIcon } from "../../../assets/headerIcons/SearchIcon.svg";
@@ -14,9 +15,7 @@ interface ISearchProps {
 
 const Search: React.FC<ISearchProps> = ({ cName }) => {
     const [book, setBook] = useState<string>("");
-
     const dispatch = useAppDispatch();
-
     const navigate = useNavigate();
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,6 +27,7 @@ const Search: React.FC<ISearchProps> = ({ cName }) => {
         if (book.trim()) {
             dispatch(fetchBooks({ searchField: book, page: 1 }));
             dispatch(setSearchField(book));
+            dispatch(toggleVisibility(false));
         }
         navigate(`/search/${book}`); //search/${searchField}/?page=${paginationPage}
         setBook("");
