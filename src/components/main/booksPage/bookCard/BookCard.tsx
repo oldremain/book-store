@@ -7,7 +7,7 @@ import { UISize } from "../../../../enums/enums";
 
 import s from "./BookCard.module.scss";
 
-export interface IBookProps {
+export interface IBook {
     image: string;
     title: string;
     subtitle: string;
@@ -16,7 +16,7 @@ export interface IBookProps {
     url: string;
 }
 
-const BookCard: React.FC<IBookProps> = ({ image, title, subtitle, price, isbn13 }) => {
+const BookCard: React.FC<IBook> = ({ image, title, subtitle, price, isbn13 }) => {
     return (
         <div className={s.book_card}>
             <UIBookImage size={UISize.Medium} theme="blue" image={image} />

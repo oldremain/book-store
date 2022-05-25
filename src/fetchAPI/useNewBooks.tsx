@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { incrementArrayBy } from "../helpers/books";
-import { IBookProps } from "../components/main/booksPage/bookCard/BookCard";
+import { IBook } from "../components/main/booksPage/bookCard/BookCard";
 
 //"https://api.itbook.store/1.0/new"
 
 export const useNewBooks = (URL: string) => {
     const [status, setStatus] = useState({
-        newBooks: [] as IBookProps[],
+        newBooks: [] as IBook[],
         loading: false,
         error: false,
     });
@@ -28,7 +28,7 @@ export const useNewBooks = (URL: string) => {
             const response = await axios.get(URL);
             setStatus({
                 ...status,
-                newBooks: incrementArrayBy<IBookProps, number>(response.data.books, 9).filter(
+                newBooks: incrementArrayBy<IBook, number>(response.data.books, 9).filter(
                     (book) => +book.price.slice(1) //apply function and delete cards with price ($0.00)
                 ),
                 loading: false,

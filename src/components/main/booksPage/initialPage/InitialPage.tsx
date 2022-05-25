@@ -13,8 +13,13 @@ import { UISize } from "../../../../enums/enums";
 import { BASE_URL } from "../../../../constants/constants";
 
 import s from "../BooksPage.module.scss";
+// import { useAppDispatch, useAppSelector } from "../../../../hooks/reduxHooks";
+// import { setPage, setPageSize, sortByPrice } from "../../../../features/filter/filterSlice";
 
 const InitialPage: React.FC = () => {
+    // const dispatch = useAppDispatch();
+    // const { page, pageSize, price, filteredArray } = useAppSelector((state) => state.filter);
+
     const { newBooks, loading } = useNewBooks(`${BASE_URL}/new`);
     const { page, pageSize, price, handleChangeSize, handleChangePage, handleChangePrice } =
         useFilter();
@@ -25,6 +30,10 @@ const InitialPage: React.FC = () => {
         const path = `/new/${page}`;
         navigate(path);
     }, [page]);
+
+    // useEffect(() => {
+    //     dispatch(setPageSize({ newBooks, page: 1, pageSize: "5" }));
+    // }, []);
 
     let content = newBooks
         .slice((page - 1) * +pageSize, page * +pageSize)
