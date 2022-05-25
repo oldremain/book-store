@@ -27,14 +27,25 @@ const App: React.FC = () => {
 
                 {isShown && <Sidebar onClick={handleShowSidebar} open={isShown} />}
 
-                <Routes>
+                <Main>
+                    <Routes>
+                        <Route path="/" element={<BooksPage />}>
+                            <Route index element={<InitialPage />} />
+                            <Route path="new/:page" element={<InitialPage />} />
+                            <Route path="search/*" element={<ResultsPage />} />
+                        </Route>
+                    </Routes>
+                </Main>
+
+                {/* <Routes>
                     <Route path="/" element={<Main />}>
                         <Route path="/" element={<BooksPage />}>
+                            <Route index element={<InitialPage />} />
                             <Route path="new/:page" element={<InitialPage />} />
                             <Route path="search/*" element={<ResultsPage />} />
                         </Route>
                     </Route>
-                </Routes>
+                </Routes> */}
             </div>
         </BrowserRouter>
     );

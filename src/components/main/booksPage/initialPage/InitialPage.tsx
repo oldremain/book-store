@@ -22,6 +22,10 @@ const InitialPage: React.FC = () => {
     const location = useLocation();
     console.log(location);
 
+    // useEffect(() => {
+    //     navigate("/new/1");
+    // }, []);
+
     useEffect(() => {
         const path = `/new/${page}`;
         navigate(path);
