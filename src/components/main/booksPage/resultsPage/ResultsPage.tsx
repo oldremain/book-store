@@ -56,14 +56,14 @@ const ResultsPage: React.FC = () => {
             </div>
             {/* <SelectControl pageSize={pageSize} handleChange={handleChangeSize} /> */}
             <div className={s.cards_container}>{isLoading ? <Loader /> : content}</div>
-            {!!foundBooks.length && (
+            {/* {!!foundBooks.length && (
                 <CustomPagination
                     page={paginationPage}
                     pageSize={10}
                     handleChange={handleChangePage}
                     itemsCount={+total}
                 />
-            )}
+            )} */}
         </>
     );
 };

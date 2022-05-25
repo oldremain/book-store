@@ -7,11 +7,13 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import s from "./Pagination.module.scss";
+import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
+import { setPage } from "../../../features/filter/filterSlice";
 
 interface IPaginationProps {
-    page: number;
-    pageSize: number;
-    handleChange: (event: React.ChangeEvent<unknown>, value: number) => void;
+    // page: number;
+    // pageSize: number;
+    // handleChange: (event: React.ChangeEvent<unknown>, value: number) => void;
     itemsCount: number;
 }
 
@@ -24,11 +26,18 @@ const theme = createTheme({
 });
 
 const CustomPagination: React.FC<IPaginationProps> = ({
-    page,
-    pageSize,
-    handleChange,
+    // page,
+    // pageSize,
+    // handleChange,
     itemsCount,
 }) => {
+    const { page, pageSize } = useAppSelector((state) => state.filter);
+    const dispatch = useAppDispatch();
+
+    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        dispatch(setPage(value));
+    };
+
     return (
         <Stack spacing={2}>
             <ThemeProvider theme={theme}>
@@ -37,7 +46,7 @@ const CustomPagination: React.FC<IPaginationProps> = ({
                     color="secondary"
                     size="small"
                     page={page}
-                    count={Math.ceil(itemsCount / pageSize)}
+                    count={Math.ceil(itemsCount / +pageSize)}
                     onChange={handleChange}
                     renderItem={(item) => (
                         <PaginationItem
