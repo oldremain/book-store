@@ -18,7 +18,7 @@ interface IInitialState {
 
 const initialState: IInitialState = {
     pageSize: "5",
-    page: 0,
+    page: 1,
     price: "",
     newBooks: [],
     filteredArray: [],
@@ -28,17 +28,18 @@ const filterSlice = createSlice({
     name: "filter",
     initialState,
     reducers: {
-        setPageSize(state, { payload }: PayloadAction<IPayloadSort>) {
+        setInitialArray(state, { payload }: PayloadAction<IBook[]>) {
+            state.newBooks = payload;
+        },
+        setPageSize(state, { payload }: PayloadAction<string>) {
             //console.log(payload.newBooks);
-            state.newBooks = payload.newBooks;
 
-            state.filteredArray = payload.newBooks.slice(
-                (payload.page - 1) * +payload.pageSize,
-                payload.page * +payload.pageSize
+            state.filteredArray = state.newBooks.slice(
+                (state.page - 1) * +payload,
+                state.page * +payload
             );
 
-            state.pageSize = payload.pageSize;
-            state.page = payload.page;
+            state.pageSize = payload;
         },
         setPage(state, { payload }: PayloadAction<number>) {
             state.page = payload;
@@ -80,6 +81,6 @@ const filterSlice = createSlice({
     },
 });
 
-export const { setPageSize, setPage, sortByPrice } = filterSlice.actions;
+export const { setInitialArray, setPageSize, setPage, sortByPrice } = filterSlice.actions;
 
 export default filterSlice.reducer;

@@ -8,20 +8,25 @@ import s from "./Select.module.scss";
 import { Box, Stack } from "@mui/material";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
+import { setPage, setPageSize } from "../../../features/filter/filterSlice";
 
-interface ISelectProps {
-    pageSize: string;
-    priceOrder: string;
-    handleChangeSize: (event: SelectChangeEvent) => void;
-    handleChangePrice: (event: SelectChangeEvent) => void;
-}
+// interface ISelectProps {
+//     pageSize: string;
+//     // priceOrder: string;
+//     handleChangeSize: (event: SelectChangeEvent) => void;
+//     // handleChangePrice: (event: SelectChangeEvent) => void;
+// }
 
-const SelectControl: React.FC<ISelectProps> = ({
-    pageSize,
-    priceOrder,
-    handleChangeSize,
-    handleChangePrice,
-}) => {
+const SelectControl: React.FC = () => {
+    const dispatch = useAppDispatch();
+    const { pageSize } = useAppSelector((state) => state.filter);
+
+    const handleChangeSize = (event: SelectChangeEvent) => {
+        dispatch(setPageSize(event.target.value));
+        dispatch(setPage(1));
+    };
+
     return (
         <>
             <FormControl sx={{ minWidth: 120 }} size="small" className={s.select}>
@@ -37,7 +42,7 @@ const SelectControl: React.FC<ISelectProps> = ({
                     <MenuItem value={15}>15</MenuItem>
                 </Select>
             </FormControl>
-            <FormControl sx={{ minWidth: 120 }} size="small" className={s.select}>
+            {/* <FormControl sx={{ minWidth: 120 }} size="small" className={s.select}>
                 <InputLabel id="sortLabel">Sort by price</InputLabel>
                 <Select
                     labelId="sortLabel"
@@ -55,7 +60,7 @@ const SelectControl: React.FC<ISelectProps> = ({
                         Price <ArrowDownwardIcon sx={{ ml: "10px", fontSize: "15px" }} />
                     </MenuItem>
                 </Select>
-            </FormControl>
+            </FormControl> */}
         </>
     );
 };

@@ -11,9 +11,6 @@ import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
 import { setPage } from "../../../features/filter/filterSlice";
 
 interface IPaginationProps {
-    // page: number;
-    // pageSize: number;
-    // handleChange: (event: React.ChangeEvent<unknown>, value: number) => void;
     itemsCount: number;
 }
 
@@ -25,12 +22,7 @@ const theme = createTheme({
     },
 });
 
-const CustomPagination: React.FC<IPaginationProps> = ({
-    // page,
-    // pageSize,
-    // handleChange,
-    itemsCount,
-}) => {
+const CustomPagination: React.FC<IPaginationProps> = ({ itemsCount }) => {
     const { page, pageSize } = useAppSelector((state) => state.filter);
     const dispatch = useAppDispatch();
 

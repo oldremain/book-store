@@ -14,7 +14,12 @@ import { BASE_URL } from "../../../../constants/constants";
 
 import s from "../BooksPage.module.scss";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/reduxHooks";
-import { setPage, setPageSize, sortByPrice } from "../../../../features/filter/filterSlice";
+import {
+    setInitialArray,
+    setPage,
+    setPageSize,
+    sortByPrice,
+} from "../../../../features/filter/filterSlice";
 
 const InitialPage: React.FC = () => {
     const { newBooks, loading } = useNewBooks(`${BASE_URL}/new`);
@@ -32,8 +37,9 @@ const InitialPage: React.FC = () => {
     }, [page]);
 
     useEffect(() => {
-        dispatch(setPageSize({ newBooks, page: 1, pageSize: "5" }));
-        // console.log("dispatch again");
+        dispatch(setInitialArray(newBooks));
+        dispatch(setPageSize("5"));
+        dispatch(setPage(1));
     }, [newBooks]);
 
     useEffect(() => {
@@ -74,12 +80,10 @@ const InitialPage: React.FC = () => {
             <h2>
                 <UITitle size={UISize.Large}>New Releases Books ({newBooks.length})</UITitle>
             </h2>
-            {/* <SelectControl
-                pageSize={pageSize}
-                handleChangeSize={handleChangeSize}
-                priceOrder={price}
-                handleChangePrice={handleChangePrice}
-            /> */}
+            <SelectControl
+            // priceOrder={price}
+            // handleChangePrice={handleChangePrice}
+            />
             <div className={s.cards_container}>
                 {loading && !filteredArray.length ? (
                     <Loader />
@@ -87,12 +91,7 @@ const InitialPage: React.FC = () => {
                     filteredArray.map((book, i) => <BookCard key={book.isbn13 + i} {...book} />)
                 )}
             </div>
-            <CustomPagination
-                // page={page}
-                // pageSize={+pageSize}
-                // handleChange={handleChangePage}
-                itemsCount={newBooks.length}
-            />
+            <CustomPagination itemsCount={newBooks.length} />
         </>
     );
 };
