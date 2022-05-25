@@ -16,7 +16,8 @@ import s from "../BooksPage.module.scss";
 
 const InitialPage: React.FC = () => {
     const { newBooks, loading } = useNewBooks(`${BASE_URL}/new`);
-    const { page, pageSize, handleChangeSize, handleChangePage } = useFilter();
+    const { page, pageSize, price, handleChangeSize, handleChangePage, handleChangePrice } =
+        useFilter();
 
     const navigate = useNavigate();
 
