@@ -9,6 +9,7 @@ export const useFilter = () => {
     const handleChangeSize = (event: SelectChangeEvent) => {
         setPageSize(event.target.value);
         setPage(1);
+        setPrice("");
     };
 
     const handleChangePrice = (event: SelectChangeEvent) => {

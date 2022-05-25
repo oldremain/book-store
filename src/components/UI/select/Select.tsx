@@ -11,15 +11,27 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 interface ISelectProps {
     pageSize: string;
-    handleChange: (event: SelectChangeEvent) => void;
+    priceOrder: string;
+    handleChangeSize: (event: SelectChangeEvent) => void;
+    handleChangePrice: (event: SelectChangeEvent) => void;
 }
 
-const SelectControl: React.FC<ISelectProps> = ({ pageSize, handleChange }) => {
+const SelectControl: React.FC<ISelectProps> = ({
+    pageSize,
+    priceOrder,
+    handleChangeSize,
+    handleChangePrice,
+}) => {
     return (
         <>
             <FormControl sx={{ minWidth: 120 }} size="small" className={s.select}>
                 <InputLabel id="qtyLabel">Show</InputLabel>
-                <Select labelId="qtyLabel" id="Quantity" value={pageSize} onChange={handleChange}>
+                <Select
+                    labelId="qtyLabel"
+                    id="Quantity"
+                    value={pageSize}
+                    onChange={handleChangeSize}
+                >
                     <MenuItem value={5}>5</MenuItem>
                     <MenuItem value={10}>10</MenuItem>
                     <MenuItem value={15}>15</MenuItem>
@@ -27,7 +39,12 @@ const SelectControl: React.FC<ISelectProps> = ({ pageSize, handleChange }) => {
             </FormControl>
             <FormControl sx={{ minWidth: 120 }} size="small" className={s.select}>
                 <InputLabel id="sortLabel">Sort by price</InputLabel>
-                <Select labelId="sortLabel" id="Sort" value={pageSize} onChange={handleChange}>
+                <Select
+                    labelId="sortLabel"
+                    id="Sort"
+                    value={priceOrder}
+                    onChange={handleChangePrice}
+                >
                     <MenuItem value="">
                         <em>None</em>
                     </MenuItem>

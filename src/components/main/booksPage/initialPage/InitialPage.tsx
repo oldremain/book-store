@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useNewBooks } from "../../../../fetchAPI/useNewBooks";
 import { useFilter } from "../../../../hooks/useFilter";
@@ -26,16 +26,47 @@ const InitialPage: React.FC = () => {
         navigate(path);
     }, [page]);
 
-    const content = newBooks
+    let content = newBooks
         .slice((page - 1) * +pageSize, page * +pageSize)
         .map((book, i) => <BookCard key={book.isbn13 + i} {...book} />);
+
+    switch (price) {
+        case "asc":
+            {
+                content = [...newBooks]
+                    .sort(({ price: a }, { price: b }) => +a.slice(1) - +b.slice(1))
+                    .slice((page - 1) * +pageSize, page * +pageSize)
+                    .map((book, i) => <BookCard key={book.isbn13 + i} {...book} />);
+            }
+            break;
+        case "desc":
+            {
+                content = [...newBooks]
+                    .sort(({ price: a }, { price: b }) => +b.slice(1) - +a.slice(1))
+                    .slice((page - 1) * +pageSize, page * +pageSize)
+                    .map((book, i) => <BookCard key={book.isbn13 + i} {...book} />);
+            }
+            break;
+        case "":
+            {
+                content = [...newBooks]
+                    .slice((page - 1) * +pageSize, page * +pageSize)
+                    .map((book, i) => <BookCard key={book.isbn13 + i} {...book} />);
+            }
+            break;
+    }
 
     return (
         <>
             <h2>
                 <UITitle size={UISize.Large}>New Releases Books ({newBooks.length})</UITitle>
             </h2>
-            <SelectControl pageSize={pageSize} handleChange={handleChangeSize} />
+            <SelectControl
+                pageSize={pageSize}
+                handleChangeSize={handleChangeSize}
+                priceOrder={price}
+                handleChangePrice={handleChangePrice}
+            />
             <div className={s.cards_container}>{loading ? <Loader /> : content}</div>
             <CustomPagination
                 page={page}
