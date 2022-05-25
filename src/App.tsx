@@ -13,7 +13,6 @@ import s from "./App.module.scss";
 
 const App: React.FC = () => {
     const showSidebar = useAppSelector((state) => state.sidebar.show);
-    //console.log(showSidebar);
 
     return (
         <BrowserRouter>

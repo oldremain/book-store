@@ -9,9 +9,12 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import s from "./Pagination.module.scss";
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
 import { setPage } from "../../../features/filter/filterSlice";
+import { useNavigate } from "react-router-dom";
 
 interface IPaginationProps {
     itemsCount: number;
+    page: number;
+    pageSize: string;
 }
 
 const theme = createTheme({
@@ -22,8 +25,8 @@ const theme = createTheme({
     },
 });
 
-const CustomPagination: React.FC<IPaginationProps> = ({ itemsCount }) => {
-    const { page, pageSize } = useAppSelector((state) => state.filter);
+const CustomPagination: React.FC<IPaginationProps> = ({ itemsCount, page, pageSize }) => {
+    //const { page, pageSize } = useAppSelector((state) => state.filter);
     const dispatch = useAppDispatch();
 
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {

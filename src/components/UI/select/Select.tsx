@@ -5,26 +5,29 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 import s from "./Select.module.scss";
-import { Box, Stack } from "@mui/material";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
-import { setPage, setPageSize } from "../../../features/filter/filterSlice";
+import { setPage, setPageSize, sortByPrice } from "../../../features/filter/filterSlice";
+import { IBook } from "../../main/booksPage/bookCard/BookCard";
 
-// interface ISelectProps {
-//     pageSize: string;
-//     // priceOrder: string;
-//     handleChangeSize: (event: SelectChangeEvent) => void;
-//     // handleChangePrice: (event: SelectChangeEvent) => void;
-// }
+interface ISelectProps {
+    newfetchBooks: IBook[];
+}
 
-const SelectControl: React.FC = () => {
+const SelectControl: React.FC<ISelectProps> = ({ newfetchBooks }) => {
     const dispatch = useAppDispatch();
-    const { pageSize } = useAppSelector((state) => state.filter);
+    const { pageSize, filterPrice, newBooks } = useAppSelector((state) => state.filter);
 
     const handleChangeSize = (event: SelectChangeEvent) => {
         dispatch(setPageSize(event.target.value));
         dispatch(setPage(1));
+        // dispatch(sortByPrice("none"));
+    };
+
+    const handleChangePrice = (event: SelectChangeEvent) => {
+        dispatch(setPage(1));
+        dispatch(sortByPrice({ value: event.target.value, books: newfetchBooks }));
     };
 
     return (
@@ -42,15 +45,15 @@ const SelectControl: React.FC = () => {
                     <MenuItem value={15}>15</MenuItem>
                 </Select>
             </FormControl>
-            {/* <FormControl sx={{ minWidth: 120 }} size="small" className={s.select}>
+            <FormControl sx={{ minWidth: 120 }} size="small" className={s.select}>
                 <InputLabel id="sortLabel">Sort by price</InputLabel>
                 <Select
                     labelId="sortLabel"
                     id="Sort"
-                    value={priceOrder}
+                    value={filterPrice}
                     onChange={handleChangePrice}
                 >
-                    <MenuItem value="">
+                    <MenuItem value="none">
                         <em>None</em>
                     </MenuItem>
                     <MenuItem value={"asc"}>
@@ -60,7 +63,7 @@ const SelectControl: React.FC = () => {
                         Price <ArrowDownwardIcon sx={{ ml: "10px", fontSize: "15px" }} />
                     </MenuItem>
                 </Select>
-            </FormControl> */}
+            </FormControl>
         </>
     );
 };

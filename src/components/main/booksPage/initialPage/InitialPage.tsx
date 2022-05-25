@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../../../hooks/reduxHooks";
+import { setInitialArray, setPage, setPageSize } from "../../../../features/filter/filterSlice";
 import { useNewBooks } from "../../../../fetchAPI/useNewBooks";
-import { useFilter } from "../../../../hooks/useFilter";
 
 import UITitle from "../../../UI/title/UiTitle";
 import BookCard from "../bookCard/BookCard";
@@ -13,27 +14,16 @@ import { UISize } from "../../../../enums/enums";
 import { BASE_URL } from "../../../../constants/constants";
 
 import s from "../BooksPage.module.scss";
-import { useAppDispatch, useAppSelector } from "../../../../hooks/reduxHooks";
-import {
-    setInitialArray,
-    setPage,
-    setPageSize,
-    sortByPrice,
-} from "../../../../features/filter/filterSlice";
 
 const InitialPage: React.FC = () => {
     const { newBooks, loading } = useNewBooks(`${BASE_URL}/new`);
-
+    const { page, pageSize, filteredArray } = useAppSelector((state) => state.filter);
     const dispatch = useAppDispatch();
-    const { page, pageSize, price, filteredArray } = useAppSelector((state) => state.filter);
-    // const { page, pageSize, price, handleChangeSize, handleChangePage, handleChangePrice } =
-    //     useFilter();
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        const path = `/new/${page}`;
-        navigate(path);
+        navigate(`/new/${page}`);
     }, [page]);
 
     useEffect(() => {
@@ -45,45 +35,13 @@ const InitialPage: React.FC = () => {
     useEffect(() => {
         console.log("filterdArray", filteredArray);
     }, [filteredArray]);
-    // let content = newBooks
-    //     .slice((page - 1) * +pageSize, page * +pageSize)
-    //     .map((book, i) => <BookCard key={book.isbn13 + i} {...book} />);
-
-    // switch (price) {
-    //     case "asc":
-    //         {
-    //             content = [...newBooks]
-    //                 .sort(({ price: a }, { price: b }) => +a.slice(1) - +b.slice(1))
-    //                 .slice((page - 1) * +pageSize, page * +pageSize)
-    //                 .map((book, i) => <BookCard key={book.isbn13 + i} {...book} />);
-    //         }
-    //         break;
-    //     case "desc":
-    //         {
-    //             content = [...newBooks]
-    //                 .sort(({ price: a }, { price: b }) => +b.slice(1) - +a.slice(1))
-    //                 .slice((page - 1) * +pageSize, page * +pageSize)
-    //                 .map((book, i) => <BookCard key={book.isbn13 + i} {...book} />);
-    //         }
-    //         break;
-    //     case "":
-    //         {
-    //             content = [...newBooks]
-    //                 .slice((page - 1) * +pageSize, page * +pageSize)
-    //                 .map((book, i) => <BookCard key={book.isbn13 + i} {...book} />);
-    //         }
-    //         break;
-    // }
 
     return (
         <>
             <h2>
                 <UITitle size={UISize.Large}>New Releases Books ({newBooks.length})</UITitle>
             </h2>
-            <SelectControl
-            // priceOrder={price}
-            // handleChangePrice={handleChangePrice}
-            />
+            <SelectControl newfetchBooks={newBooks} />
             <div className={s.cards_container}>
                 {loading && !filteredArray.length ? (
                     <Loader />
@@ -91,7 +49,7 @@ const InitialPage: React.FC = () => {
                     filteredArray.map((book, i) => <BookCard key={book.isbn13 + i} {...book} />)
                 )}
             </div>
-            <CustomPagination itemsCount={newBooks.length} />
+            <CustomPagination itemsCount={newBooks.length} page={page} pageSize={pageSize} />
         </>
     );
 };
