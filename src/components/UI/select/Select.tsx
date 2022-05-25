@@ -57,10 +57,10 @@ const SelectControl: React.FC<ISelectProps> = ({ newfetchBooks }) => {
                         <em>None</em>
                     </MenuItem>
                     <MenuItem value={"asc"}>
-                        Price <ArrowUpwardIcon sx={{ ml: "10px", fontSize: "15px" }} />
+                        ASC <ArrowUpwardIcon sx={{ ml: "10px", fontSize: "15px" }} />
                     </MenuItem>
                     <MenuItem value={"desc"}>
-                        Price <ArrowDownwardIcon sx={{ ml: "10px", fontSize: "15px" }} />
+                        DESC <ArrowDownwardIcon sx={{ ml: "10px", fontSize: "15px" }} />
                     </MenuItem>
                 </Select>
             </FormControl>
