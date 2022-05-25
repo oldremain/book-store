@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import Header from "./components/header/Header";
 import Main from "./components/main/Main";
 import Sidebar from "./components/sidebar/Sidebar";
-
-import s from "./App.module.scss";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import BooksPage from "./components/main/booksPage/BooksPage";
 import InitialPage from "./components/main/booksPage/initialPage/InitialPage";
 import ResultsPage from "./components/main/booksPage/resultsPage/ResultsPage";
 
+import s from "./App.module.scss";
+
 const App: React.FC = () => {
-    const [isShown, setShowSidebar] = useState<boolean>(false);
+    const [showSidebar, setShowSidebar] = useState<boolean>(false);
 
     const handleShowSidebar = () => {
         setShowSidebar((state) => !state);
@@ -22,10 +23,13 @@ const App: React.FC = () => {
 
     return (
         <BrowserRouter>
-            <div className={s.app_container} style={{ overflow: isShown ? "hidden" : "visible" }}>
+            <div
+                className={s.app_container}
+                style={{ overflow: showSidebar ? "hidden" : "visible" }}
+            >
                 <Header onClick={handleShowSidebar} />
 
-                {isShown && <Sidebar onClick={handleShowSidebar} open={isShown} />}
+                {showSidebar && <Sidebar onClick={handleShowSidebar} open={showSidebar} />}
 
                 <Main>
                     <Routes>
@@ -36,16 +40,6 @@ const App: React.FC = () => {
                         </Route>
                     </Routes>
                 </Main>
-
-                {/* <Routes>
-                    <Route path="/" element={<Main />}>
-                        <Route path="/" element={<BooksPage />}>
-                            <Route index element={<InitialPage />} />
-                            <Route path="new/:page" element={<InitialPage />} />
-                            <Route path="search/*" element={<ResultsPage />} />
-                        </Route>
-                    </Route>
-                </Routes> */}
             </div>
         </BrowserRouter>
     );

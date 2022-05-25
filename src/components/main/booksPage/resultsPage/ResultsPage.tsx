@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/reduxHooks";
 import { fetchBooks } from "../../../../features/books/booksSlice";
 
@@ -12,7 +13,6 @@ import Loader from "../../../loader/Loader";
 import { UISize } from "../../../../enums/enums";
 
 import s from "../BooksPage.module.scss";
-import { useLocation, useNavigate } from "react-router-dom";
 
 const ResultsPage: React.FC = () => {
     const [paginationPage, setPaginationPage] = useState(1);
@@ -27,8 +27,6 @@ const ResultsPage: React.FC = () => {
     } = useAppSelector((state) => state.books);
 
     const navigate = useNavigate();
-    // const location = useLocation();
-    // console.log(location);
 
     const handleChangePage = (event: React.ChangeEvent<unknown>, value: number) => {
         setPaginationPage(value);
