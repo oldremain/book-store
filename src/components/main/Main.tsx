@@ -4,11 +4,16 @@ import BooksPage from "./booksPage/BooksPage";
 
 import s from "./Main.module.scss";
 
-const Main: React.FC = () => {
+interface IMainProps {
+    children: React.ReactNode;
+}
+
+const Main: React.FC<IMainProps> = ({ children }) => {
     return (
         <main id={s.main}>
             {/* <BooksPage /> */}
-            <Outlet />
+            {children}
+            {/* <Outlet /> */}
         </main>
     );
 };
