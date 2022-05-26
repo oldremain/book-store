@@ -8,7 +8,12 @@ import s from "./Select.module.scss";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
-import { setPage, setPageSize, sortByPrice } from "../../../features/filter/filterSlice";
+import {
+    PriceOrder,
+    setPage,
+    setPageSize,
+    sortByPrice,
+} from "../../../features/filter/filterSlice";
 import { IBook } from "../../main/booksPage/bookCard/BookCard";
 
 interface ISelectProps {
@@ -19,12 +24,10 @@ interface ISelectProps {
 
 const SelectControl: React.FC<ISelectProps> = ({ newBooks, priceOrder, pageSize }) => {
     const dispatch = useAppDispatch();
-    //const { pageSize, priceOrder } = useAppSelector((state) => state.filter);
 
     const handleChangeSize = (event: SelectChangeEvent) => {
         dispatch(setPageSize(event.target.value));
         dispatch(setPage(1));
-        //dispatch(sortByPrice({ priceOrder: "none", books: newBooks }));
     };
 
     const handleChangePrice = (event: SelectChangeEvent) => {
@@ -57,13 +60,13 @@ const SelectControl: React.FC<ISelectProps> = ({ newBooks, priceOrder, pageSize 
                     value={priceOrder}
                     onChange={handleChangePrice}
                 >
-                    <MenuItem value="none">
+                    <MenuItem value={PriceOrder.NONE}>
                         <em>None</em>
                     </MenuItem>
-                    <MenuItem value={"asc"}>
+                    <MenuItem value={PriceOrder.ASC}>
                         ASC <ArrowUpwardIcon sx={{ ml: "10px", fontSize: "15px" }} />
                     </MenuItem>
-                    <MenuItem value={"desc"}>
+                    <MenuItem value={PriceOrder.DESC}>
                         DESC <ArrowDownwardIcon sx={{ ml: "10px", fontSize: "15px" }} />
                     </MenuItem>
                 </Select>

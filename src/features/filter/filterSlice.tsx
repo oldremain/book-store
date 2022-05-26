@@ -2,6 +2,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IBook } from "../../components/main/booksPage/bookCard/BookCard";
 import { getPreparedData, getSortedData } from "./helpers";
 
+export enum PriceOrder {
+    INITIAL = "",
+    NONE = "none",
+    DESC = "desc",
+    ASC = "asc",
+}
+
 interface ISort {
     books: IBook[];
     priceOrder: string;
@@ -18,7 +25,7 @@ interface IInitialState {
 const initialState: IInitialState = {
     pageSize: "5",
     page: 1,
-    priceOrder: "",
+    priceOrder: PriceOrder.INITIAL,
     newBooks: [],
     preparedData: [],
 };

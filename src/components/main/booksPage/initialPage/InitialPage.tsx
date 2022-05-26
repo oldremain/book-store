@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/reduxHooks";
 import {
+    PriceOrder,
     setInitialArray,
     setPage,
     setPageSize,
@@ -35,7 +36,7 @@ const InitialPage: React.FC = () => {
         dispatch(setInitialArray(newBooks));
         dispatch(setPageSize("5"));
         dispatch(setPage(1));
-        dispatch(sortByPrice({ priceOrder: "", books: newBooks }));
+        dispatch(sortByPrice({ priceOrder: PriceOrder.INITIAL, books: newBooks }));
     }, [newBooks]);
 
     // useEffect(() => {
