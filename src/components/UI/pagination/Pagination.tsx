@@ -15,6 +15,7 @@ interface IPaginationProps {
     itemsCount: number;
     page: number;
     pageSize: string;
+    handleChangePage: (event: React.ChangeEvent<unknown>, value: number) => void;
 }
 
 const theme = createTheme({
@@ -25,13 +26,18 @@ const theme = createTheme({
     },
 });
 
-const CustomPagination: React.FC<IPaginationProps> = ({ itemsCount, page, pageSize }) => {
+const CustomPagination: React.FC<IPaginationProps> = ({
+    itemsCount,
+    page,
+    pageSize,
+    handleChangePage,
+}) => {
     //const { page, pageSize } = useAppSelector((state) => state.filter);
     const dispatch = useAppDispatch();
 
-    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-        dispatch(setPage(value));
-    };
+    // const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    //     dispatch(setPage(value));
+    // };
 
     return (
         <Stack spacing={2}>
@@ -42,7 +48,7 @@ const CustomPagination: React.FC<IPaginationProps> = ({ itemsCount, page, pageSi
                     size="small"
                     page={page}
                     count={Math.ceil(itemsCount / +pageSize)}
-                    onChange={handleChange}
+                    onChange={handleChangePage}
                     renderItem={(item) => (
                         <PaginationItem
                             components={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}

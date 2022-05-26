@@ -17,7 +17,7 @@ interface IBookType {
 interface IInitialState {
     searchField: string;
     total: string;
-    page: string;
+    page: number;
     data: IBookType[];
     loading: boolean;
     error: boolean;
@@ -39,7 +39,7 @@ interface IQuerryParams {
 const initialState: IInitialState = {
     searchField: "",
     total: "0",
-    page: "0",
+    page: 1,
     data: [],
     loading: false,
     error: false,
@@ -66,6 +66,9 @@ const booksSlice = createSlice({
         setSearchField(state, { payload }: PayloadAction<string>) {
             state.searchField = payload;
         },
+        setPage(state, { payload }: PayloadAction<number>) {
+            state.page = payload;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -80,7 +83,7 @@ const booksSlice = createSlice({
                     // console.log(action.payload);
                     state.data = payload.books;
                     state.total = payload.total;
-                    state.page = payload.page;
+                    //state.page = payload.page;
                     state.loading = false;
                     state.isSubmited = false;
                 }
@@ -93,6 +96,6 @@ const booksSlice = createSlice({
     },
 });
 
-export const { setSearchField } = booksSlice.actions;
+export const { setSearchField, setPage } = booksSlice.actions;
 
 export default booksSlice.reducer;

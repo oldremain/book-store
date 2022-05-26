@@ -25,6 +25,10 @@ const InitialPage: React.FC = () => {
     const { newBooks, loading } = useNewBooks(`${BASE_URL}/new`);
     const { page, pageSize, priceOrder, preparedData } = useAppSelector((state) => state.filter);
 
+    const handleChangePage = (event: React.ChangeEvent<unknown>, value: number) => {
+        dispatch(setPage(value));
+    };
+
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
@@ -56,7 +60,12 @@ const InitialPage: React.FC = () => {
                     preparedData.map((book, i) => <BookCard key={book.isbn13 + i} {...book} />)
                 )}
             </div>
-            <CustomPagination itemsCount={newBooks.length} page={page} pageSize={pageSize} />
+            <CustomPagination
+                itemsCount={newBooks.length}
+                page={page}
+                pageSize={pageSize}
+                handleChangePage={handleChangePage}
+            />
         </>
     );
 };
