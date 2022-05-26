@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../hooks/reduxHooks";
-import { fetchBooks, setSearchField } from "../../../features/books/booksSlice";
+import { fetchBooks, setPage, setSearchField } from "../../../features/books/booksSlice";
 import { toggleVisibility } from "../../../features/sidebar/sidebarSlice";
 import cn from "classnames";
 
@@ -28,6 +28,7 @@ const Search: React.FC<ISearchProps> = ({ cName }) => {
             dispatch(fetchBooks({ searchField: book, page: 1 }));
             dispatch(setSearchField(book));
             dispatch(toggleVisibility(false));
+            dispatch(setPage(1));
         }
         navigate(`/search/${book}`); //search/${searchField}/?page=${paginationPage}
         setBook("");
