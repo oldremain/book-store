@@ -49,19 +49,19 @@ const filterSlice = createSlice({
             state.priceOrder = payload.priceOrder;
 
             switch (payload.priceOrder) {
-                case "asc":
+                case PriceOrder.ASC:
                     {
-                        const sortedArr = getSortedData(state.newBooks, "asc");
+                        const sortedArr = getSortedData(state.newBooks, PriceOrder.ASC);
                         state.preparedData = getPreparedData(sortedArr, state.page, state.pageSize);
                     }
                     break;
-                case "desc":
+                case PriceOrder.DESC:
                     {
-                        const sortedArr = getSortedData(state.newBooks, "desc");
+                        const sortedArr = getSortedData(state.newBooks, PriceOrder.DESC);
                         state.preparedData = getPreparedData(sortedArr, state.page, state.pageSize);
                     }
                     break;
-                case "none":
+                case PriceOrder.NONE:
                     {
                         state.newBooks = payload.books;
                         state.preparedData = getPreparedData(
