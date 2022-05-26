@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useAppSelector } from "./hooks/reduxHooks";
 
 import Header from "./components/header/Header";
@@ -30,6 +30,7 @@ const App: React.FC = () => {
                             <Route index element={<InitialPage />} />
                             <Route path="new/:page" element={<InitialPage />} />
                             <Route path="search/*" element={<ResultsPage />} />
+                            <Route path="*" element={<Navigate to="/new/1" />} />
                         </Route>
                     </Routes>
                 </Main>

@@ -1,25 +1,26 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IBook } from "../../components/main/booksPage/bookCard/BookCard";
+import { getPreparedData, getSortedData } from "./helpers";
 
 interface ISort {
     books: IBook[];
-    value: string;
+    priceOrder: string;
 }
 
 interface IInitialState {
     pageSize: string;
     page: number;
-    filterPrice: string;
+    priceOrder: string;
     newBooks: IBook[];
-    filteredArray: IBook[];
+    preparedData: IBook[];
 }
 
 const initialState: IInitialState = {
     pageSize: "5",
     page: 1,
-    filterPrice: "",
+    priceOrder: "",
     newBooks: [],
-    filteredArray: [],
+    preparedData: [],
 };
 
 const filterSlice = createSlice({
@@ -31,56 +32,40 @@ const filterSlice = createSlice({
         },
         setPageSize(state, { payload }: PayloadAction<string>) {
             state.pageSize = payload;
-
-            state.filteredArray = state.newBooks.slice(
-                (state.page - 1) * +payload,
-                state.page * +payload
-            );
+            state.preparedData = getPreparedData(state.newBooks, state.page, payload);
         },
         setPage(state, { payload }: PayloadAction<number>) {
             state.page = payload;
-
-            state.filteredArray = state.newBooks.slice(
-                (payload - 1) * +state.pageSize,
-                payload * +state.pageSize
-            );
+            state.preparedData = getPreparedData(state.newBooks, payload, state.pageSize);
         },
         sortByPrice(state, { payload }: PayloadAction<ISort>) {
-            state.filterPrice = payload.value;
+            state.priceOrder = payload.priceOrder;
 
-            switch (payload.value) {
+            switch (payload.priceOrder) {
                 case "asc":
                     {
-                        const sortedArr = state.newBooks.sort(
-                            ({ price: a }, { price: b }) => +a.slice(1) - +b.slice(1)
-                        );
-                        state.filteredArray = sortedArr.slice(
-                            (state.page - 1) * +state.pageSize,
-                            state.page * +state.pageSize
-                        );
+                        const sortedArr = getSortedData(state.newBooks, "asc");
+                        state.preparedData = getPreparedData(sortedArr, state.page, state.pageSize);
                     }
                     break;
                 case "desc":
                     {
-                        const sortedArr = state.newBooks.sort(
-                            ({ price: a }, { price: b }) => +b.slice(1) - +a.slice(1)
-                        );
-                        state.filteredArray = sortedArr.slice(
-                            (state.page - 1) * +state.pageSize,
-                            state.page * +state.pageSize
-                        );
+                        const sortedArr = getSortedData(state.newBooks, "desc");
+                        state.preparedData = getPreparedData(sortedArr, state.page, state.pageSize);
                     }
                     break;
                 case "none":
                     {
                         state.newBooks = payload.books;
-
-                        state.filteredArray = payload.books.slice(
-                            (state.page - 1) * +state.pageSize,
-                            state.page * +state.pageSize
+                        state.preparedData = getPreparedData(
+                            payload.books,
+                            state.page,
+                            state.pageSize
                         );
                     }
                     break;
+                default:
+                    return state;
             }
         },
     },

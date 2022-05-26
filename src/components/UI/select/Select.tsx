@@ -12,31 +12,34 @@ import { setPage, setPageSize, sortByPrice } from "../../../features/filter/filt
 import { IBook } from "../../main/booksPage/bookCard/BookCard";
 
 interface ISelectProps {
-    newfetchBooks: IBook[];
+    newBooks: IBook[];
+    priceOrder: string;
+    pageSize: string;
 }
 
-const SelectControl: React.FC<ISelectProps> = ({ newfetchBooks }) => {
+const SelectControl: React.FC<ISelectProps> = ({ newBooks, priceOrder, pageSize }) => {
     const dispatch = useAppDispatch();
-    const { pageSize, filterPrice, newBooks } = useAppSelector((state) => state.filter);
+    //const { pageSize, priceOrder } = useAppSelector((state) => state.filter);
 
     const handleChangeSize = (event: SelectChangeEvent) => {
         dispatch(setPageSize(event.target.value));
         dispatch(setPage(1));
-        // dispatch(sortByPrice("none"));
+        //dispatch(sortByPrice({ priceOrder: "none", books: newBooks }));
     };
 
     const handleChangePrice = (event: SelectChangeEvent) => {
         dispatch(setPage(1));
-        dispatch(sortByPrice({ value: event.target.value, books: newfetchBooks }));
+        dispatch(sortByPrice({ priceOrder: event.target.value, books: newBooks }));
     };
 
     return (
         <>
             <FormControl sx={{ minWidth: 120 }} size="small" className={s.select}>
-                <InputLabel id="qtyLabel">Show</InputLabel>
+                <InputLabel id="qty-label">Show</InputLabel>
                 <Select
-                    labelId="qtyLabel"
-                    id="Quantity"
+                    labelId="qty-label"
+                    id="quantity"
+                    label="quantity"
                     value={pageSize}
                     onChange={handleChangeSize}
                 >
@@ -46,11 +49,12 @@ const SelectControl: React.FC<ISelectProps> = ({ newfetchBooks }) => {
                 </Select>
             </FormControl>
             <FormControl sx={{ minWidth: 120 }} size="small" className={s.select}>
-                <InputLabel id="sortLabel">Sort by price</InputLabel>
+                <InputLabel id="sort-label">Sort by price</InputLabel>
                 <Select
-                    labelId="sortLabel"
-                    id="Sort"
-                    value={filterPrice}
+                    labelId="sort-label"
+                    id="sort"
+                    label="sort"
+                    value={priceOrder}
                     onChange={handleChangePrice}
                 >
                     <MenuItem value="none">

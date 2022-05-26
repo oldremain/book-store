@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/reduxHooks";
-import { setInitialArray, setPage, setPageSize } from "../../../../features/filter/filterSlice";
+import {
+    setInitialArray,
+    setPage,
+    setPageSize,
+    sortByPrice,
+} from "../../../../features/filter/filterSlice";
 import { useNewBooks } from "../../../../fetchAPI/useNewBooks";
 
 import UITitle from "../../../UI/title/UiTitle";
@@ -17,9 +22,9 @@ import s from "../BooksPage.module.scss";
 
 const InitialPage: React.FC = () => {
     const { newBooks, loading } = useNewBooks(`${BASE_URL}/new`);
-    const { page, pageSize, filteredArray } = useAppSelector((state) => state.filter);
-    const dispatch = useAppDispatch();
+    const { page, pageSize, priceOrder, preparedData } = useAppSelector((state) => state.filter);
 
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -30,23 +35,24 @@ const InitialPage: React.FC = () => {
         dispatch(setInitialArray(newBooks));
         dispatch(setPageSize("5"));
         dispatch(setPage(1));
+        dispatch(sortByPrice({ priceOrder: "", books: newBooks }));
     }, [newBooks]);
 
-    useEffect(() => {
-        console.log("filterdArray", filteredArray);
-    }, [filteredArray]);
+    // useEffect(() => {
+    //     console.log("filterdArray", preparedData);
+    // }, [preparedData]);
 
     return (
         <>
             <h2>
                 <UITitle size={UISize.Large}>New Releases Books ({newBooks.length})</UITitle>
             </h2>
-            <SelectControl newfetchBooks={newBooks} />
+            <SelectControl newBooks={newBooks} priceOrder={priceOrder} pageSize={pageSize} />
             <div className={s.cards_container}>
-                {loading && !filteredArray.length ? (
+                {loading && !preparedData.length ? (
                     <Loader />
                 ) : (
-                    filteredArray.map((book, i) => <BookCard key={book.isbn13 + i} {...book} />)
+                    preparedData.map((book, i) => <BookCard key={book.isbn13 + i} {...book} />)
                 )}
             </div>
             <CustomPagination itemsCount={newBooks.length} page={page} pageSize={pageSize} />
