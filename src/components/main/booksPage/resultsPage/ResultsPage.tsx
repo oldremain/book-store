@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/reduxHooks";
 import { fetchBooks, setPage } from "../../../../features/books/booksSlice";
 
@@ -25,37 +25,44 @@ import {
 const ResultsPage: React.FC = () => {
     const [paginationPage, setPaginationPage] = useState(1);
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+
     const {
-        page,
         data: foundBooks,
         total,
         loading: isLoading,
         searchField,
     } = useAppSelector((state) => state.books);
+
     const { priceOrder, preparedData } = useAppSelector((state) => state.filter);
-    const dispatch = useAppDispatch();
 
     const handleChangePage = (event: React.ChangeEvent<unknown>, value: number) => {
-        dispatch(setPage(value));
+        setPaginationPage(value);
         dispatch(fetchBooks({ searchField, page: value }));
     };
 
     const handleChangePrice = (event: SelectChangeEvent) => {
-        dispatch(setPage(1));
         dispatch(sortByPrice({ priceOrder: event.target.value, books: foundBooks }));
     };
 
     useEffect(() => {
-        dispatch(setInitialArray(foundBooks));
-        dispatch(setPageSize("10"));
-        //dispatch(setPage(1));
-        dispatch(sortByPrice({ priceOrder: PriceOrder.INITIAL, books: foundBooks }));
-    }, []);
+        if (!isLoading) {
+            dispatch(setInitialArray(foundBooks));
+            dispatch(setPageSize("10"));
+            dispatch(setPage(1));
+            dispatch(sortByPrice({ priceOrder: priceOrder, books: foundBooks }));
+        }
+    }, [foundBooks]);
 
     useEffect(() => {
-        const path = searchField ? `/search/${searchField}?page=${page}` : `/new/1`;
+        const path = searchField ? `/search/${searchField}?page=${paginationPage}` : `/new/1`;
         navigate(path);
-    }, [searchField, page]);
+    }, [searchField, paginationPage]);
+
+    useEffect(() => {
+        setPaginationPage(1);
+        dispatch(sortByPrice({ priceOrder: PriceOrder.INITIAL, books: foundBooks }));
+    }, [searchField]);
 
     return (
         <>
@@ -78,7 +85,7 @@ const ResultsPage: React.FC = () => {
             </div>
             {!!foundBooks.length && (
                 <CustomPagination
-                    page={page}
+                    page={paginationPage}
                     pageSize={"10"}
                     handleChangePage={handleChangePage}
                     itemsCount={+total}

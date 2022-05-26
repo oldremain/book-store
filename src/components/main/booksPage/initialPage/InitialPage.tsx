@@ -46,19 +46,17 @@ const InitialPage: React.FC = () => {
     };
 
     useEffect(() => {
-        navigate(`/new/${page}`);
-    }, [page]);
-
-    useEffect(() => {
-        dispatch(setInitialArray(newBooks));
-        dispatch(setPageSize("5"));
-        dispatch(setPage(1));
-        dispatch(sortByPrice({ priceOrder: PriceOrder.INITIAL, books: newBooks }));
+        if (!loading) {
+            dispatch(setInitialArray(newBooks));
+            dispatch(setPageSize("5"));
+            dispatch(setPage(1));
+            dispatch(sortByPrice({ priceOrder: PriceOrder.INITIAL, books: newBooks }));
+        }
     }, [newBooks]);
 
-    // useEffect(() => {
-    //     console.log("filterdArray", preparedData);
-    // }, [preparedData]);
+    useEffect(() => {
+        navigate(`/new/${page}`);
+    }, [page]);
 
     return (
         <>

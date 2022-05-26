@@ -9,7 +9,7 @@ export enum PriceOrder {
     ASC = "asc",
 }
 
-interface ISort {
+interface ISortParams {
     books: IBook[];
     priceOrder: string;
 }
@@ -36,6 +36,7 @@ const filterSlice = createSlice({
     reducers: {
         setInitialArray(state, { payload }: PayloadAction<IBook[]>) {
             state.newBooks = payload;
+            state.preparedData = payload;
         },
         setPageSize(state, { payload }: PayloadAction<string>) {
             state.pageSize = payload;
@@ -45,7 +46,7 @@ const filterSlice = createSlice({
             state.page = payload;
             state.preparedData = getPreparedData(state.newBooks, payload, state.pageSize);
         },
-        sortByPrice(state, { payload }: PayloadAction<ISort>) {
+        sortByPrice(state, { payload }: PayloadAction<ISortParams>) {
             state.priceOrder = payload.priceOrder;
 
             switch (payload.priceOrder) {
