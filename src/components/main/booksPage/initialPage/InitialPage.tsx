@@ -13,7 +13,7 @@ import { useNewBooks } from "../../../../fetchAPI/useNewBooks";
 import UITitle from "../../../UI/title/UiTitle";
 import BookCard from "../bookCard/BookCard";
 import CustomPagination from "../../../UI/pagination/Pagination";
-import SelectControl from "../../../UI/select/Select";
+import SelectControl from "../../../UI/select/SelectControl";
 import Loader from "../../../loader/Loader";
 
 import { UISize } from "../../../../enums/enums";

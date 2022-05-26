@@ -6,7 +6,7 @@ import { fetchBooks, setPage } from "../../../../features/books/booksSlice";
 import BookCard from "../bookCard/BookCard";
 import UITitle from "../../../UI/title/UiTitle";
 import CustomPagination from "../../../UI/pagination/Pagination";
-import SelectControl from "../../../UI/select/Select";
+import SelectControl from "../../../UI/select/SelectControl";
 import UIBackButton from "../../../UI/button/backButton/UiBackButton";
 import Loader from "../../../loader/Loader";
 
