@@ -1,25 +1,15 @@
-import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import React from "react";
-import { setPage, setPageSize, sortByPrice } from "../../../features/filter/filterSlice";
-import { useAppDispatch } from "../../../hooks/reduxHooks";
-import { IBook } from "../../main/booksPage/bookCard/BookCard";
+
+import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 
 import s from "./SelectControl.module.scss";
 
 interface ISelectSize {
-    newBooks: IBook[];
-    priceOrder: string;
     pageSize: string;
     handleChangeSize: (event: SelectChangeEvent) => void;
 }
 
-const SelectSize: React.FC<ISelectSize> = ({ pageSize, handleChangeSize, newBooks }) => {
-    const dispatch = useAppDispatch();
-
-    // const handleChangeSize = (event: SelectChangeEvent) => {
-    //     dispatch(setPageSize(event.target.value));
-    //     dispatch(setPage(1));
-    // };
+const SelectSize: React.FC<ISelectSize> = ({ pageSize, handleChangeSize }) => {
     return (
         <FormControl sx={{ minWidth: 120 }} size="small" className={s.select}>
             <InputLabel id="qty-label">Show</InputLabel>

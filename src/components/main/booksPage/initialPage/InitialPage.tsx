@@ -11,9 +11,12 @@ import {
 import { useNewBooks } from "../../../../fetchAPI/useNewBooks";
 
 import UITitle from "../../../UI/title/UiTitle";
-import BookCard from "../bookCard/BookCard";
-import CustomPagination from "../../../UI/pagination/Pagination";
 import SelectControl from "../../../UI/select/SelectControl";
+import SelectSize from "../../../UI/select/SelectSize";
+import SelectPriceOrder from "../../../UI/select/SelectPriceOrder";
+import CustomPagination from "../../../UI/pagination/Pagination";
+import { SelectChangeEvent } from "@mui/material";
+import BookCard from "../bookCard/BookCard";
 import Loader from "../../../loader/Loader";
 
 import { UISize } from "../../../../enums/enums";
@@ -25,12 +28,22 @@ const InitialPage: React.FC = () => {
     const { newBooks, loading } = useNewBooks(`${BASE_URL}/new`);
     const { page, pageSize, priceOrder, preparedData } = useAppSelector((state) => state.filter);
 
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+
     const handleChangePage = (event: React.ChangeEvent<unknown>, value: number) => {
         dispatch(setPage(value));
     };
 
-    const dispatch = useAppDispatch();
-    const navigate = useNavigate();
+    const handleChangeSize = (event: SelectChangeEvent) => {
+        dispatch(setPageSize(event.target.value));
+        dispatch(setPage(1));
+    };
+
+    const handleChangePrice = (event: SelectChangeEvent) => {
+        dispatch(setPage(1));
+        dispatch(sortByPrice({ priceOrder: event.target.value, books: newBooks }));
+    };
 
     useEffect(() => {
         navigate(`/new/${page}`);
@@ -52,7 +65,10 @@ const InitialPage: React.FC = () => {
             <h2>
                 <UITitle size={UISize.Large}>New Releases Books ({newBooks.length})</UITitle>
             </h2>
-            <SelectControl newBooks={newBooks} priceOrder={priceOrder} pageSize={pageSize} />
+            <SelectControl>
+                <SelectSize pageSize={pageSize} handleChangeSize={handleChangeSize} />
+                <SelectPriceOrder priceOrder={priceOrder} handleChangePrice={handleChangePrice} />
+            </SelectControl>
             <div className={s.cards_container}>
                 {loading && !preparedData.length ? (
                     <Loader />
