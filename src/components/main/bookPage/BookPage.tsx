@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
 import { fetchOneBook } from "../../../features/book/oneBookSlice";
 import { useParams } from "react-router-dom";
 import Loader from "../../loader/Loader";
+import UIPrimaryButton from "../../UI/button/UiPrimaryButton";
 
 const BookPage: React.FC = () => {
     const { isbn } = useParams();
@@ -22,10 +23,6 @@ const BookPage: React.FC = () => {
     useEffect(() => {
         dispatch(fetchOneBook(isbn));
     }, [isbn]);
-
-    // useEffect(() => {
-    //     console.log(isbn);
-    // }, [isbn]);
 
     return (
         <section className={s.containter}>

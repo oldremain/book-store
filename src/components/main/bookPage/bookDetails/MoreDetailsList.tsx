@@ -5,8 +5,6 @@ import { useAppSelector } from "../../../../hooks/reduxHooks";
 import getPreparedData from "./helper";
 
 import ListItem from "./ListItem";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 import { variants } from "./motionVariants";
 

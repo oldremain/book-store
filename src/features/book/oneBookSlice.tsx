@@ -39,6 +39,9 @@ export interface IOneBookData {
     desc: string;
     price: string;
     image: string;
+    pdf?: {
+        [key: string]: string;
+    };
 }
 
 interface IOneBookState {
@@ -62,6 +65,7 @@ const initialState: IOneBookState = {
         desc: "",
         price: "",
         image: "",
+        pdf: {},
     },
     loading: false,
     error: false,

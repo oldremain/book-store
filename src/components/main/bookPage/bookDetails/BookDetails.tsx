@@ -8,16 +8,23 @@ import UIPrimaryButton from "../../../UI/button/UiPrimaryButton";
 import { UISize } from "../../../../enums/enums";
 
 import s from "./BookDetails.module.scss";
+import PreviewBook from "./PreviewBook";
+import { useAppSelector } from "../../../../hooks/reduxHooks";
 
 const BookDetails: React.FC = () => {
+    const preview = useAppSelector((state) => state.oneBook.book.pdf);
+
+    //const path = linkPreview && Object.values(linkPreview)[0];
+
     return (
         <div className={s.details_container}>
             <div className={s.details}>
                 <UIBookRates cName={`_${UISize.Large}`} />
                 <DetailsList />
                 <MoreDetailsList />
-                <UIPrimaryButton text="Add to cart" />
             </div>
+            <UIPrimaryButton text="Add to cart" cNameBtn="ui_btn_bookDetails" />
+            {preview && <PreviewBook preview={Object.values(preview)[0]} />}
         </div>
     );
 };
