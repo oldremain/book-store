@@ -16,12 +16,13 @@ export const useNewBooks = (URL: string) => {
         setStatus({
             ...status,
             loading: true,
+            error: false,
         });
 
         await new Promise((resolve) => {
             setTimeout(() => {
                 resolve(1);
-            }, 500);
+            }, 100);
         });
 
         try {
@@ -37,6 +38,7 @@ export const useNewBooks = (URL: string) => {
             setStatus({
                 ...status,
                 error: true,
+                loading: false,
             });
         }
     };

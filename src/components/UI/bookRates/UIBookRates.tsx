@@ -6,10 +6,10 @@ import s from "./UIBookRates.module.scss";
 export interface IBookRatesProps {
     cName?: string;
     price: string;
-    isbn: string;
+    isbn13: string;
 }
 
-const UIBookRates: React.FC<IBookRatesProps> = ({ price, isbn, cName = "" }) => {
+const UIBookRates: React.FC<IBookRatesProps> = ({ price, isbn13, cName = "" }) => {
     const finalPrice = +price.slice(1) === 0 ? "( out of store )" : price;
 
     return (
@@ -20,7 +20,7 @@ const UIBookRates: React.FC<IBookRatesProps> = ({ price, isbn, cName = "" }) => 
                 <span>{finalPrice} </span>
             </div>
             <div className={s.isbn}>
-                <span>ISBN: {isbn}</span>
+                <span>ISBN: {isbn13}</span>
             </div>
         </div>
     );

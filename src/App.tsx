@@ -30,9 +30,9 @@ const App: React.FC = () => {
                         <Route path="/" element={<BooksPage />}>
                             <Route index element={<InitialPage />} />
                             <Route path="new/:page" element={<InitialPage />} />
-                            <Route path="search/*" element={<ResultsPage />} />
-                            <Route path="*" element={<Navigate to="/new/1" />} />
+                            <Route path="search/:book/*" element={<ResultsPage />} />
                             <Route path="books/:isbn" element={<BookPage />} />
+                            <Route path="*" element={<Navigate to="/new/1" />} />
                         </Route>
                     </Routes>
                 </Main>

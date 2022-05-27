@@ -28,15 +28,10 @@ const Search: React.FC<ISearchProps> = ({ cName }) => {
             dispatch(fetchBooks({ searchField: book, page: 1 }));
             dispatch(setSearchField(book));
             dispatch(toggleVisibility(false));
-            dispatch(setPage(1));
         }
         navigate(`/search/${book}`); //search/${searchField}/?page=${paginationPage}
         setBook("");
     };
-
-    // useEffect(() => {
-    //     console.log(book);
-    // }, [book]);
 
     return (
         <div className={cn(s[cName[0]], s[cName[1]])}>

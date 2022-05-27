@@ -18,7 +18,7 @@ interface IInitialState {
     pageSize: string;
     page: number;
     priceOrder: string;
-    newBooks: IBook[];
+    books: IBook[];
     preparedData: IBook[];
 }
 
@@ -26,7 +26,7 @@ const initialState: IInitialState = {
     pageSize: "5",
     page: 1,
     priceOrder: PriceOrder.INITIAL,
-    newBooks: [],
+    books: [],
     preparedData: [],
 };
 
@@ -35,16 +35,16 @@ const filterSlice = createSlice({
     initialState,
     reducers: {
         setInitialArray(state, { payload }: PayloadAction<IBook[]>) {
-            state.newBooks = payload;
+            state.books = payload;
             state.preparedData = payload;
         },
         setPageSize(state, { payload }: PayloadAction<string>) {
             state.pageSize = payload;
-            state.preparedData = getPreparedData(state.newBooks, state.page, payload);
+            state.preparedData = getPreparedData(state.books, state.page, payload);
         },
         setPage(state, { payload }: PayloadAction<number>) {
             state.page = payload;
-            state.preparedData = getPreparedData(state.newBooks, payload, state.pageSize);
+            state.preparedData = getPreparedData(state.books, payload, state.pageSize);
         },
         sortByPrice(state, { payload }: PayloadAction<ISortParams>) {
             state.priceOrder = payload.priceOrder;
@@ -52,19 +52,19 @@ const filterSlice = createSlice({
             switch (payload.priceOrder) {
                 case PriceOrder.ASC:
                     {
-                        const sortedArr = getSortedData(state.newBooks, PriceOrder.ASC);
+                        const sortedArr = getSortedData(state.books, PriceOrder.ASC);
                         state.preparedData = getPreparedData(sortedArr, state.page, state.pageSize);
                     }
                     break;
                 case PriceOrder.DESC:
                     {
-                        const sortedArr = getSortedData(state.newBooks, PriceOrder.DESC);
+                        const sortedArr = getSortedData(state.books, PriceOrder.DESC);
                         state.preparedData = getPreparedData(sortedArr, state.page, state.pageSize);
                     }
                     break;
                 case PriceOrder.NONE:
                     {
-                        state.newBooks = payload.books;
+                        state.books = payload.books;
                         state.preparedData = getPreparedData(
                             payload.books,
                             state.page,

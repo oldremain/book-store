@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
@@ -11,16 +11,32 @@ import { UISize } from "../../../../enums/enums";
 import { variants } from "./motionVariants";
 
 import s from "./BookDetails.module.scss";
+import { useAppSelector } from "../../../../hooks/reduxHooks";
 
-interface IBookDetailsProps extends IBookRatesProps {}
+//     "authors": "Julien Vehent"
+//     "publisher": "Manning"
+//     "year": "2018"
+//     "language":"English"
+const details = ["authors", "publisher", "year", "language"];
 
-const BookDetails: React.FC<IBookDetailsProps> = ({ price, isbn }) => {
+const BookDetails: React.FC = () => {
     const [open, setOpen] = useState<boolean>(false);
     const isMobile = useMediaQuery({ query: "(max-width: 472px)" });
+
+    const { data } = useAppSelector((state) => state.oneBook);
+
+    //const preparedData = data.entries
+    useEffect(() => {
+        console.log(Object.entries(data).filter((el) => el[0]));
+    }, []);
 
     const handleClick = () => setOpen((prev) => !prev);
 
     ///const detailsContent = Object.entries()
+
+    const { price, authors, publisher, year, language, pages, isbn10, isbn13 } = useAppSelector(
+        (state) => state.oneBook.data
+    );
 
     const RenderedIcon = open ? (
         <KeyboardArrowUpIcon fontSize="small" />
@@ -31,14 +47,16 @@ const BookDetails: React.FC<IBookDetailsProps> = ({ price, isbn }) => {
     return (
         <div className={s.details_container}>
             <div className={s.details}>
-                <UIBookRates price={price} isbn={isbn} cName={`_${UISize.Large}`} />
+                <UIBookRates price={price} isbn13={isbn13} cName={`_${UISize.Large}`} />
                 <ul className={s.details_list}>
                     <li className={s.list_item}>Authors</li>
-                    <li className={s.list_item}> Lentin Joseph, Aleena Johny</li>
+                    <li className={s.list_item}> {authors}</li>
                     <li className={s.list_item}>Publisher</li>
-                    <li className={s.list_item}> Apress, 2022</li>
+                    <li className={s.list_item}>
+                        {publisher}, {year}
+                    </li>
                     <li className={s.list_item}>Language</li>
-                    <li className={s.list_item}>English</li>
+                    <li className={s.list_item}>{language}</li>
                     <li className={s.list_item}>Format</li>
                     <li className={s.list_item}>Paper book / ebook (PDF)</li>
                 </ul>
@@ -53,11 +71,11 @@ const BookDetails: React.FC<IBookDetailsProps> = ({ price, isbn }) => {
                             animate={isMobile ? "mobile" : "desktop"}
                         >
                             <li className={s.list_item}>pages</li>
-                            <li className={s.list_item}>384</li>
+                            <li className={s.list_item}>{pages}</li>
                             <li className={s.list_item}>ISBN-10</li>
-                            <li className={s.list_item}> 1617294136</li>
+                            <li className={s.list_item}>{isbn10}</li>
                             <li className={s.list_item}>ISBN-13</li>
-                            <li className={s.list_item}> 9781617294136</li>
+                            <li className={s.list_item}>{isbn13}</li>
                         </motion.ul>
                     )}
                 </div>
