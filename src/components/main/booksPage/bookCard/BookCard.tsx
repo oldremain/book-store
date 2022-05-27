@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import UITitle from "../../../UI/title/UiTitle";
 import UIBookImage from "../../../UI/bookImage/UIBookImage";
@@ -18,7 +19,7 @@ export interface IBook {
 
 const BookCard: React.FC<IBook> = ({ image, title, subtitle, price, isbn13 }) => {
     return (
-        <div className={s.book_card}>
+        <Link to={`/books/${isbn13}`} className={s.book_card}>
             <UIBookImage size={UISize.Medium} theme="blue" image={image} />
             <div className={s.book_details}>
                 <div className={s.book_about}>
@@ -31,7 +32,7 @@ const BookCard: React.FC<IBook> = ({ image, title, subtitle, price, isbn13 }) =>
                 </div>
                 <UiBookRates price={price} isbn={isbn13} />
             </div>
-        </div>
+        </Link>
     );
 };
 

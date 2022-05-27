@@ -66,7 +66,7 @@ const ResultsPage: React.FC = () => {
 
     return (
         <>
-            <UIBackButton />
+            <UIBackButton backTo={"/new/1"} />
             <h2>
                 <UITitle size={UISize.Large}>{`"${searchField}" Search Results`}</UITitle>
             </h2>

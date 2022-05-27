@@ -6,6 +6,7 @@ import Header from "./components/header/Header";
 import Main from "./components/main/Main";
 import Sidebar from "./components/sidebar/Sidebar";
 import BooksPage from "./components/main/booksPage/BooksPage";
+import BookPage from "./components/main/bookPage/BookPage";
 import InitialPage from "./components/main/booksPage/initialPage/InitialPage";
 import ResultsPage from "./components/main/booksPage/resultsPage/ResultsPage";
 
@@ -31,6 +32,7 @@ const App: React.FC = () => {
                             <Route path="new/:page" element={<InitialPage />} />
                             <Route path="search/*" element={<ResultsPage />} />
                             <Route path="*" element={<Navigate to="/new/1" />} />
+                            <Route path="books/:isbn" element={<BookPage />} />
                         </Route>
                     </Routes>
                 </Main>
