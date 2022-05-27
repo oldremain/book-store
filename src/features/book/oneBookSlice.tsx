@@ -25,7 +25,7 @@ import { BASE_URL } from "../../constants/constants";
 //               "Chapter 5": "https://itbook.store/files/9781617294136/chapter5.pdf"
 //            }
 
-interface IOneBookData {
+export interface IOneBookData {
     title: string;
     subtitle: string;
     language: string;
@@ -42,13 +42,13 @@ interface IOneBookData {
 }
 
 interface IOneBookState {
-    data: IOneBookData;
+    book: IOneBookData;
     loading: boolean;
     error: boolean;
 }
 
 const initialState: IOneBookState = {
-    data: {
+    book: {
         title: "",
         subtitle: "",
         language: "",
@@ -97,7 +97,7 @@ const oneBookSlice = createSlice({
                 state.error = false;
             })
             .addCase(fetchOneBook.fulfilled, (state, { payload }) => {
-                state.data = payload;
+                state.book = payload;
                 state.loading = false;
             })
             .addCase(fetchOneBook.rejected, (state, { payload }) => {

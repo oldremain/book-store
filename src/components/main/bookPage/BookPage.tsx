@@ -16,7 +16,7 @@ import Loader from "../../loader/Loader";
 const BookPage: React.FC = () => {
     const { isbn } = useParams();
     const dispatch = useAppDispatch();
-    const { title, image } = useAppSelector((state) => state.oneBook.data);
+    const { title, image } = useAppSelector((state) => state.oneBook.book);
     const isLoading = useAppSelector((state) => state.oneBook.loading);
 
     useEffect(() => {

@@ -1,15 +1,16 @@
 import React from "react";
-import cn from "classnames/bind";
+import { useAppSelector } from "../../../hooks/reduxHooks";
+import cn from "classnames";
 
 import s from "./UIBookRates.module.scss";
 
 export interface IBookRatesProps {
     cName?: string;
-    price: string;
-    isbn13: string;
 }
 
-const UIBookRates: React.FC<IBookRatesProps> = ({ price, isbn13, cName = "" }) => {
+const UIBookRates: React.FC<IBookRatesProps> = ({ cName = "" }) => {
+    const { price, isbn13 } = useAppSelector((state) => state.oneBook.book);
+
     const finalPrice = +price.slice(1) === 0 ? "( out of store )" : price;
 
     return (
