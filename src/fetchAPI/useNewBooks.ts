@@ -29,7 +29,7 @@ export const useNewBooks = (URL: string) => {
             const response = await axios.get(URL);
             setStatus({
                 ...status,
-                newBooks: incrementArrayBy<IBook, number>(response.data.books, 4),
+                newBooks: incrementArrayBy<IBook, number>(response.data.books, 4), //увеличение числа элементов массива, по дефолту - 20
                 loading: false,
             });
         } catch (e: any) {
