@@ -44,7 +44,7 @@ const Search: React.FC<ISearchProps> = ({ cName }) => {
                     onChange={handleInputChange}
                     type="text"
                     id="search-input"
-                    placeholder="Search"
+                    placeholder="Search books by Title, Author or ISBN"
                     autoComplete="off"
                     className={s.search_input}
                 />
