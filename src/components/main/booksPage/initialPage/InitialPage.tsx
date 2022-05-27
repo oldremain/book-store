@@ -9,6 +9,7 @@ import {
     sortByPrice,
 } from "../../../../features/filter/filterSlice";
 import { useNewBooks } from "../../../../fetchAPI/useNewBooks";
+import _isEmpty from "lodash.isempty";
 
 import UITitle from "../../../UI/title/UiTitle";
 import SelectControl from "../../../UI/select/SelectControl";
@@ -27,6 +28,7 @@ import s from "../BooksPage.module.scss";
 const InitialPage: React.FC = () => {
     const { newBooks, loading } = useNewBooks(`${BASE_URL}/new`);
     const { page, pageSize, priceOrder, preparedData } = useAppSelector((state) => state.filter);
+    const isEmptyData = _isEmpty(preparedData); // проверяем наличие данных для рендера карточек
 
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
@@ -52,11 +54,11 @@ const InitialPage: React.FC = () => {
             dispatch(setPage(1));
             dispatch(sortByPrice({ priceOrder: PriceOrder.INITIAL, books: newBooks }));
         }
-    }, [newBooks]);
+    }, [newBooks]); //инициализуем store первоначальми данными
 
     useEffect(() => {
         navigate(`/new/${page}`);
-    }, [page]);
+    }, [page]); //меняем строку поиска
 
     return (
         <>
@@ -68,7 +70,7 @@ const InitialPage: React.FC = () => {
                 <SelectPriceOrder priceOrder={priceOrder} handleChangePrice={handleChangePrice} />
             </SelectControl>
             <div className={s.cards_container}>
-                {loading && !preparedData.length ? (
+                {loading && !isEmptyData ? (
                     <Loader />
                 ) : (
                     preparedData.map((book, i) => <BookCard key={book.isbn13 + i} {...book} />)

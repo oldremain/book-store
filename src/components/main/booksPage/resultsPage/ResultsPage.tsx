@@ -2,6 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/reduxHooks";
 import { fetchBooks, setPage } from "../../../../features/books/booksSlice";
+import {
+    PriceOrder,
+    setInitialArray,
+    setPageSize,
+    sortByPrice,
+} from "../../../../features/filter/filterSlice";
+import _isEmpty from "lodash.isempty";
 
 import BookCard from "../bookCard/BookCard";
 import UITitle from "../../../UI/title/UiTitle";
@@ -10,17 +17,11 @@ import SelectControl from "../../../UI/select/SelectControl";
 import SelectPriceOrder from "../../../UI/select/SelectPriceOrder";
 import UIBackButton from "../../../UI/button/backButton/UiBackButton";
 import Loader from "../../../loader/Loader";
+import { SelectChangeEvent } from "@mui/material";
 
 import { UISize } from "../../../../enums/enums";
 
 import s from "../BooksPage.module.scss";
-import { SelectChangeEvent } from "@mui/material";
-import {
-    PriceOrder,
-    setInitialArray,
-    setPageSize,
-    sortByPrice,
-} from "../../../../features/filter/filterSlice";
 
 const ResultsPage: React.FC = () => {
     const [paginationPage, setPaginationPage] = useState(1);
@@ -35,6 +36,7 @@ const ResultsPage: React.FC = () => {
     } = useAppSelector((state) => state.books);
 
     const { priceOrder, preparedData } = useAppSelector((state) => state.filter);
+    const isEmptyData = _isEmpty(preparedData); // проверяем наличие данных для рендера карточек
 
     const handleChangePage = (event: React.ChangeEvent<unknown>, value: number) => {
         setPaginationPage(value);
@@ -52,17 +54,17 @@ const ResultsPage: React.FC = () => {
             dispatch(setPage(1));
             dispatch(sortByPrice({ priceOrder: priceOrder, books: foundBooks }));
         }
-    }, [foundBooks]);
+    }, [foundBooks]); //инициализируем фильтр дефолтными(фиксированной страницей и размером) значениями после ответа от сервера
 
     useEffect(() => {
         const path = searchField ? `/search/${searchField}?page=${paginationPage}` : `/new/1`;
         navigate(path);
-    }, [searchField, paginationPage]);
+    }, [searchField, paginationPage]); //навигация, строка поиска
 
     useEffect(() => {
         setPaginationPage(1);
         dispatch(sortByPrice({ priceOrder: PriceOrder.INITIAL, books: foundBooks }));
-    }, [searchField]);
+    }, [searchField]); // сброс фильтра, когда вводим новое значение в строку поиска
 
     return (
         <>
@@ -77,13 +79,13 @@ const ResultsPage: React.FC = () => {
                 <SelectPriceOrder priceOrder={priceOrder} handleChangePrice={handleChangePrice} />
             </SelectControl>
             <div className={s.cards_container}>
-                {isLoading ? (
+                {isLoading && !isEmptyData ? (
                     <Loader />
                 ) : (
                     preparedData.map((book, i) => <BookCard key={book.isbn13 + i} {...book} />)
                 )}
             </div>
-            {!!foundBooks.length && (
+            {!isEmptyData && (
                 <CustomPagination
                     page={paginationPage}
                     pageSize={"10"}

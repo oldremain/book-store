@@ -13,18 +13,20 @@ import { UISize } from "../../../../enums/enums";
 import s from "./BookDetails.module.scss";
 
 const BookDetails: React.FC = () => {
-    const preview = useAppSelector((state) => state.oneBook.book.pdf);
-    const empty = _isEmpty(preview);
+    const { price, isbn13 } = useAppSelector((state) => state.oneBook.book);
+    const preview = useAppSelector((state) => state.oneBook.book.pdf); //объект со ссылками
+    const empty = _isEmpty(preview); // проверка что не пустой
 
     return (
         <div className={s.details_container}>
             <div className={s.details}>
-                <UIBookRates cName={`_${UISize.Large}`} />
+                <UIBookRates cName={`_${UISize.Large}`} price={price} isbn13={isbn13} />
                 <DetailsList />
                 <MoreDetailsList />
             </div>
             <UIPrimaryButton text="Add to cart" cNameBtn="ui_btn_bookDetails" />
             {preview && !empty && <PreviewBook preview={Object.values(preview)[0]} />}
+            {/* если не пустой берем первую ссылку */}
         </div>
     );
 };

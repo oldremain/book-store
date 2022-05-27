@@ -1,5 +1,9 @@
 import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
+import { fetchOneBook } from "../../../features/book/oneBookSlice";
 
+import Loader from "../../loader/Loader";
 import BookDetails from "./bookDetails/BookDetails";
 import UIBackButton from "../../UI/button/backButton/UiBackButton";
 import UITitle from "../../UI/title/UiTitle";
@@ -8,11 +12,6 @@ import UIBookImage from "../../UI/bookImage/UIBookImage";
 import { UISize } from "../../../enums/enums";
 
 import s from "./BookPage.module.scss";
-import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
-import { fetchOneBook } from "../../../features/book/oneBookSlice";
-import { useParams } from "react-router-dom";
-import Loader from "../../loader/Loader";
-import UIPrimaryButton from "../../UI/button/UiPrimaryButton";
 
 const BookPage: React.FC = () => {
     const { isbn } = useParams();
