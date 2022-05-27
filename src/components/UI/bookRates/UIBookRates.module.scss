@@ -6,6 +6,13 @@
     font-size: 24px;
     line-height: 133%;
 
+    .price_absent {
+        span {
+            font-size: 18px;
+            line-height: 123%;
+        }
+    }
+
     .isbn {
         font-size: 15px;
         font-weight: 400;
