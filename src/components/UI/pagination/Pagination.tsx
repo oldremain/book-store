@@ -1,4 +1,5 @@
 import React from "react";
+
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import Stack from "@mui/material/Stack";
@@ -7,9 +8,6 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import s from "./Pagination.module.scss";
-import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
-import { setPage } from "../../../features/filter/filterSlice";
-import { useNavigate } from "react-router-dom";
 
 interface IPaginationProps {
     itemsCount: number;
@@ -32,13 +30,6 @@ const CustomPagination: React.FC<IPaginationProps> = ({
     pageSize,
     handleChangePage,
 }) => {
-    //const { page, pageSize } = useAppSelector((state) => state.filter);
-    const dispatch = useAppDispatch();
-
-    // const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-    //     dispatch(setPage(value));
-    // };
-
     return (
         <Stack spacing={2}>
             <ThemeProvider theme={theme}>

@@ -1,5 +1,4 @@
 import React from "react";
-import { useAppDispatch } from "../../../hooks/reduxHooks";
 import { PriceOrder } from "../../../features/filter/filterSlice";
 
 import FormControl from "@mui/material/FormControl";

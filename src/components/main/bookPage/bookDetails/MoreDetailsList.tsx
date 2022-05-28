@@ -18,7 +18,7 @@ const MoreDetailsList: React.FC = () => {
     const handleClick = () => setOpen((prev) => !prev);
 
     const { book } = useAppSelector((state) => state.oneBook);
-    const preparedData = useMemo(() => getPreparedData(book, detailsFields), [detailsFields, book]);
+    const preparedData = useMemo(() => getPreparedData(book, detailsFields), [book]);
 
     const isMobile = useMediaQuery({ query: "(max-width: 472px)" });
 

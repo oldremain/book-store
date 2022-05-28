@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { sortByPrice } from "../../../features/filter/filterSlice";
-import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
+import React from "react";
+import { Link } from "react-router-dom";
 
 interface ILogoProps {
     cName: string;
