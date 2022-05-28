@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/reduxHooks";
-import { fetchBooks, setPage } from "../../../../features/books/booksSlice";
+import { fetchBooks } from "../../../../features/books/booksSlice";
+import { setPage } from "../../../../features/filter/filterSlice";
 import {
     PriceOrder,
     setInitialArray,
