@@ -1,4 +1,4 @@
-import { IBook } from "../../components/main/booksPage/bookCard/BookCard";
+import { IBook } from "../../components/UI/bookCard/UiBookCard";
 
 export const getPreparedData = (arr: IBook[], page: number, pageSize: string): IBook[] => {
     return arr.slice((page - 1) * +pageSize, page * +pageSize);

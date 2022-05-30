@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IBook } from "../../components/main/booksPage/bookCard/BookCard";
+import { IBook } from "../../components/UI/bookCard/UiBookCard";
 import { getPreparedData, getSortedData } from "./helpers";
 
 export enum PriceOrder {

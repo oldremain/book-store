@@ -1,12 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import cn from "classnames";
 
-import UITitle from "../../../UI/title/UiTitle";
-import UIBookImage from "../../../UI/bookImage/UIBookImage";
-import UiBookRates from "../../../UI/bookRates/UIBookRates";
-import { UISize } from "../../../../enums/enums";
+import UITitle from "../title/UiTitle";
+import UIBookImage from "../bookImage/UIBookImage";
+import UiBookRates from "../bookRates/UIBookRates";
+import { UISize } from "../../../enums/enums";
 
-import s from "./BookCard.module.scss";
+import s from "./UiBookCard.module.scss";
+
+
+interface IBookCard extends IBook {
+    cName?: string;
+}
 
 export interface IBook {
     image: string;
@@ -17,9 +23,9 @@ export interface IBook {
     url: string;
 }
 
-const BookCard: React.FC<IBook> = ({ image, title, subtitle, price, isbn13 }) => {
+const UiBookCard: React.FC<IBookCard> = ({ image, title, subtitle, price, isbn13, cName = ''}) => {
     return (
-        <Link to={`/books/${isbn13}`} className={s.book_card}>
+        <Link to={`/books/${isbn13}`} className={cn(s.book_card, {[s[cName]]: cName ? true : false })}>
             <UIBookImage size={UISize.Medium} theme="blue" image={image} />
             <div className={s.book_details}>
                 <div className={s.book_about}>
@@ -36,4 +42,4 @@ const BookCard: React.FC<IBook> = ({ image, title, subtitle, price, isbn13 }) =>
     );
 };
 
-export default BookCard;
+export default UiBookCard;

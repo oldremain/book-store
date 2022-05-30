@@ -17,7 +17,7 @@ import SelectSize from "../../../UI/select/SelectSize";
 import SelectPriceOrder from "../../../UI/select/SelectPriceOrder";
 import CustomPagination from "../../../UI/pagination/Pagination";
 import { SelectChangeEvent } from "@mui/material";
-import BookCard from "../bookCard/BookCard";
+import UiBookCard from "../../../UI/bookCard/UiBookCard";
 import Loader from "../../../loader/Loader";
 
 import { UISize } from "../../../../enums/enums";
@@ -73,7 +73,11 @@ const InitialPage: React.FC = () => {
                 {loading && !isEmptyData ? (
                     <Loader />
                 ) : (
-                    preparedData.map((book, i) => <BookCard key={book.isbn13 + i} {...book} />)
+                    preparedData.map((book, i) => 
+                        <UiBookCard 
+                            key={book.isbn13 + i} 
+                            {...book} 
+                        />)
                 )}
             </div>
             <CustomPagination

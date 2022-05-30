@@ -11,7 +11,7 @@ import {
 } from "../../../../features/filter/filterSlice";
 import _isEmpty from "lodash.isempty";
 
-import BookCard from "../bookCard/BookCard";
+import UiBookCard from "../../../UI/bookCard/UiBookCard";
 import UITitle from "../../../UI/title/UiTitle";
 import CustomPagination from "../../../UI/pagination/Pagination";
 import SelectControl from "../../../UI/select/SelectControl";
@@ -83,7 +83,11 @@ const ResultsPage: React.FC = () => {
                 {isLoading && !isEmptyData ? (
                     <Loader />
                 ) : (
-                    preparedData.map((book, i) => <BookCard key={book.isbn13 + i} {...book} />)
+                    preparedData.map((book, i) => 
+                        <UiBookCard 
+                            key={book.isbn13 + i} 
+                            {...book} 
+                        />)
                 )}
             </div>
             {!isEmptyData && (
