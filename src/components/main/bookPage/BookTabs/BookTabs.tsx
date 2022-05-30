@@ -2,13 +2,13 @@ import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import 'react-tabs/style/react-tabs.scss';
-import  './CustomTabs.scss'
+import  './BookTabs.scss'
 
 interface ICustomTabs {
     desc: string
 }
 
-const CustomTabs: React.FC<ICustomTabs> = ({ desc }) => (
+const BookTabs: React.FC<ICustomTabs> = ({ desc }) => (
     <Tabs>
       <TabList>
         <Tab >Description</Tab>
@@ -31,4 +31,4 @@ const CustomTabs: React.FC<ICustomTabs> = ({ desc }) => (
     </Tabs>
   );
 
-  export default CustomTabs
+  export default BookTabs

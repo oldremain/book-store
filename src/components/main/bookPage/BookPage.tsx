@@ -8,7 +8,7 @@ import BookDetails from "./bookDetails/BookDetails";
 import UIBackButton from "../../UI/button/backButton/UiBackButton";
 import UITitle from "../../UI/title/UiTitle";
 import UIBookImage from "../../UI/bookImage/UIBookImage";
-import CustomTabs from './CustomTabs/CustomTabs'
+import CustomTabs from './BookTabs/BookTabs'
 
 import { UISize } from "../../../enums/enums";
 
