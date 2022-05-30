@@ -73,6 +73,11 @@
     .preview_link {
         color: inherit;
         border-bottom: 1px dotted var(--system-primary);
+
+        &:hover {
+            color: var(--system-primary);
+            text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+        }
     }
 }
 

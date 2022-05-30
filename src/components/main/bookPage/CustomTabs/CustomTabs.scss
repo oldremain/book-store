@@ -12,10 +12,13 @@
     padding: 0 40px 24px;
     border: 1px solid transparent;
     color: var(--system-secondary);
+    border-radius: 5px 5px 0 0 ;
+    bottom: -2px;
+    transition: all 0.15s;
 
     &--selected {
         color: var(--system-primary);
-        border-bottom: 3px solid var(--system-primary);
+        border-bottom: 2px solid var(--system-primary);
     }
 
     &:focus {
@@ -23,6 +26,10 @@
           background: transparent;
         }
       }
+    
+    &:hover {
+        background-color: var(--bg-primary2);
+    }
 
     &-panel {
         display: none;
