@@ -8,11 +8,14 @@ import s from './UiLikeButton.module.scss'
 const UiLikeButton: React.FC = () => {
     const { title, subtitle, isbn13, price, image } = useAppSelector(state => state.oneBook.book)
     const dispatch = useAppDispatch()
-    
+
     const preparedData: IFavouriteBook = {}
     preparedData[isbn13] = {image, title, subtitle, price, isbn13}
 
     const clickHandler = () => {
+        // const arr: [IFavouriteBook] = JSON.parse(localStorage.getItem('favourites') || '[]')
+       //localStorage.setItem('favourites', JSON.stringify(state.books))
+        // localStorage.setItem('favourites', JSON.stringify([]))
         dispatch(addFavourite(preparedData))
     }
 

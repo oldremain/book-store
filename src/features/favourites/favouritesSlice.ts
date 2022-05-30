@@ -16,7 +16,7 @@ interface IInitialState {
 }
 
 const initialState: IInitialState = {
-    books: []
+    books: JSON.parse(localStorage.getItem('favourites') || '[]')
 }
 
 const favouritesSlice = createSlice({
@@ -25,10 +25,11 @@ const favouritesSlice = createSlice({
     reducers: {
         addFavourite(state, action: PayloadAction<IFavouriteBook>) {
             const isUnique = state.books.some(el => Object.keys(action.payload)[0] in el) 
+
             if (!isUnique) {
                 state.books.push(action.payload)
+                localStorage.setItem('favourites', JSON.stringify(state.books))
             }
-            localStorage.setItem('favourites', JSON.stringify(state.books))
         },
         removeFromFavourite(state, { payload }: PayloadAction<string>) {
             state.books = state.books.filter(el => !el[payload])
