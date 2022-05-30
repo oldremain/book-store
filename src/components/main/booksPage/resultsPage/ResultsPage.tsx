@@ -68,7 +68,7 @@ const ResultsPage: React.FC = () => {
     }, [searchField]); // сброс фильтра, когда вводим новое значение в строку поиска
 
     return (
-        <>
+        <section className={s.section_container}>
             <UIBackButton backTo={"/new/1"} />
             <h2>
                 <UITitle size={UISize.Large}>{`"${searchField}" Search Results`}</UITitle>
@@ -94,7 +94,7 @@ const ResultsPage: React.FC = () => {
                     itemsCount={+total}
                 />
             )}
-        </>
+        </section>
     );
 };
 

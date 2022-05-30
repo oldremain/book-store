@@ -8,6 +8,7 @@ import BookDetails from "./bookDetails/BookDetails";
 import UIBackButton from "../../UI/button/backButton/UiBackButton";
 import UITitle from "../../UI/title/UiTitle";
 import UIBookImage from "../../UI/bookImage/UIBookImage";
+import CustomTabs from './CustomTabs/CustomTabs'
 
 import { UISize } from "../../../enums/enums";
 
@@ -16,7 +17,7 @@ import s from "./BookPage.module.scss";
 const BookPage: React.FC = () => {
     const { isbn } = useParams();
     const dispatch = useAppDispatch();
-    const { title, image } = useAppSelector((state) => state.oneBook.book);
+    const { title, image, desc } = useAppSelector((state) => state.oneBook.book);
     const isLoading = useAppSelector((state) => state.oneBook.loading);
 
     useEffect(() => {
@@ -24,24 +25,25 @@ const BookPage: React.FC = () => {
     }, [isbn]);
 
     return (
-        <section className={s.containter}>
-            <UIBackButton />
-            {isLoading ? (
-                <Loader />
-            ) : (
-                <>
-                    <h2 className={s.title}>
-                        <UITitle size={UISize.Large} children={title} />
-                    </h2>
-                    <div className={s.content}>
-                        <div className={s.content_image}>
-                            <UIBookImage size={UISize.Large} theme="orange" image={image} />
+          <section className={s.section_container}>
+                <UIBackButton />
+                {isLoading ? (
+                    <Loader />
+                ) : (
+                    <>
+                        <h2 className={s.title}>
+                            <UITitle size={UISize.Large} children={title} />
+                        </h2>
+                        <div className={s.content}>
+                            <div className={s.content_image}>
+                                <UIBookImage size={UISize.Large} theme="orange" image={image} />
+                            </div>
+                            <BookDetails />
                         </div>
-                        <BookDetails />
-                    </div>
-                </>
-            )}
-        </section>
+                    </>
+                )}
+                <CustomTabs desc={desc}/>
+          </section>
     );
 };
 

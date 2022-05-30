@@ -7,10 +7,10 @@ import s from "./BooksPage.module.scss";
 
 const BooksPage: React.FC = () => {
     return (
-        <section className={s.page_containter}>
+        <div className={s.page_containter}>
             <Search cName={["search", "search_main"]} />
             <Outlet />
-        </section>
+        </div>
     );
 };
 

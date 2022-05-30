@@ -61,7 +61,7 @@ const InitialPage: React.FC = () => {
     }, [page]); //меняем строку поиска
 
     return (
-        <>
+        <section className={s.section_container}>
             <h2>
                 <UITitle size={UISize.Large}>New Releases Books ({newBooks.length})</UITitle>
             </h2>
@@ -82,7 +82,7 @@ const InitialPage: React.FC = () => {
                 pageSize={pageSize}
                 handleChangePage={handleChangePage}
             />
-        </>
+        </section>
     );
 };
 
