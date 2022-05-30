@@ -9,6 +9,7 @@ import BooksPage from "./components/main/booksPage/BooksPage";
 import BookPage from "./components/main/bookPage/BookPage";
 import InitialPage from "./components/main/booksPage/initialPage/InitialPage";
 import ResultsPage from "./components/main/booksPage/resultsPage/ResultsPage";
+import Favourites from "./components/main/favourites/Favourites";
 
 import s from "./App.module.scss";
 
@@ -32,6 +33,7 @@ const App: React.FC = () => {
                             <Route path="new/:page" element={<InitialPage />} />
                             <Route path="search/:book/*" element={<ResultsPage />} />
                             <Route path="books/:isbn" element={<BookPage />} />
+                            <Route path="favourites" element={<Favourites />} />
                             <Route path="*" element={<Navigate to="/new/1" />} />
                         </Route>
                     </Routes>
