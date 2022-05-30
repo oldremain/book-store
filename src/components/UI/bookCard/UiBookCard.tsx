@@ -8,20 +8,21 @@ import UiBookRates from "../bookRates/UIBookRates";
 import { UISize } from "../../../enums/enums";
 
 import s from "./UiBookCard.module.scss";
+import { IBookType } from "../../../features/books/booksSlice";
 
 
-interface IBookCard extends IBook {
+interface IBookCard extends IBookType {
     cName?: string;
 }
 
-export interface IBook {
-    image: string;
-    title: string;
-    subtitle: string;
-    price: string;
-    isbn13: string;
-    url: string;
-}
+// export interface IBook {
+//     image: string;
+//     title: string;
+//     subtitle: string;
+//     price: string;
+//     isbn13: string;
+//     url: string;
+// }
 
 const UiBookCard: React.FC<IBookCard> = ({ image, title, subtitle, price, isbn13, cName = ''}) => {
     return (

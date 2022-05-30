@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IBook } from "../../components/UI/bookCard/UiBookCard";
+// import { IBookType } from "../../components/UI/bookCard/UiBookCard";
+import { IBookType } from './../books/booksSlice';
 import { incrementArrayBy } from "../../helpers/books";
 import { fetchNewBooks } from "./newBooksThunk";
 
 interface IInitialState {
     total: string;
-    newBooks: IBook[];
+    newBooks: IBookType[];
     loading: boolean;
     error: boolean;
 }
@@ -27,7 +28,7 @@ const newBookSlice = createSlice({
         });
         builder.addCase(fetchNewBooks.fulfilled, (state, { payload }) => {
             state.total = payload.total;
-            state.newBooks = incrementArrayBy<IBook, number>(payload.books, 9).filter(
+            state.newBooks = incrementArrayBy<IBookType, number>(payload.books, 9).filter(
                 (book) => +book.price.slice(1)
             ); //apply function and delete cards with price ($0.00)
             state.loading = false;

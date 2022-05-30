@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { incrementArrayBy } from "../helpers/books";
-import { IBook } from "../components/UI/bookCard/UiBookCard";
+//import { IBook } from "../components/UI/bookCard/UiBookCard";
+import { IBookType } from './../features/books/booksSlice';
 
 //"https://api.itbook.store/1.0/new"
 
 export const useNewBooks = (URL: string) => {
     const [status, setStatus] = useState({
-        newBooks: [] as IBook[],
+        newBooks: [] as IBookType[],
         loading: false,
         error: false,
     });
@@ -29,7 +30,7 @@ export const useNewBooks = (URL: string) => {
             const response = await axios.get(URL);
             setStatus({
                 ...status,
-                newBooks: incrementArrayBy<IBook, number>(response.data.books, 4), //увеличение числа элементов массива, по дефолту - 20
+                newBooks: incrementArrayBy<IBookType, number>(response.data.books, 4), //увеличение числа элементов массива, по дефолту - 20
                 loading: false,
             });
         } catch (e: any) {

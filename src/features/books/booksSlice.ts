@@ -5,7 +5,7 @@ import { BASE_URL } from "../../constants/constants";
 
 // BASE_URL = "https://api.itbook.store/1.0"
 
-interface IBookType {
+export interface IBookType {
     title: string;
     subtitle: string;
     isbn13: string;

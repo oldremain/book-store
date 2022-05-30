@@ -9,6 +9,7 @@ import UIBackButton from "../../UI/button/backButton/UiBackButton";
 import UITitle from "../../UI/title/UiTitle";
 import UIBookImage from "../../UI/bookImage/UIBookImage";
 import CustomTabs from './BookTabs/BookTabs'
+import UiLikeButton from '../../UI/button/likeButton/UiLikeButton'
 
 // import BookCard from '../booksPage/bookCard/BookCard'
 
@@ -41,6 +42,7 @@ const BookPage: React.FC = () => {
                         <div className={s.content}>
                             <div className={s.content_image}>
                                 <UIBookImage size={UISize.Large} theme="orange" image={image} />
+                                <UiLikeButton/>
                             </div>
                             <BookDetails />
                         </div>

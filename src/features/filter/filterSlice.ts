@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IBook } from "../../components/UI/bookCard/UiBookCard";
+//import { IBook } from "../../components/UI/bookCard/UiBookCard";
+import { IBookType } from './../books/booksSlice';
 import { getPreparedData, getSortedData } from "./helpers";
 
 export enum PriceOrder {
@@ -10,7 +11,7 @@ export enum PriceOrder {
 }
 
 interface ISortParams {
-    books: IBook[];
+    books: IBookType[];
     priceOrder: string;
 }
 
@@ -18,8 +19,8 @@ interface IInitialState {
     pageSize: string;
     page: number;
     priceOrder: string;
-    books: IBook[];
-    preparedData: IBook[];
+    books: IBookType[];
+    preparedData: IBookType[];
 }
 
 const initialState: IInitialState = {
@@ -34,7 +35,7 @@ const filterSlice = createSlice({
     name: "filter",
     initialState,
     reducers: {
-        setInitialArray(state, { payload }: PayloadAction<IBook[]>) {
+        setInitialArray(state, { payload }: PayloadAction<IBookType[]>) {
             state.books = payload;
             state.preparedData = payload;
         },

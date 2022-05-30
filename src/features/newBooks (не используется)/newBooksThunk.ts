@@ -1,11 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { IBook } from "../../components/UI/bookCard/UiBookCard";
+//import { IBook } from "../../components/UI/bookCard/UiBookCard";
+import { IBookType } from './../books/booksSlice';
 import { BASE_URL } from "../../constants/constants";
 
 interface fetchNewBooksResponse {
     total: string;
-    books: IBook[];
+    books: IBookType[];
 }
 
 export const fetchNewBooks = createAsyncThunk<

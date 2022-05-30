@@ -1,10 +1,11 @@
-import { IBook } from "../../components/UI/bookCard/UiBookCard";
+//import { IBookType } from "../../components/UI/bookCard/UiBookCard";
+import { IBookType } from './../books/booksSlice';
 
-export const getPreparedData = (arr: IBook[], page: number, pageSize: string): IBook[] => {
+export const getPreparedData = (arr: IBookType[], page: number, pageSize: string): IBookType[] => {
     return arr.slice((page - 1) * +pageSize, page * +pageSize);
 };
 
-export const getSortedData = (arr: IBook[], order: string): IBook[] => {
+export const getSortedData = (arr: IBookType[], order: string): IBookType[] => {
     switch (order) {
         case "asc": {
             return arr.sort((a, b) => +a.price.slice(1) - +b.price.slice(1));

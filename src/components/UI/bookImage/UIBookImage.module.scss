@@ -36,3 +36,10 @@
         max-width: 300px;
     }
 }
+@media (max-width: 472px) {
+    .image_large {
+        & img {
+            max-width: 220px;
+        }
+    }
+}
