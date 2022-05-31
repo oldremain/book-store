@@ -23,20 +23,23 @@ const favouritesSlice = createSlice({
     name: 'favourites',
     initialState,
     reducers: {
-        addFavourite(state, action: PayloadAction<IFavouriteBook>) {
+        toggleFavourite(state, action: PayloadAction<IFavouriteBook>) {
             const isUnique = state.books.some(el => Object.keys(action.payload)[0] in el) 
 
             if (!isUnique) {
                 state.books.push(action.payload)
                 localStorage.setItem('favourites', JSON.stringify(state.books))
+            } else {
+                state.books = state.books.filter(el => Object.keys(el)[0] !== Object.keys(action.payload)[0])
+                localStorage.setItem('favourites', JSON.stringify(state.books))
             }
         },
-        removeFromFavourite(state, { payload }: PayloadAction<string>) {
-            state.books = state.books.filter(el => !el[payload])
-        }
+        // removeFromFavourite(state, { payload }: PayloadAction<string>) {
+        //     state.books = state.books.filter(el => !el[payload])
+        // }
     }
 })
 
-export const { addFavourite, removeFromFavourite } = favouritesSlice.actions
+export const { toggleFavourite } = favouritesSlice.actions
 
 export default favouritesSlice.reducer

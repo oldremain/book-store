@@ -17,6 +17,13 @@
     justify-content: center;
 }
 
+.heart_active {
+    path {
+        stroke: red;
+    }
+    fill: red;  
+}
+
 @media (max-width: 472px) {
     .heart_container {
         width: 46px;
