@@ -1,34 +1,25 @@
-import React, { useEffect } from 'react'
-import { UISize } from '../../../enums/enums'
-import { IFavouriteBook, removeFromFavourite, toggleFavourite } from '../../../features/favourites/favouritesSlice'
+import React from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks'
+import { removeFromFavourite } from '../../../features/favourites/favouritesSlice'
+import { getBookData } from './helpers'
+
 import UiBookCard from '../../UI/bookCard/UiBookCard'
 import UIBackButton from '../../UI/button/backButton/UiBackButton'
 import UITitle from '../../UI/title/UiTitle'
 import EmptyPage from './EmptyPage'
-
 import ClearIcon from '@mui/icons-material/Clear';
+import { UISize } from '../../../enums/enums'
 
 import s from './Favourites.module.scss'
 
-
-const getFavouritesArray = (state: IFavouriteBook[]) => {
-    return state.map(el => Object.values(el)).flat()
-}
-
 const Favourites: React.FC = () => {
-    const favouriteBooks = useAppSelector(state => getFavouritesArray(state.favourite.books))
+    const favouriteBooks = useAppSelector(state => getBookData(state.favourite.books))
     const dispatch = useAppDispatch()
 
     const handleClick = (id: string) => { 
         dispatch(removeFromFavourite(id))
     }
-
-    useEffect(() => {
-        console.log(favouriteBooks)
-    }, [])
    
-
     return (
         <section className={s.section_container}>
             <UIBackButton/>
