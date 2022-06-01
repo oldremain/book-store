@@ -34,12 +34,13 @@ const favouritesSlice = createSlice({
                 localStorage.setItem('favourites', JSON.stringify(state.books))
             }
         },
-        // removeFromFavourite(state, { payload }: PayloadAction<string>) {
-        //     state.books = state.books.filter(el => !el[payload])
-        // }
+        removeFromFavourite(state, { payload }: PayloadAction<string>) {
+            state.books = state.books.filter(el => Object.keys(el)[0] !== payload)
+            localStorage.setItem('favourites', JSON.stringify(state.books))
+        }
     }
 })
 
-export const { toggleFavourite } = favouritesSlice.actions
+export const { toggleFavourite, removeFromFavourite } = favouritesSlice.actions
 
 export default favouritesSlice.reducer

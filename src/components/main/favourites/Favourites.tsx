@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react'
 import { UISize } from '../../../enums/enums'
-import { IFavouriteBook } from '../../../features/favourites/favouritesSlice'
-import { useAppSelector } from '../../../hooks/reduxHooks'
+import { IFavouriteBook, removeFromFavourite, toggleFavourite } from '../../../features/favourites/favouritesSlice'
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks'
 import UiBookCard from '../../UI/bookCard/UiBookCard'
 import UIBackButton from '../../UI/button/backButton/UiBackButton'
 import UITitle from '../../UI/title/UiTitle'
+
+import ClearIcon from '@mui/icons-material/Clear';
 
 import s from './Favourites.module.scss'
 
@@ -14,6 +16,12 @@ const getFavouritesArray = (state: IFavouriteBook[]) => {
 
 const Favourites: React.FC = () => {
     const favouriteBooks = useAppSelector(state => getFavouritesArray(state.favourite.books))
+    // const preparedData = useAppSelector(state => state.favourite.books)
+    const dispatch = useAppDispatch()
+
+    const handleClick = (id: string) => { 
+        dispatch(removeFromFavourite(id))
+    }
 
     useEffect(() => {
         console.log(favouriteBooks)
@@ -29,14 +37,17 @@ const Favourites: React.FC = () => {
 
             <div className={s.favourites_card}>
                 {favouriteBooks.map(book => 
-                        <>
                             <UiBookCard 
                                 key={book.isbn13}
                                 cName='book_card__favourites'
                                 {...book} 
-                            />
-                            {/* <div className={s.favourites_separator}></div>  */}
-                        </>
+                            >
+                                <ClearIcon 
+                                    key={book.isbn13 + book.price}
+                                    className={s.clear_icons} 
+                                    onClick={() => handleClick(book.isbn13)}
+                                /> 
+                            </UiBookCard>
                     )
                 }
             </div>

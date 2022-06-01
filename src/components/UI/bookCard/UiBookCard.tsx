@@ -16,25 +16,29 @@ interface IBookCard {
     subtitle: string;
     price: string;
     isbn13: string;
+    children?: React.ReactNode
 }
 
-const UiBookCard: React.FC<IBookCard> = ({ image, title, subtitle, price, isbn13, cName = ''}) => {
+const UiBookCard: React.FC<IBookCard> = ({ image, title, subtitle, price, isbn13, cName = '', children}) => {
     return (
-        <Link to={`/books/${isbn13}`} className={cn(s.book_card, s[cName])}>
-            <UIBookImage size={UISize.Medium} theme="blue" image={image} cName={cName}/>
-            <div className={s.book_details}>
-                <div className={s.book_about}>
-                    <UITitle size={UISize.Small}>
-                        {title.length > 45 ? title.slice(0, 45) + "..." : title}
-                    </UITitle>
-                    {subtitle && 
-                        <div className={s.subtitle}>
-                            <span>{subtitle}</span>
-                        </div>}
+        <div className={s.card_container}>
+            <Link to={`/books/${isbn13}`} className={cn(s.card, s[cName])}>
+                <UIBookImage size={UISize.Medium} theme="blue" image={image} cName={cName}/>
+                <div className={s.book_details}>
+                    <div className={s.book_about}>
+                        <UITitle size={UISize.Small}>
+                            {title.length > 45 ? title.slice(0, 45) + "..." : title}
+                        </UITitle>
+                        {subtitle && 
+                            <div className={s.subtitle}>
+                                <span>{subtitle}</span>
+                            </div>}
+                    </div>
+                    <UiBookRates price={price} isbn13={isbn13} />
                 </div>
-                <UiBookRates price={price} isbn13={isbn13} />
-            </div>
-        </Link>
+            </Link>
+            {children}
+        </div>
     );
 };
 

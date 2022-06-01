@@ -1,4 +1,8 @@
-.book_card {
+.card_container {
+    position: relative;
+}
+.card {
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -77,6 +81,7 @@
 
 .book_card {
     &.book_card__favourites {
+        position: relative;
         display: flex;
         flex-direction: row;
         align-items: center;
