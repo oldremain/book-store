@@ -1,0 +1,15 @@
+.favourites_card {
+    margin-top: 20px;
+}
+
+.favourites_card > *:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+// .favourites_separator {
+//     width: 100%;
+//     height: 2px;
+//     background-color: gray;
+//     margin: 5px 0;
+
+// }

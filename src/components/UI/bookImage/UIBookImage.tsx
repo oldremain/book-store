@@ -9,11 +9,12 @@ export interface IBookImageProps {
     size: UISize;
     theme: "blue" | "orange";
     image: string;
+    cName?: string
 }
 
-const UiBookImage: React.FC<IBookImageProps> = ({ size, theme, image }) => {
+const UiBookImage: React.FC<IBookImageProps> = ({ size, theme, image, cName = '' }) => {
     return (
-        <div className={cn(s.book_image, s[`image_${size}`], s[`bg_${theme}`])}>
+        <div className={cn(s.book_image, s[`image_${size}`], s[`bg_${theme}`], s[cName])}>
             <img src={image} alt="it-book-image" />
         </div>
     );
