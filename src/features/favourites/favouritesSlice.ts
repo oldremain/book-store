@@ -13,10 +13,12 @@ export interface IFavouriteBook {
 
 interface IInitialState {
     books: IFavouriteBook[]
+    isFavourite?: boolean
 }
 
 const initialState: IInitialState = {
-    books: JSON.parse(localStorage.getItem('favourites') || '[]')
+    books: JSON.parse(localStorage.getItem('favourites') || '[]'),
+    isFavourite: undefined
 }
 
 const favouritesSlice = createSlice({
@@ -28,9 +30,11 @@ const favouritesSlice = createSlice({
 
             if (!isUnique) {
                 state.books.push(action.payload)
+                state.isFavourite = true
                 localStorage.setItem('favourites', JSON.stringify(state.books))
             } else {
                 state.books = state.books.filter(el => Object.keys(el)[0] !== Object.keys(action.payload)[0])
+                state.isFavourite = false
                 localStorage.setItem('favourites', JSON.stringify(state.books))
             }
         },

@@ -1,12 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import cn from 'classnames'
 import { ReactComponent as AddFavouriteIcon } from '../../../../assets/cardIcons/AddFavouriteIcon.svg'
 import { toggleFavourite, IFavouriteBook } from '../../../../features/favourites/favouritesSlice'
 import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxHooks'
 
 import s from './UiLikeButton.module.scss'
-
-//const favouriteBooks: IFavouriteBook[] = JSON.parse(localStorage.getItem('favourites') || '[]')
 
 const UiLikeButton: React.FC = () => {
     const { title, subtitle, isbn13, price, image } = useAppSelector(state => state.oneBook.book)
@@ -19,20 +17,18 @@ const UiLikeButton: React.FC = () => {
 
     const preparedData: IFavouriteBook = {}
 
+    preparedData[isbn13] = {
+        image, 
+        title, 
+        subtitle, 
+        price, 
+        isbn13
+    }
+
     const clickHandler = () => {
         dispatch(toggleFavourite(preparedData))
         setFav(!fav)
     }
-
-    useEffect(() => {
-        preparedData[isbn13] = {
-            image, 
-            title, 
-            subtitle, 
-            price, 
-            isbn13
-        }
-    }, [fav, isbn13])
 
     return (
       <div className={s.heart_container}>
