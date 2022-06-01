@@ -70,7 +70,7 @@ const InitialPage: React.FC = () => {
                 <SelectPriceOrder priceOrder={priceOrder} handleChangePrice={handleChangePrice} />
             </SelectControl>
             <div className={s.cards_container}>
-                {loading && !isEmptyData ? (
+                {loading && isEmptyData ? (
                     <Loader />
                 ) : (
                     preparedData.map((book, i) => 
@@ -91,3 +91,29 @@ const InitialPage: React.FC = () => {
 };
 
 export default InitialPage;
+
+
+{/* <h2>
+<UITitle size={UISize.Large}>New Releases Books ({newBooks.length})</UITitle>
+</h2>
+<SelectControl>
+<SelectSize pageSize={pageSize} handleChangeSize={handleChangeSize} />
+<SelectPriceOrder priceOrder={priceOrder} handleChangePrice={handleChangePrice} />
+</SelectControl>
+<div className={s.cards_container}>
+{loading && !isEmptyData ? (
+    <Loader />
+) : (
+    preparedData.map((book, i) => 
+        <UiBookCard 
+            key={book.isbn13 + i} 
+            {...book} 
+        />)
+)}
+</div>
+<CustomPagination
+itemsCount={newBooks.length}
+page={page}
+pageSize={pageSize}
+handleChangePage={handleChangePage}
+/> */}
