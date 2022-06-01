@@ -1,6 +1,7 @@
 .card_container {
     position: relative;
 }
+
 .card {
     height: 100%;
     width: 100%;
@@ -42,7 +43,6 @@
 }
 
 .book_details {
-    //flex: 0 1 70%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -77,6 +77,13 @@
             font-weight: 400;
         }
     }
+}
+
+.icon_container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 30px;
 }
 
 .card {
