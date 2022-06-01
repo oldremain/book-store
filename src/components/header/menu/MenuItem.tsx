@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface IMenuItemProps {
     href: string;
@@ -8,9 +9,9 @@ interface IMenuItemProps {
 
 const MenuItem: React.FC<IMenuItemProps> = ({ href, cName, children }) => {
     return (
-        <a href={href} className={cName}>
+        <Link to={href} className={cName}>
             {children}
-        </a>
+        </Link>
     );
 };
 

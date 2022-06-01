@@ -34,7 +34,7 @@ const UiBookCard: React.FC<IBookCard> = ({ image, title, subtitle, price, isbn13
                                 <span>{subtitle}</span>
                             </div>}
                     </div>
-                    <UiBookRates price={price} isbn13={isbn13} />
+                    <UiBookRates price={price} isbn13={isbn13} cName={cName}/>
                 </div>
             </Link>
             {children}

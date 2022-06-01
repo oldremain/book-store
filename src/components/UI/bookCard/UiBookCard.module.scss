@@ -79,8 +79,8 @@
     }
 }
 
-.book_card {
-    &.book_card__favourites {
+.card {
+    &.card__favourites {
         position: relative;
         display: flex;
         flex-direction: row;
@@ -89,6 +89,22 @@
 
         .book_details {
             flex: 0 1 70%;
+        }
+    }
+}
+
+@media (max-width: 450px) {
+    .card {
+        &.card__favourites {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 20px;
+    
+            .book_details {
+                flex: 0 1 70%;
+            }
         }
     }
 }

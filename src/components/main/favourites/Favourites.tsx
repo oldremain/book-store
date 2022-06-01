@@ -5,10 +5,12 @@ import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks'
 import UiBookCard from '../../UI/bookCard/UiBookCard'
 import UIBackButton from '../../UI/button/backButton/UiBackButton'
 import UITitle from '../../UI/title/UiTitle'
+import EmptyPage from './EmptyPage'
 
 import ClearIcon from '@mui/icons-material/Clear';
 
 import s from './Favourites.module.scss'
+
 
 const getFavouritesArray = (state: IFavouriteBook[]) => {
     return state.map(el => Object.values(el)).flat()
@@ -16,7 +18,6 @@ const getFavouritesArray = (state: IFavouriteBook[]) => {
 
 const Favourites: React.FC = () => {
     const favouriteBooks = useAppSelector(state => getFavouritesArray(state.favourite.books))
-    // const preparedData = useAppSelector(state => state.favourite.books)
     const dispatch = useAppDispatch()
 
     const handleClick = (id: string) => { 
@@ -30,27 +31,31 @@ const Favourites: React.FC = () => {
 
     return (
         <section className={s.section_container}>
-            <UIBackButton backTo={"/new/1"} />
+            <UIBackButton/>
             <h2>
                 <UITitle size={UISize.Large}>{'Favourites'}</UITitle>
             </h2>
-
-            <div className={s.favourites_card}>
-                {favouriteBooks.map(book => 
+           
+            {!favouriteBooks.length 
+                ? 
+                    <EmptyPage/>
+                :  
+                    <div className={s.favourites_card}>
+                        {favouriteBooks.map(book => 
                             <UiBookCard 
                                 key={book.isbn13}
-                                cName='book_card__favourites'
+                                cName='card__favourites'
                                 {...book} 
                             >
                                 <ClearIcon 
                                     key={book.isbn13 + book.price}
-                                    className={s.clear_icons} 
+                                    className={s.clear_icon} 
                                     onClick={() => handleClick(book.isbn13)}
                                 /> 
                             </UiBookCard>
-                    )
-                }
-            </div>
+                            )
+                        }
+                    </div>}
         </section>
   )
 }
