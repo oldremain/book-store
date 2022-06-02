@@ -37,9 +37,13 @@ const UiBookCard: React.FC<IBookCard> = ({ image, title, subtitle, price, isbn13
                     <UiBookRates price={price} isbn13={isbn13} cName={cName}/>
                 </div>
             </Link>
-            <div className={s.icon_container}>
-                { children }
-            </div>
+
+            {!!children && 
+                <div className={s.icon_fav_container}>
+                    { children }
+                </div>
+            }
+            
         </div>
     );
 };

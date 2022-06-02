@@ -13,12 +13,14 @@ export interface IFavouriteBook {
 
 interface IInitialState {
     books: IFavouriteBook[];
-    preparedData: IFavouriteBook[]
+    preparedData: IFavouriteBook[];
+    pageSize: string
 }
 
 const initialState: IInitialState = {
     books: JSON.parse(localStorage.getItem('favourites') || '[]'),
-    preparedData: []
+    preparedData: [],
+    pageSize: '3'
 }
 
 const favouritesSlice = createSlice({
@@ -38,13 +40,16 @@ const favouritesSlice = createSlice({
         },
         removeFromFavourite(state, { payload }: PayloadAction<string>) {
             state.books = state.books.filter(el => Object.keys(el)[0] !== payload)
+            state.preparedData = state.preparedData.filter(el => Object.keys(el)[0] !== payload)
             localStorage.setItem('favourites', JSON.stringify(state.books))
         },
-        pageFilter(state, {payload}) {}
+        pageFilter(state, {payload}: PayloadAction<number>) {
+            state.preparedData = state.books.slice((payload - 1) * +state.pageSize, payload * +state.pageSize)
+        }
 
     }
 })
 
-export const { toggleFavourite, removeFromFavourite } = favouritesSlice.actions
+export const { toggleFavourite, removeFromFavourite, pageFilter } = favouritesSlice.actions
 
 export default favouritesSlice.reducer
