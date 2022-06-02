@@ -37,13 +37,15 @@ const Favourites: React.FC = () => {
             setPage(1)
             dispatch(pageFilter(1))  // Аналогично с первой
         }
-         else if (preparedData.length < 3 && books.length === 3 && page === 1) {
+         else if (preparedData.length < 3 && books.length === 3) {
             dispatch(pageFilter(page)) // Объединяем результаты с первых двух страниц
         }    
+        console.log('sd')
     }, [preparedData, books, page])
 
     useEffect(() => {
         dispatch(pageFilter(page))
+        console.log('sd')
     }, [])
    
     return (
