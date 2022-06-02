@@ -5,6 +5,7 @@ import { ReactComponent as CartIcon } from "../../../assets/headerIcons/CartIcon
 import { ReactComponent as UserIcon } from "../../../assets/headerIcons/UserIcon.svg";
 
 type MenuDataType = {
+    id: number;
     title: string;
     path: string;
     cName: string;
@@ -12,14 +13,21 @@ type MenuDataType = {
 };
 
 export const menuData: MenuDataType[] = [
-    { title: "Favourites", path: "/favourites", cName: "fav_link", icon: FavouritesIcon },
+    {   id: 1,
+        title: "Favourites", 
+        path: "/favourites", 
+        cName: "fav_link", 
+        icon: FavouritesIcon 
+    },
     {
+        id: 2,
         title: "Cart",
         path: "/cart",
         cName: "cart_link",
         icon: CartIcon,
     },
     {
+        id: 3,
         title: "Account",
         path: "/account",
         cName: "acc_link",

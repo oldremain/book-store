@@ -2,7 +2,7 @@ import React from "react";
 import { useAppDispatch } from "../../../hooks/reduxHooks";
 import { toggleVisibility } from "../../../features/sidebar/sidebarSlice";
 
-import MenuItem from "./MenuItem";
+import MenuItem from "./menuItem/MenuItem";
 import MenuBtn from "./MenuBtn";
 import { menuData } from "./menuData";
 import { ReactComponent as MenuBurgerIcon } from "../../../assets/headerIcons/MenuBurger.svg";
@@ -20,8 +20,8 @@ const Menu: React.FC = () => {
         <>
             <nav className={s.nav_menu}>
                 <ul className={s.menu_items}>
-                    {menuData.map((item, i) => (
-                        <li key={item.path + i} className={s.menu_item}>
+                    {menuData.map((item) => (
+                        <li key={item.id} className={s.menu_item}>
                             <MenuItem
                                 href={item.path}
                                 cName={s[item.cName]}

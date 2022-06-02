@@ -16,6 +16,9 @@
     align-items: center;
     gap: 30px;
 }
+.menu_item {
+    position: relative;
+}
 
 @media (max-width: 768px) {
     .burger_menu {
@@ -31,5 +34,8 @@
     .fav_link,
     .acc_link {
         display: none;
+    }
+    .cart_link {
+        display: block;
     }
 }

@@ -31,10 +31,16 @@ const Favourites: React.FC = () => {
     useEffect(() => {
         if (!preparedData.length && books.length && page !== 1) {
             setPage(page => page - 1)
-            dispatch(pageFilter(page - 1))
+            dispatch(pageFilter(page - 1)) // Проверка если удаляем ВСЕ книги не с первой страницы
+        } 
+         else if (!preparedData.length && books.length && page === 1) {
+            setPage(1)
+            dispatch(pageFilter(1))  // Аналогично с первой
         }
-
-        console.log((page))
+         else if (preparedData.length < 3 && books.length === 3 && page === 1) {
+            setPage(1)
+            dispatch(pageFilter(page)) // Объединяем результаты с первых двух страниц
+        }
     }, [preparedData])
 
     useEffect(() => {

@@ -4,7 +4,7 @@ import { toggleVisibility } from "../../features/sidebar/sidebarSlice";
 import { motion } from "framer-motion";
 
 import Logo from "../header/logo/Logo";
-import MenuItem from "../header/menu/MenuItem";
+import MenuItem from "../header/menu/menuItem/MenuItem";
 import Search from "../header/search/Search";
 import MenuBtn from "../header/menu/MenuBtn";
 import UIPrimaryButton from "../UI/button/UiPrimaryButton";
