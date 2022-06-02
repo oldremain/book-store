@@ -36,7 +36,7 @@
             transition: all 0.3s ease;
         }
         &:hover {
-            outline: 2px solid var(--bg-primary2);
+            background: var(--bg-secondary);
             &::placeholder {
                 color: darken(#a8a8a8, 10%);
             }
