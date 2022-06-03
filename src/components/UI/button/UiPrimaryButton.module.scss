@@ -1,4 +1,4 @@
-.ui_btn {
+.ui_btn_container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,7 +15,7 @@
     // }
 }
 
-.ui_btn_link {
+.ui_btn {
     width: 100%;
     text-align: center;
     font-family: "Bebas Neue";
@@ -25,4 +25,5 @@
     letter-spacing: 0.05em;
     color: var(--bg-primary);
     text-transform: uppercase;
+    background-color: transparent;
 }

@@ -8,14 +8,15 @@ interface IButtonProps {
     cNameLink?: string;
     text: string;
     path?: string;
+    handleClick?: () => void
 }
 
-const UIPrimaryButton: React.FC<IButtonProps> = ({ cNameBtn = "", text }) => {
+const UIPrimaryButton: React.FC<IButtonProps> = ({ cNameBtn = "", text, handleClick }) => {
     return (
-        <div className={cn(s.ui_btn, s[cNameBtn])}>
-            <a href="#" className={s.ui_btn_link}>
+        <div className={cn(s.ui_btn_container, s[cNameBtn])}>
+            <button className={s.ui_btn} onClick={handleClick}>
                 {text}
-            </a>
+            </button>
         </div>
     );
 };

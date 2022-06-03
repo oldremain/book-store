@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import _isEmpty from "lodash.isempty";
-import { useAppSelector } from "../../../../hooks/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../../../../hooks/reduxHooks";
 
 import DetailsList from "./DetailsList";
 import MoreDetailsList from "./MoreDetailsList";
@@ -11,11 +11,27 @@ import PreviewBook from "./PreviewBook";
 import { UISize } from "../../../../enums/enums";
 
 import s from "./BookDetails.module.scss";
+import { addProduct, ICart } from "../../../../features/cart/cartSlice";
 
 const BookDetails: React.FC = () => {
-    const { price, isbn13 } = useAppSelector((state) => state.oneBook.book);
+    const { price, isbn13, title, subtitle, image  } = useAppSelector((state) => state.oneBook.book);
     const preview = useAppSelector((state) => state.oneBook.book.pdf); //объект со ссылками
-    const empty = _isEmpty(preview); // проверка что не пустой
+    const isEmptyPreview = _isEmpty(preview); // проверка что не пустой
+
+    const dispatch = useAppDispatch()
+
+    const preparedData = useRef<ICart>({})
+    preparedData.current[isbn13] = {
+        image, 
+        title, 
+        subtitle, 
+        price, 
+        isbn13
+    }
+
+    const handleCartClick = () => {
+        dispatch(addProduct( preparedData.current))
+    }
 
     return (
         <div className={s.details_container}>
@@ -24,8 +40,8 @@ const BookDetails: React.FC = () => {
                 <DetailsList />
                 <MoreDetailsList />
             </div>
-            <UIPrimaryButton text="Add to cart" cNameBtn="ui_btn_bookDetails" />
-            {preview && !empty && <PreviewBook preview={Object.values(preview)[0]} />}
+            <UIPrimaryButton text="Add to cart" cNameBtn="ui_btn_bookDetails" handleClick={handleCartClick}/>
+            {preview && !isEmptyPreview && <PreviewBook preview={Object.values(preview)[0]} />}
             {/* если не пустой берем первую ссылку */}
         </div>
     );

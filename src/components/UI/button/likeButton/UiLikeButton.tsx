@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import cn from 'classnames'
 import { ReactComponent as AddFavouriteIcon } from '../../../../assets/cardIcons/AddFavouriteIcon.svg'
 import { toggleFavourite, IFavouriteBook } from '../../../../features/favourites/favouritesSlice'
@@ -15,9 +15,8 @@ const UiLikeButton: React.FC = () => {
 
     const dispatch = useAppDispatch()
 
-    const preparedData: IFavouriteBook = {}
-
-    preparedData[isbn13] = {
+    const preparedData = useRef<IFavouriteBook>({})
+    preparedData.current[isbn13] = {
         image, 
         title, 
         subtitle, 
@@ -26,7 +25,7 @@ const UiLikeButton: React.FC = () => {
     }
 
     const clickHandler = () => {
-        dispatch(toggleFavourite(preparedData))
+        dispatch(toggleFavourite({...preparedData.current}))
         setFav(!fav)
     }
 
