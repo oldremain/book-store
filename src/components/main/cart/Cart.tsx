@@ -11,6 +11,7 @@ import UiEmptyPage from '../../UI/emptyPage/UiEmptyPage'
 import UiBookCard from '../../UI/bookCard/UiBookCard'
 import { removeFromCart } from '../../../features/cart/cartSlice'
 import ClearIcon from '@mui/icons-material/Clear';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 
 
 const Cart: React.FC = () => {
@@ -25,19 +26,23 @@ const Cart: React.FC = () => {
       <section className={s.section_container}>
               <UIBackButton/>
               <h2>
-                  <UITitle size={UISize.Large}>{'Cart'}</UITitle>
+                  <UITitle size={UISize.Large}>
+                      {'Cart'}
+                  </UITitle>
               </h2>
 
               {!books.length 
                   ? 
-                    <UiEmptyPage text='Cart is empty !'/>
+                    <UiEmptyPage text='Cart is empty !'>
+                        <ShoppingBasketIcon />
+                    </UiEmptyPage>
                   :  
                     <>
-                      <div className={s.favourites_card}>
+                      <div className={s.store_card}>
                           {books.map(book => 
                             <UiBookCard 
                                 key={book.isbn13}
-                                cName='card__favourites'
+                                cName='card__store'
                                 {...book}>
                                 <ClearIcon 
                                   key={book.isbn13 + book.price}

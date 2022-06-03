@@ -87,7 +87,8 @@
 }
 
 .card {
-    &.card__favourites {
+    &.card__favourites,
+    &.card__store {
         position: relative;
         display: flex;
         flex-direction: row;

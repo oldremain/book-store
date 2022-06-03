@@ -6,12 +6,11 @@ import { getBookData } from './helpers'
 import UiBookCard from '../../UI/bookCard/UiBookCard'
 import UIBackButton from '../../UI/button/backButton/UiBackButton'
 import UITitle from '../../UI/title/UiTitle'
-//import EmptyPage from './EmptyPage'
 import UiEmptyPage from '../../UI/emptyPage/UiEmptyPage'
 import ClearIcon from '@mui/icons-material/Clear';
 import { UISize } from '../../../enums/enums'
 import CustomPagination from '../../UI/pagination/Pagination'
-import { ReactComponent as AddFavouriteIcon } from '../../../assets/cardIcons/AddFavouriteIcon.svg'
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import s from './Favourites.module.scss'
 
@@ -57,13 +56,15 @@ const Favourites: React.FC = () => {
         <section className={s.section_container}>
             <UIBackButton/>
             <h2>
-                <UITitle size={UISize.Large}>{'Favourites'}</UITitle>
+                <UITitle size={UISize.Large}>
+                    {'Favourites'}
+                </UITitle>
             </h2>
            
             {!books.length 
                 ? 
                   <UiEmptyPage text='No favourites yet !'>
-                      <AddFavouriteIcon />
+                      <FavoriteIcon/>
                   </UiEmptyPage>
                 :  
                   <>
