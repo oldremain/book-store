@@ -86,7 +86,8 @@ const ResultsPage: React.FC = () => {
                     preparedData.map((book, i) => 
                         <UiBookCard 
                             key={book.isbn13 + i} 
-                            {...book} 
+                            {...book}
+                            cName={'card__results'} 
                         />)
                 )}
             </div>

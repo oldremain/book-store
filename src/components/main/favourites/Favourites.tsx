@@ -54,7 +54,7 @@ const Favourites: React.FC = () => {
    
     return (
         <section className={s.section_container}>
-            <UIBackButton/>
+            <UIBackButton backTo='new/1'/>
             <h2>
                 <UITitle size={UISize.Large}>
                     {'Favourites'}
@@ -74,11 +74,11 @@ const Favourites: React.FC = () => {
                               key={book.isbn13}
                               cName='card__favourites'
                               {...book}>
-                              <ClearIcon 
-                                key={book.isbn13 + book.price}
-                                className={s.clear_icon} 
-                                onClick={() => handleClick(book.isbn13)}
-                              /> 
+                                    <ClearIcon 
+                                      key={book.isbn13 + book.price}
+                                      className={s.clear_icon} 
+                                      onClick={() => handleClick(book.isbn13)}
+                                    /> 
                           </UiBookCard>
                           )
                         }

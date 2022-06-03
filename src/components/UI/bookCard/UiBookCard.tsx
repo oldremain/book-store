@@ -8,6 +8,7 @@ import UiBookRates from "../bookRates/UIBookRates";
 import { UISize } from "../../../enums/enums";
 
 import s from "./UiBookCard.module.scss";
+import CartCounter from "../../main/cart/cartCounter/CartCounter";
 
 interface IBookCard {
     cName?: string;
@@ -17,12 +18,14 @@ interface IBookCard {
     price: string;
     isbn13: string;
     children?: React.ReactNode
+    onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void
 }
 
-const UiBookCard: React.FC<IBookCard> = ({ image, title, subtitle, price, isbn13, cName = '', children}) => {
+const UiBookCard: React.FC<IBookCard> = ({ image, title, subtitle, price, isbn13, cName = '', children, onClick}) => {
+
     return (
         <div className={s.card_container}>
-            <Link to={`/books/${isbn13}`} className={cn(s.card, s[cName])}>
+            <Link to={`/books/${isbn13}`} className={cn(s.card, s[cName])} onClick={onClick}>
                 <UIBookImage size={UISize.Medium} theme="blue" image={image} cName={cName}/>
                 <div className={s.book_details}>
                     <div className={s.book_about}>
@@ -35,13 +38,16 @@ const UiBookCard: React.FC<IBookCard> = ({ image, title, subtitle, price, isbn13
                             </div>}
                     </div>
                     <UiBookRates price={price} isbn13={isbn13} cName={cName}/>
+                    <CartCounter cName={cName}/>
                 </div>
             </Link>
 
             {!!children && 
-                <div className={s.icon_fav_container}>
-                    { children }
-                </div>
+                <>
+                    <div className={s.icon_fav_container}>
+                        { children }
+                    </div>
+                </>
             }
             
         </div>

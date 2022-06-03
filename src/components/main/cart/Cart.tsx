@@ -12,6 +12,7 @@ import UiBookCard from '../../UI/bookCard/UiBookCard'
 import { removeFromCart } from '../../../features/cart/cartSlice'
 import ClearIcon from '@mui/icons-material/Clear';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import CartCounter from './cartCounter/CartCounter'
 
 
 const Cart: React.FC = () => {
@@ -22,9 +23,13 @@ const Cart: React.FC = () => {
         dispatch(removeFromCart(id))
     }
 
+    const clickHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault()
+    }
+
     return (
       <section className={s.section_container}>
-              <UIBackButton/>
+              <UIBackButton backTo='new/1'/>
               <h2>
                   <UITitle size={UISize.Large}>
                       {'Cart'}
@@ -43,12 +48,13 @@ const Cart: React.FC = () => {
                             <UiBookCard 
                                 key={book.isbn13}
                                 cName='card__store'
-                                {...book}>
-                                <ClearIcon 
-                                  key={book.isbn13 + book.price}
-                                  className={s.clear_icon} 
-                                  onClick={() => handleClick(book.isbn13)}
-                                /> 
+                                {...book}
+                                onClick={clickHandler}>
+                                    <ClearIcon 
+                                      key={book.isbn13 + book.price}
+                                      className={s.clear_icon} 
+                                      onClick={() => handleClick(book.isbn13)}
+                                    />
                             </UiBookCard>
                             )
                           }
