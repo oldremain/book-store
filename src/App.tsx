@@ -10,6 +10,7 @@ import BookPage from "./components/main/bookPage/BookPage";
 import InitialPage from "./components/main/booksPage/initialPage/InitialPage";
 import ResultsPage from "./components/main/booksPage/resultsPage/ResultsPage";
 import Favourites from "./components/main/favourites/Favourites";
+import Cart from "./components/main/cart/Cart";
 
 import s from "./App.module.scss";
 
@@ -20,8 +21,8 @@ const App: React.FC = () => {
         <BrowserRouter>
             <div
                 className={s.app_container}
-                style={{ overflow: showSidebar ? "hidden" : "visible" }}
-            >
+                style={{ overflow: showSidebar ? "hidden" : "visible" }}>
+                    
                 <Header />
 
                 {showSidebar && <Sidebar />}
@@ -34,6 +35,7 @@ const App: React.FC = () => {
                             <Route path="search/:book/*" element={<ResultsPage />} />
                             <Route path="books/:isbn" element={<BookPage />} />
                             <Route path="favourites" element={<Favourites />} />
+                            <Route path="cart" element={<Cart />} />
                             <Route path="*" element={<Navigate to="/new/1" />} />
                         </Route>
                     </Routes>

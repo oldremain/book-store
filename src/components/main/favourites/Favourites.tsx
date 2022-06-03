@@ -15,8 +15,8 @@ import s from './Favourites.module.scss'
 
 const Favourites: React.FC = () => {
     const [page, setPage] = useState(1)
-    const preparedData = useAppSelector(state => getBookData(state.favourite.preparedData))
-    const { pageSize, books } = useAppSelector(state => state.favourite)
+    const preparedData = useAppSelector(state => getBookData(state.favourites.preparedData))
+    const { pageSize, books } = useAppSelector(state => state.favourites)
     const dispatch = useAppDispatch()
 
     const handleClick = (id: string) => { 

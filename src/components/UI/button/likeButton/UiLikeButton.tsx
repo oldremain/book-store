@@ -8,7 +8,7 @@ import s from './UiLikeButton.module.scss'
 
 const UiLikeButton: React.FC = () => {
     const { title, subtitle, isbn13, price, image } = useAppSelector(state => state.oneBook.book)
-    const favouriteBooks = useAppSelector(state => state.favourite.books)
+    const favouriteBooks = useAppSelector(state => state.favourites.books)
     const isFavourite = favouriteBooks.some(el => Object.keys(el)[0] === isbn13)
 
     const [fav, setFav] = useState(isFavourite)
