@@ -6,12 +6,15 @@ import { getBookData } from './helpers'
 import UiBookCard from '../../UI/bookCard/UiBookCard'
 import UIBackButton from '../../UI/button/backButton/UiBackButton'
 import UITitle from '../../UI/title/UiTitle'
-import EmptyPage from './EmptyPage'
+//import EmptyPage from './EmptyPage'
+import UiEmptyPage from '../../UI/emptyPage/UiEmptyPage'
 import ClearIcon from '@mui/icons-material/Clear';
 import { UISize } from '../../../enums/enums'
 import CustomPagination from '../../UI/pagination/Pagination'
+import { ReactComponent as AddFavouriteIcon } from '../../../assets/cardIcons/AddFavouriteIcon.svg'
 
 import s from './Favourites.module.scss'
+
 
 const Favourites: React.FC = () => {
     const [page, setPage] = useState(1)
@@ -59,7 +62,9 @@ const Favourites: React.FC = () => {
            
             {!books.length 
                 ? 
-                  <EmptyPage/>
+                  <UiEmptyPage text='No favourites yet !'>
+                      <AddFavouriteIcon />
+                  </UiEmptyPage>
                 :  
                   <>
                     <div className={s.favourites_card}>
