@@ -83,11 +83,20 @@
     }
 }
 
-.icon_fav_container {
+.clear_button {
     position: absolute;
-    top: 0;
-    right: 0;
-    padding: 50px;
+    z-index: 1000;
+    top: 1px;
+    right: 1px;
+    padding: 10px;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 6px 0 0 6px;
+    transition: all 0.15s;
+
+    &:hover {
+        background-color: antiquewhite;
+    }
 }
 
 .card {
@@ -107,20 +116,22 @@
     }
 }
 
-@media (max-width: 510px) {
+@media (max-width: 520px) {
     .card {
-        padding: 0;
-
-        &.card__store {
+        &.card__store,
+        &.card__favourites {
             flex-direction: column;
+            padding: 0;
+            gap: 15px;
 
             & >* {
                 width: 100%;
             }
+
+            .book_details {
+                padding: 15px;
+            }
         }
-    }
-    .book_details {
-        padding: 15px;
     }
 }
 

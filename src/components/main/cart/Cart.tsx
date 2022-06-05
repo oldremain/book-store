@@ -29,7 +29,7 @@ const Cart: React.FC = () => {
 
     return (
       <section className={s.section_container}>
-              <UIBackButton backTo='new/1'/>
+              <UIBackButton />
               <h2>
                   <UITitle size={UISize.Large}>
                       {'Cart'}

@@ -54,7 +54,7 @@ const Favourites: React.FC = () => {
    
     return (
         <section className={s.section_container}>
-            <UIBackButton backTo='new/1'/>
+            <UIBackButton />
             <h2>
                 <UITitle size={UISize.Large}>
                     {'Favourites'}
@@ -64,7 +64,7 @@ const Favourites: React.FC = () => {
             {!books.length 
                 ? 
                   <UiEmptyPage text='No favourites yet !'>
-                      <FavoriteIcon/>
+                      <FavoriteIcon />
                   </UiEmptyPage>
                 :  
                   <>
