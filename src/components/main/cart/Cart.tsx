@@ -1,20 +1,19 @@
 import React from 'react'
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks'
+import { removeFromCart } from '../../../features/cart/cartSlice'
+import { getBookData } from '../favourites/helpers'
 
+import UiBookCard from '../../UI/bookCard/UiBookCard'
 import UIBackButton from '../../UI/button/backButton/UiBackButton'
 import UITitle from '../../UI/title/UiTitle'
+import TotalPrice from './totalPrice/TotalPrice'
+import UiEmptyPage from '../../UI/emptyPage/UiEmptyPage'
+import ClearIcon from '@mui/icons-material/Clear';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+
 import { UISize } from '../../../enums/enums'
 
 import s from './Cart.module.scss'
-import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks'
-import { getBookData } from '../favourites/helpers'
-import UiEmptyPage from '../../UI/emptyPage/UiEmptyPage'
-import UiBookCard from '../../UI/bookCard/UiBookCard'
-import { removeFromCart } from '../../../features/cart/cartSlice'
-import ClearIcon from '@mui/icons-material/Clear';
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import CartCounter from './cartCounter/CartCounter'
-import TotalPrice from './totalPrice/TotalPrice'
-
 
 const Cart: React.FC = () => {
     const books = useAppSelector(state => getBookData(state.cart.books))

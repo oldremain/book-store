@@ -1,20 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { getBooksPriceInfo } from './cartHelpers';
 
 const storageData: ICart[] = JSON.parse(localStorage.getItem('cart') || '[]')
-
-function getBooksPriceInfo(arr: ICart[]) {
-    const obj: IUserPriceBasket = {}
-
-    arr.forEach(el => {
-        obj[Object.keys(el)[0]] = { 
-            count: 1,
-            price: +el[Object.keys(el)[0]].price.slice(1)
-        }
-    })
-
-    return obj
-}
-
 const userPriceBasketData: IUserPriceBasket = getBooksPriceInfo(storageData)
 
 export interface ICart {

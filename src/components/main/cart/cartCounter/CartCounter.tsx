@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { useAppDispatch } from '../../../../hooks/reduxHooks'
+import { increaseProductQty } from '../../../../features/cart/cartSlice'
 import cn from 'classnames'
 
-
 import s from './CartCounter.module.scss'
-import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxHooks'
-import { increaseProductQty } from '../../../../features/cart/cartSlice'
 
 interface ICartCounter {
     cName: string,

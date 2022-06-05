@@ -40,7 +40,12 @@ const BookDetails: React.FC = () => {
                 <DetailsList />
                 <MoreDetailsList />
             </div>
-            <UIPrimaryButton text="Add to cart" cNameBtn="ui_btn_bookDetails" handleClick={handleCartClick}/>
+            <UIPrimaryButton 
+                text="Add to cart" 
+                cNameBtn="ui_btn_bookDetails" 
+                price={price}
+                handleClick={handleCartClick}
+            />
             {preview && !isEmptyPreview && <PreviewBook preview={Object.values(preview)[0]} />}
             {/* если не пустой берем первую ссылку */}
         </div>

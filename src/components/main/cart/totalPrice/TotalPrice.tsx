@@ -1,26 +1,12 @@
-import React, { useEffect, useMemo, useRef } from 'react'
-import { IUserPriceBasket } from '../../../../features/cart/cartSlice'
+import React, { useRef } from 'react'
+import { calculateVAT, calculatePrice, calculateTotal } from '../../../../features/cart/cartHelpers'
 import { useAppSelector } from '../../../../hooks/reduxHooks'
 
 import s from './TotalPrice.module.scss'
 
-const getPrice = (obj: IUserPriceBasket) => {
-    let price: number = 0
-
-    for (let key in obj) {
-        price += obj[key].count * obj[key].price
-    }
-
-    return Number(price.toFixed(2))
-}
-
-const calculateVAT = (price: number, vat: number) => {
-    return Number((price * vat).toFixed(2))
-}
-
 const VAT = 0.2
 
-interface IPriceRef {
+export interface IPriceRef {
     sum: number,
     vat: number,
     total: number
@@ -35,13 +21,9 @@ const TotalPrice: React.FC = () => {
         total: 0
     })
 
-    priceRef.current.sum = getPrice(userPriceBasket)
-    priceRef.current.vat = calculateVAT(priceRef.current.sum, VAT)
-    priceRef.current.total = +(priceRef.current.sum + priceRef.current.vat).toFixed(2)
-
-    useEffect(() => {
-    
-    }, [userPriceBasket])
+    priceRef.current.sum = calculatePrice(userPriceBasket)
+    priceRef.current.vat = calculateVAT(priceRef.current, VAT)
+    priceRef.current.total = calculateTotal(priceRef.current)
 
     return (
         <div className={s.price_container}>
