@@ -1,12 +1,23 @@
 .active {
-   &::after {
+    padding: 0;
+
+    &::after {
        content: '';
        position: absolute;
-       top: -3px;
-       right: -1px;
+       top: 11px;
+       right: 15px;
        width: 7px;
        height: 7px;
        border-radius: 50%;
        background-color: red;
    }
+}
+
+@media (max-width: 768px) {
+    .active {
+        &::after {
+            top: -4px;
+            right: 0px;
+        }
+    }
 }
