@@ -13,6 +13,7 @@ import { removeFromCart } from '../../../features/cart/cartSlice'
 import ClearIcon from '@mui/icons-material/Clear';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import CartCounter from './cartCounter/CartCounter'
+import TotalPrice from './totalPrice/TotalPrice'
 
 
 const Cart: React.FC = () => {
@@ -59,6 +60,7 @@ const Cart: React.FC = () => {
                             )
                           }
                       </div>
+                      <TotalPrice/>
                       {/* <CustomPagination 
                           page={page}
                           pageSize={pageSize} 

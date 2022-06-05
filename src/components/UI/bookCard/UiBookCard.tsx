@@ -38,7 +38,7 @@ const UiBookCard: React.FC<IBookCard> = ({ image, title, subtitle, price, isbn13
                             </div>}
                     </div>
                     <UiBookRates price={price} isbn13={isbn13} cName={cName}/>
-                    <CartCounter cName={cName}/>
+                    <CartCounter cName={cName} isbn13={isbn13}/>
                 </div>
             </Link>
 

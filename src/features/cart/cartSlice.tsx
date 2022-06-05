@@ -1,5 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+const storageData: ICart[] = JSON.parse(localStorage.getItem('cart') || '[]')
+
+function getBooksPriceInfo(arr: ICart[]) {
+    const obj: IUserPriceBasket = {}
+
+    arr.forEach(el => {
+        obj[Object.keys(el)[0]] = { 
+            count: 1,
+            price: +el[Object.keys(el)[0]].price.slice(1)
+        }
+    })
+
+    return obj
+}
+
+const userPriceBasketData: IUserPriceBasket = getBooksPriceInfo(storageData)
 
 export interface ICart {
     [key: string]: {
@@ -11,14 +27,23 @@ export interface ICart {
     }
 }
 
+export interface IUserPriceBasket {
+    [key: string]: {
+        count: number,
+        price: number
+    }
+}
+
 interface IInitialState {
     books: ICart[];
+    userPriceBasket: IUserPriceBasket;
     preparedData: ICart[];
     pageSize: string
 }
 
 const initialState: IInitialState = {
-    books: JSON.parse(localStorage.getItem('cart') || '[]'),
+    books: storageData,
+    userPriceBasket: userPriceBasketData,
     preparedData: [],
     pageSize: '3'
 }
@@ -32,12 +57,21 @@ const cartSlice = createSlice({
 
             if (!hasProduct) {
                 state.books.push(action.payload)
+                state.userPriceBasket = getBooksPriceInfo(state.books)
                 localStorage.setItem('cart', JSON.stringify(state.books))
             } 
+        },
+        increaseProductQty(state, { payload }: PayloadAction<string>) {
+            state.userPriceBasket[payload].count += 1
+        },
+        calculateFinalPrice(state) {
+
         },
         removeFromCart(state, { payload }: PayloadAction<string>) {
             state.books = state.books.filter(el => Object.keys(el)[0] !== payload)
             state.preparedData = state.preparedData.filter(el => Object.keys(el)[0] !== payload)
+
+            delete state.userPriceBasket[payload]
             localStorage.setItem('cart', JSON.stringify(state.books))
         },
         pageFilter(state, {payload}: PayloadAction<number>) {
@@ -47,6 +81,6 @@ const cartSlice = createSlice({
     }
 })
 
-export const { addProduct, removeFromCart, pageFilter } = cartSlice.actions
+export const { addProduct, removeFromCart, pageFilter, increaseProductQty } = cartSlice.actions
 
 export default cartSlice.reducer

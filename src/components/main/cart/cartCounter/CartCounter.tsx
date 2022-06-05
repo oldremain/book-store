@@ -1,22 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import cn from 'classnames'
 
 
 import s from './CartCounter.module.scss'
+import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxHooks'
+import { increaseProductQty } from '../../../../features/cart/cartSlice'
 
 interface ICartCounter {
-    cName: string
+    cName: string,
+    isbn13: string
 }
 
-const CartCounter: React.FC<ICartCounter> = ({ cName }) => {
-    const [count, setCount] = useState(0)
+const CartCounter: React.FC<ICartCounter> = ({ cName, isbn13 }) => {
+    const [count, setCount] = useState(1)
+    const dispatch = useAppDispatch()
 
     const decreaseCount = () => {
-        setCount(count => count - 1)
+        if (count > 1) {
+            setCount(count => count - 1)
+        } 
     }
 
     const increaseCount = () => {
         setCount(count => count + 1)
+        dispatch(increaseProductQty(isbn13))
     }
     
     return (

@@ -33,3 +33,11 @@
     background-color: transparent;
     cursor: pointer;
 }
+
+@media (max-width: 510px) {
+    .counter_container {
+        position: absolute;
+        bottom: 25px;
+        right: 25px;
+    }
+}

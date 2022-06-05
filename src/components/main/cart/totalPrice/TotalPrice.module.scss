@@ -1,0 +1,39 @@
+.price_container {
+    width: 300px;
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    row-gap: 16px;
+    padding: 0 30px;
+    margin: 50px 0 0 auto;
+}
+
+.sum_container,
+.vat_container,
+.total_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.sum_container,
+.vat_container {
+    font-family: 'Helios';
+
+    span:first-child {
+        font-size: 16px;
+        line-height: 150% ;
+        color: var(--system-secondary);
+    }
+
+    span:last-child {
+        color: var(--system-primary);
+    }
+}
+
+.total_container {
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 150%;
+    color: var(--system-primary)
+}
