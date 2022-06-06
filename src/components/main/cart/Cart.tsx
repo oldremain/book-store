@@ -85,12 +85,13 @@ const Cart: React.FC = () => {
                             <UiBookCard 
                                 key={book.isbn13}
                                 cName='card__store'
+                                onLinkClick={handleLinkClick}
+                                onButtonClick={() => handleClearClick(book.isbn13)}
                                 {...book}
-                                onClick={handleLinkClick}>
+                            >
                                     <ClearIcon 
                                       key={book.isbn13 + book.price}
                                       className={s.clear_icon} 
-                                      onClick={() => handleClearClick(book.isbn13)}
                                     />
                             </UiBookCard>
                             )

@@ -18,14 +18,25 @@ interface IBookCard {
     price: string;
     isbn13: string;
     children?: React.ReactNode
-    onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void
+    onLinkClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void,
+    onButtonClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-const UiBookCard: React.FC<IBookCard> = ({ image, title, subtitle, price, isbn13, cName = '', children, onClick}) => {
+const UiBookCard: React.FC<IBookCard> = ({ 
+    image, 
+    title, 
+    subtitle, 
+    price, 
+    isbn13, 
+    cName = '', 
+    onLinkClick,
+    onButtonClick, 
+    children, 
+}) => {
 
     return (
         <div className={s.card_container}>
-            <Link to={`/books/${isbn13}`} className={cn(s.card, s[cName])} onClick={onClick}>
+            <Link to={`/books/${isbn13}`} className={cn(s.card, s[cName])} onClick={onLinkClick}>
                 <UIBookImage size={UISize.Medium} theme="blue" image={image} cName={cName}/>
                 <div className={s.book_details}>
                     <div className={s.book_about}>
@@ -49,7 +60,7 @@ const UiBookCard: React.FC<IBookCard> = ({ image, title, subtitle, price, isbn13
 
             {!!children && 
                 <>
-                    <button className={s.clear_button}>
+                    <button className={s.clear_button} onClick={onButtonClick}>
                         { children }
                     </button>
                 </>

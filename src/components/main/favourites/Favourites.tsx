@@ -13,9 +13,7 @@ import CustomPagination from '../../UI/pagination/Pagination'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import UiBookAmount from '../../UI/bookAmount/UiBookAmount';
 
-
 import s from './Favourites.module.scss'
-
 
 const Favourites: React.FC = () => {
     const [page, setPage] = useState(1)
@@ -23,7 +21,7 @@ const Favourites: React.FC = () => {
     const { pageSize, books } = useAppSelector(state => state.favourites)
     const dispatch = useAppDispatch()
 
-    const handleClick = (id: string) => { 
+    const handleClearClick = (id: string) => { 
         dispatch(removeFromFavourite(id))
     }
 
@@ -80,11 +78,12 @@ const Favourites: React.FC = () => {
                           <UiBookCard 
                               key={book.isbn13}
                               cName='card__favourites'
-                              {...book}>
+                              onButtonClick={() => handleClearClick(book.isbn13)}
+                              {...book}
+                            >
                                     <ClearIcon 
                                       key={book.isbn13 + book.price}
                                       className={s.clear_icon} 
-                                      onClick={() => handleClick(book.isbn13)}
                                     /> 
                           </UiBookCard>
                           )

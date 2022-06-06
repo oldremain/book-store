@@ -43,7 +43,7 @@ const InitialPage: React.FC = () => {
     };
 
     const handleChangePrice = (event: SelectChangeEvent) => {
-        dispatch(setPage(1));
+        //dispatch(setPage(1));
         dispatch(sortByPrice({ priceOrder: event.target.value, books: newBooks }));
     };
 
@@ -51,7 +51,7 @@ const InitialPage: React.FC = () => {
         if (!loading) {
             dispatch(setInitialArray(newBooks));
             dispatch(setPageSize(pageSize));
-            dispatch(setPage(page));
+            dispatch(setPage(1));
             dispatch(sortByPrice({ priceOrder: PriceOrder.INITIAL, books: newBooks }));
         }
     }, [newBooks]); //инициализуем store первоначальми данными
