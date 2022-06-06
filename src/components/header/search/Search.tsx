@@ -28,9 +28,10 @@ const Search: React.FC<ISearchProps> = ({ cName }) => {
             dispatch(fetchBooks({ searchField: book, page: 1 }));
             dispatch(setSearchField(book));
             dispatch(toggleVisibility(false)); // контролируем sidebar
+            
+            navigate(`/search/${book}`); //search/${searchField}/?page=${paginationPage}
+            setBook("");
         }
-        navigate(`/search/${book}`); //search/${searchField}/?page=${paginationPage}
-        setBook("");
     };
 
     return (

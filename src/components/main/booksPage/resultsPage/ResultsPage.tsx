@@ -58,7 +58,9 @@ const ResultsPage: React.FC = () => {
     }, [foundBooks]); //инициализируем фильтр дефолтными(фиксированной страницей и размером) значениями после ответа от сервера
 
     useEffect(() => {
-        const path = searchField ? `/search/${searchField}?page=${paginationPage}` : `/new/1`;
+        dispatch(fetchBooks({ searchField, page: paginationPage }));// при возврате с вкладки favourites не обновлялись данные
+
+        const path = `/search/${searchField}?page=${paginationPage}`;
         navigate(path);
     }, [searchField, paginationPage]); //навигация, строка поиска
 
