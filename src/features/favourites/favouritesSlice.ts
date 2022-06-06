@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+const storageData: IFavouriteBook[] = JSON.parse(localStorage.getItem('cart') || '[]')
 
 export interface IFavouriteBook {
     [key: string]: {
@@ -18,7 +19,7 @@ interface IInitialState {
 }
 
 const initialState: IInitialState = {
-    books: JSON.parse(localStorage.getItem('favourites') || '[]'),
+    books: storageData,
     preparedData: [],
     pageSize: '3'
 }

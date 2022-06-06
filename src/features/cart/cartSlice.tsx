@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getBooksPriceInfo } from './cartHelpers';
 
-const storageData: ICart[] = JSON.parse(localStorage.getItem('cart') || '[]')
+const storageData: ICartBook[] = JSON.parse(localStorage.getItem('cart') || '[]')
 const userPriceBasketData: IUserPriceBasket = getBooksPriceInfo(storageData)
 
-export interface ICart {
+export interface ICartBook {
     [key: string]: {
         title: string,
         subtitle: string,
@@ -22,9 +22,9 @@ export interface IUserPriceBasket {
 }
 
 interface IInitialState {
-    books: ICart[];
+    books: ICartBook[];
     userPriceBasket: IUserPriceBasket;
-    preparedData: ICart[];
+    preparedData: ICartBook[];
     pageSize: string
 }
 
@@ -39,7 +39,7 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        addProduct(state, action: PayloadAction<ICart>) {
+        addProduct(state, action: PayloadAction<ICartBook>) {
             const hasProduct = state.books.some(el => Object.keys(action.payload)[0] in el) 
 
             if (!hasProduct) {

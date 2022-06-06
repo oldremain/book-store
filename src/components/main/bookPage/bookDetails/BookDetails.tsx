@@ -11,7 +11,7 @@ import PreviewBook from "./PreviewBook";
 import { UISize } from "../../../../enums/enums";
 
 import s from "./BookDetails.module.scss";
-import { addProduct, ICart } from "../../../../features/cart/cartSlice";
+import { addProduct, ICartBook } from "../../../../features/cart/cartSlice";
 
 const BookDetails: React.FC = () => {
     const { price, isbn13, title, subtitle, image  } = useAppSelector((state) => state.oneBook.book);
@@ -20,7 +20,7 @@ const BookDetails: React.FC = () => {
 
     const dispatch = useAppDispatch()
 
-    const preparedData = useRef<ICart>({})
+    const preparedData = useRef<ICartBook>({})
     preparedData.current[isbn13] = {
         image, 
         title, 
