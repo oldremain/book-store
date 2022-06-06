@@ -27,11 +27,17 @@
 
 .counter_decrement,
 .counter_increment {
-    padding: 5px;
+    padding: 10px;
     font-size: 20px;
     color: var(--system-primary);
     background-color: transparent;
+    border-radius: 6px;
     cursor: pointer;
+    transition: all 0.15s;
+
+    &:hover {
+        background-color: var(--bg-primary2);
+    }
 }
 
 @media (max-width: 510px) {
@@ -39,5 +45,6 @@
         position: absolute;
         bottom: 25px;
         right: 25px;
+        gap: 20px;
     }
 }

@@ -1,4 +1,14 @@
 .back_btn {
     padding: 15px 15px 15px 0;
     background-color: transparent;
+    transition: all 0.95s;
+
+    &:hover {
+        svg {
+            path {
+                transition: all 0.10s;
+                fill: var(--system-secondary)
+            }
+        }
+    }
 }
