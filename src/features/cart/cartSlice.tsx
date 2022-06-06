@@ -51,8 +51,8 @@ const cartSlice = createSlice({
         increaseProductQty(state, { payload }: PayloadAction<string>) {
             state.userPriceBasket[payload].count += 1
         },
-        calculateFinalPrice(state) {
-
+        decreaseProductQty(state, { payload }: PayloadAction<string>) {
+            state.userPriceBasket[payload].count -= 1
         },
         removeFromCart(state, { payload }: PayloadAction<string>) {
             state.books = state.books.filter(el => Object.keys(el)[0] !== payload)
@@ -68,6 +68,6 @@ const cartSlice = createSlice({
     }
 })
 
-export const { addProduct, removeFromCart, pageFilter, increaseProductQty } = cartSlice.actions
+export const { addProduct, removeFromCart, pageFilter, increaseProductQty, decreaseProductQty } = cartSlice.actions
 
 export default cartSlice.reducer

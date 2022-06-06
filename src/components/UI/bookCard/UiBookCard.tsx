@@ -5,10 +5,10 @@ import cn from "classnames";
 import UITitle from "../title/UiTitle";
 import UIBookImage from "../bookImage/UIBookImage";
 import UiBookRates from "../bookRates/UIBookRates";
+import CartCounter from "../../main/cart/cartCounter/CartCounter";
 import { UISize } from "../../../enums/enums";
 
 import s from "./UiBookCard.module.scss";
-import CartCounter from "../../main/cart/cartCounter/CartCounter";
 
 interface IBookCard {
     cName?: string;
@@ -38,7 +38,12 @@ const UiBookCard: React.FC<IBookCard> = ({ image, title, subtitle, price, isbn13
                             </div>}
                     </div>
                     <UiBookRates price={price} isbn13={isbn13} cName={cName}/>
-                    <CartCounter cName={cName} isbn13={isbn13}/>
+
+                    {cName === 'card__store' && 
+                        <CartCounter 
+                            cName={cName} 
+                            isbn13={isbn13}
+                    />}
                 </div>
             </Link>
 

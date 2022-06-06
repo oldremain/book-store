@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks'
-import { removeFromCart } from '../../../features/cart/cartSlice'
+import { pageFilter, removeFromCart } from '../../../features/cart/cartSlice'
 import { getBookData } from '../favourites/helpers'
 
 import UiBookCard from '../../UI/bookCard/UiBookCard'
@@ -10,29 +10,62 @@ import TotalPrice from './totalPrice/TotalPrice'
 import UiEmptyPage from '../../UI/emptyPage/UiEmptyPage'
 import ClearIcon from '@mui/icons-material/Clear';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import CustomPagination from '../../UI/pagination/Pagination'
 
 import { UISize } from '../../../enums/enums'
 
 import s from './Cart.module.scss'
+import UiBookAmount from '../../UI/bookAmount/UiBookAmount'
 
 const Cart: React.FC = () => {
-    const books = useAppSelector(state => getBookData(state.cart.books))
+    const [page, setPage] = useState(1)
+    const preparedData = useAppSelector(state => getBookData(state.cart.preparedData))
+    const { books, pageSize } = useAppSelector(state => state.cart)
+
     const dispatch = useAppDispatch()
 
-    const handleClick = (id: string) => { 
+    const handleChangePage = (e: React.ChangeEvent<unknown>, value: number) => {
+        setPage(value)
+        dispatch(pageFilter(value))
+    }
+
+    const handleClearClick = (id: string) => { 
         dispatch(removeFromCart(id))
     }
 
-    const clickHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault()
     }
+
+    useEffect(() => {
+        if (!preparedData.length && books.length && page !== 1) {
+            setPage(page => page - 1)
+            dispatch(pageFilter(page - 1)) // Проверка если удаляем ВСЕ книги не с первой страницы
+        } 
+         else if (!preparedData.length && books.length && page === 1) {
+            setPage(1)
+            dispatch(pageFilter(1))  // Аналогично с первой
+        }
+         else if (preparedData.length < 3 && books.length) {
+            if (books.length >= page * +pageSize) {
+                console.log('repeat')
+                dispatch(pageFilter(page))
+            } else {
+                return // берем книжки с конца или не трогаем если длина массива равна длине массива с учетом текущей страницы
+            }
+        }
+    }, [preparedData, books, page])
+
+    useEffect(() => {
+        dispatch(pageFilter(page))
+    }, [])
 
     return (
       <section className={s.section_container}>
               <UIBackButton />
               <h2>
                   <UITitle size={UISize.Large}>
-                      {'Cart'}
+                      {`Cart`}
                   </UITitle>
               </h2>
 
@@ -43,29 +76,34 @@ const Cart: React.FC = () => {
                     </UiEmptyPage>
                   :  
                     <>
+                       { books.length && 
+                           <UiBookAmount 
+                               amount={books.length}
+                           />
+                       }
                       <div className={s.store_card}>
-                          {books.map(book => 
+                          {preparedData.map(book => 
                             <UiBookCard 
                                 key={book.isbn13}
                                 cName='card__store'
                                 {...book}
-                                onClick={clickHandler}>
+                                onClick={handleLinkClick}>
                                     <ClearIcon 
                                       key={book.isbn13 + book.price}
                                       className={s.clear_icon} 
-                                      onClick={() => handleClick(book.isbn13)}
+                                      onClick={() => handleClearClick(book.isbn13)}
                                     />
                             </UiBookCard>
                             )
                           }
                       </div>
                       <TotalPrice/>
-                      {/* <CustomPagination 
+                      <CustomPagination 
                           page={page}
                           pageSize={pageSize} 
                           itemsCount={books.length} 
                           handleChangePage={handleChangePage}
-                      /> */}
+                      />
                   </>
               }
           </section>

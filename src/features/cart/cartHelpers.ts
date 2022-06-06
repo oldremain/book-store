@@ -4,12 +4,19 @@ import { ICart, IUserPriceBasket } from "./cartSlice"
 export const getBooksPriceInfo = (arr: ICart[]):  IUserPriceBasket => {
     const obj: IUserPriceBasket = {}
 
-    arr.forEach(el => {
-        obj[Object.keys(el)[0]] = { 
+    if (arr.length) {
+        arr.forEach(el => {
+            obj[Object.keys(el)[0]] = { 
+                count: 1,
+                price: +el[Object.keys(el)[0]].price.slice(1)
+            }
+        })
+    } else {
+        obj['key'] = {
             count: 1,
-            price: +el[Object.keys(el)[0]].price.slice(1)
-        }
-    })
+            price: 1
+        } //default value
+    }
 
     return obj
 }

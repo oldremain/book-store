@@ -11,6 +11,8 @@ import ClearIcon from '@mui/icons-material/Clear';
 import { UISize } from '../../../enums/enums'
 import CustomPagination from '../../UI/pagination/Pagination'
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import UiBookAmount from '../../UI/bookAmount/UiBookAmount';
+
 
 import s from './Favourites.module.scss'
 
@@ -57,7 +59,7 @@ const Favourites: React.FC = () => {
             <UIBackButton />
             <h2>
                 <UITitle size={UISize.Large}>
-                    {'Favourites'}
+                    {`Favourites`}
                 </UITitle>
             </h2>
            
@@ -68,6 +70,11 @@ const Favourites: React.FC = () => {
                   </UiEmptyPage>
                 :  
                   <>
+                    {books.length && 
+                        <UiBookAmount 
+                            amount={books.length}
+                        />
+                    }
                     <div className={s.favourites_card}>
                         {preparedData.map(book => 
                           <UiBookCard 
