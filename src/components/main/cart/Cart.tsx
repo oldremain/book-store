@@ -6,6 +6,7 @@ import { getBookData } from '../favourites/helpers'
 import UiBookCard from '../../UI/bookCard/UiBookCard'
 import UIBackButton from '../../UI/button/backButton/UiBackButton'
 import UITitle from '../../UI/title/UiTitle'
+import UiBookAmount from '../../UI/bookAmount/UiBookAmount'
 import TotalPrice from './totalPrice/TotalPrice'
 import UiEmptyPage from '../../UI/emptyPage/UiEmptyPage'
 import ClearIcon from '@mui/icons-material/Clear';
@@ -15,7 +16,6 @@ import CustomPagination from '../../UI/pagination/Pagination'
 import { UISize } from '../../../enums/enums'
 
 import s from './Cart.module.scss'
-import UiBookAmount from '../../UI/bookAmount/UiBookAmount'
 
 const Cart: React.FC = () => {
     const [page, setPage] = useState(1)
@@ -48,7 +48,6 @@ const Cart: React.FC = () => {
         }
          else if (preparedData.length < 3 && books.length) {
             if (books.length >= page * +pageSize) {
-                console.log('repeat')
                 dispatch(pageFilter(page))
             } else {
                 return // берем книжки с конца или не трогаем если длина массива равна длине массива с учетом текущей страницы
