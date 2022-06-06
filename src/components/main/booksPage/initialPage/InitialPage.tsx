@@ -50,8 +50,8 @@ const InitialPage: React.FC = () => {
     useEffect(() => {
         if (!loading) {
             dispatch(setInitialArray(newBooks));
-            dispatch(setPageSize("5"));
-            dispatch(setPage(1));
+            dispatch(setPageSize(pageSize));
+            dispatch(setPage(page));
             dispatch(sortByPrice({ priceOrder: PriceOrder.INITIAL, books: newBooks }));
         }
     }, [newBooks]); //инициализуем store первоначальми данными
