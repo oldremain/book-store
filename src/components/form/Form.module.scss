@@ -16,7 +16,7 @@
 .form_container {
     // background-color: white;
     // position: absolute;
-    // top: 3%;
+    // top: 6%;
     // left: 50%;
     // z-index: 1000000;
     // transform: translate(-50%);
@@ -25,6 +25,7 @@
     max-width: 544px;
     //margin: 42px auto 0;
     margin: 0 auto;
+    border-radius: 3px;
     border: 1px solid var(--bg-primary2);
 
 }
