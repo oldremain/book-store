@@ -23,6 +23,7 @@
         font-size: 16px;
         line-height: 150% ;
         color: var(--system-secondary);
+        text-decoration: underline;
     }
 
     span:last-child {
@@ -33,7 +34,14 @@
 .total_container {
     font-family: 'Bebas Neue';
     font-weight: 700;
-    font-size: 40px;
+    font-size: 30px;
     line-height: 150%;
     color: var(--system-primary)
+}
+
+@media (max-width: 520px) {
+    .price_container {
+        padding: 0;
+        width: 100%;
+    }
 }
