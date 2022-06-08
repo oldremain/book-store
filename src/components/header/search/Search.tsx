@@ -15,6 +15,8 @@ interface ISearchProps {
 
 const Search: React.FC<ISearchProps> = ({ cName }) => {
     const [book, setBook] = useState<string>("");
+    //const isAccountPage = cName.includes('search_account')
+
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
@@ -35,25 +37,27 @@ const Search: React.FC<ISearchProps> = ({ cName }) => {
     };
 
     return (
-        <div className={cn(s[cName[0]], s[cName[1]])}>
-            <form className={s.search_form} onSubmit={handleFormSubmit}>
-                <label htmlFor="search-input" hidden={true}>
-                    Search by book title
-                </label>
-                <input
-                    value={book}
-                    onChange={handleInputChange}
-                    type="text"
-                    id="search-input"
-                    placeholder="Search books by Title, Author or ISBN"
-                    autoComplete="off"
-                    className={s.search_input}
-                />
-                <button type="submit" className={s.search_button}>
-                    <SearchIcon />
-                </button>
-            </form>
-        </div>
+        <>
+            <div className={cn(s[cName[0]], s[cName[1]], s[cName[2]])}>
+                <form className={s.search_form} onSubmit={handleFormSubmit}>
+                    <label htmlFor="search-input" hidden={true}>
+                        Search by book title
+                    </label>
+                    <input
+                        value={book}
+                        onChange={handleInputChange}
+                        type="text"
+                        id="search-input"
+                        placeholder="Search books by Title, Author or ISBN"
+                        autoComplete="off"
+                        className={s.search_input}
+                    />
+                    <button type="submit" className={s.search_button}>
+                        <SearchIcon />
+                    </button>
+                </form>
+            </div>
+        </>
     );
 };
 

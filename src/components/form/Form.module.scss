@@ -1,0 +1,47 @@
+.form_container {
+    max-width: 544px;
+    margin: 42px auto 0;
+    border: 1px solid var(--bg-primary2);
+}
+
+.tabs {
+    margin: 0;
+}
+
+.tabs_list {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid var(--bg-primary2);
+}
+
+.tab_item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 26px 50px;
+    cursor: pointer;
+    font-family: 'Bebas Neue';
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 100%;
+    letter-spacing: 0.05em;
+    color: var(--system-secondary);
+}
+
+.tab_panel--selected {
+    padding: 32px 32px 40px;
+}
+
+.tab_item--selected {
+    color: var(--system-primary);
+}
+
+@media (max-width: 391px) {
+    .tab_item {
+        padding: 26px 30px;
+    }
+    .tab_panel--selected {
+        padding: 32px 16px 40px;
+    }
+}

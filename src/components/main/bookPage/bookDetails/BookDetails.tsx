@@ -20,6 +20,9 @@ const BookDetails: React.FC = () => {
 
     const dispatch = useAppDispatch()
 
+    const isValidPrice = useRef(true)
+    isValidPrice.current = !!(+price.slice(1))
+
     const preparedData = useRef<ICartBook>({})
     preparedData.current[isbn13] = {
         image, 
@@ -43,7 +46,8 @@ const BookDetails: React.FC = () => {
             <UIPrimaryButton 
                 text="Add to cart" 
                 cNameBtn="ui_btn_bookDetails" 
-                price={price}
+                //price={price}
+                isValidPrice={isValidPrice.current}
                 handleClick={handleCartClick}
             />
             {preview && !isEmptyPreview && <PreviewBook preview={Object.values(preview)[0]} />}

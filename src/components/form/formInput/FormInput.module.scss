@@ -1,0 +1,26 @@
+.field_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.field_label {
+    font-family: 'Helios';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 200%;
+    color: var(--system-primary);
+    margin-bottom: 3px;
+}
+
+.field_input {
+    border: 1px solid var(--bg-primary2);
+    padding: 14px 0 14px 20px;
+
+    &::placeholder {
+        font-family: 'Helios';
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 200%;
+        color: var(--system-secondary);
+    }
+}

@@ -7,24 +7,20 @@ interface IButtonProps {
     cNameBtn?: string;
     cNameLink?: string;
     text: string;
+    type?: 'button' | 'submit';
     path?: string;
-    price?: string;
+    isValidPrice?: boolean;
     handleClick?: () => void
 }
 
-const UIPrimaryButton: React.FC<IButtonProps> = ({ cNameBtn = "", text, price, handleClick }) => {
-    const isValidPrice = useRef<boolean>(true)
-
-    if (price) {
-        isValidPrice.current = !!(+price.slice(1))
-    }
-
+const UIPrimaryButton: React.FC<IButtonProps> = ({ cNameBtn = "", text, isValidPrice = true, type = 'button', handleClick }) => {
     return (
         <div className={cn(s.ui_btn_container, s[cNameBtn])}>
             <button 
-                className={cn(s.ui_btn, {[s._disabled]: !isValidPrice.current})} 
+                type={type}
+                className={cn(s.ui_btn, {[s._disabled]: !isValidPrice})} 
                 onClick={handleClick} 
-                disabled={!isValidPrice.current}
+                disabled={!isValidPrice}
             >
                 {text}
             </button>

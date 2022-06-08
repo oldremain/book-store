@@ -1,6 +1,10 @@
 .search {
     flex-basis: 542px;
     height: 56px;
+    
+    &.search_main {
+        margin-bottom: 30px;
+    }
 
     .search_form {
         position: relative;
@@ -51,22 +55,13 @@
     }
 }
 
-.search_main {
-    margin-bottom: 30px;
-}
+// .search_account {
+//     display: none;
+// }
 
 @media (max-width: 768px) {
-    .search_header {
-        display: none;
-    }
     .search_sidebar {
         display: block;
-    }
-}
-
-@media (min-width: 768px) {
-    .search_main {
-        display: none;
     }
 }
 

@@ -7,7 +7,11 @@ interface IMainProps {
 }
 
 const Main: React.FC<IMainProps> = ({ children }) => {
-    return <main id={s.main}>{children}</main>;
+    return (
+        <main id={s.main}>
+            {children}
+        </main>
+    )
 };
 
 export default Main;

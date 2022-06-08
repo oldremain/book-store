@@ -5,11 +5,11 @@ import { useAppSelector } from "../../../../hooks/reduxHooks";
 import getPreparedData from "./helper";
 
 import ListItem from "./ListItem";
+import MoreDetailsButton from "./MoreDetailsButton";
 
 import { variants } from "./motionVariants";
 
 import s from "./BookDetails.module.scss";
-import MoreDetailsButton from "./MoreDetailsButton";
 
 const detailsFields: string[] = ["pages", "isbn10", "isbn13"];
 
