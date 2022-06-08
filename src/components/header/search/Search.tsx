@@ -15,7 +15,6 @@ interface ISearchProps {
 
 const Search: React.FC<ISearchProps> = ({ cName }) => {
     const [book, setBook] = useState<string>("");
-    //const isAccountPage = cName.includes('search_account')
 
     const dispatch = useAppDispatch();
     const navigate = useNavigate();

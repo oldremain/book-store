@@ -21,12 +21,12 @@ const Form: React.FC = () => {
 
     return (
       <section className={s.section_container}>
-          <UIBackButton />
+          {/* <UIBackButton />
           <h2>
               <UITitle size={UISize.Large}>
                   {`My account`}
               </UITitle>
-          </h2>
+          </h2> */}
           <div className={s.form_container}>
               <Tabs className={s.tabs}>
                   <TabList className={s.tabs_list}>
