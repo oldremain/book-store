@@ -10,16 +10,16 @@ interface IButtonProps {
     type?: 'button' | 'submit';
     path?: string;
     isValidPrice?: boolean;
-    handleClick?: () => void
+    onClick?: (e: React.FormEvent<EventTarget>) => void
 }
 
-const UIPrimaryButton: React.FC<IButtonProps> = ({ cNameBtn = "", text, isValidPrice = true, type = 'button', handleClick }) => {
+const UIPrimaryButton: React.FC<IButtonProps> = ({ cNameBtn = "", text, isValidPrice = true, type = 'button', onClick }) => {
     return (
         <div className={cn(s.ui_btn_container, s[cNameBtn])}>
             <button 
                 type={type}
                 className={cn(s.ui_btn, {[s._disabled]: !isValidPrice})} 
-                onClick={handleClick} 
+                onClick={onClick} 
                 disabled={!isValidPrice}
             >
                 {text}

@@ -6,6 +6,7 @@ import filterSlice from "../features/filter/filterSlice";
 import sidebarSlice from "../features/sidebar/sidebarSlice";
 import favouritesSlice from "../features/favourites/favouritesSlice";
 import cartSlice from "../features/cart/cartSlice";
+import authSlice from "../features/auth/authSlice";
 
 export const store = configureStore({
     reducer: {
@@ -14,7 +15,8 @@ export const store = configureStore({
         sidebar: sidebarSlice,
         filter: filterSlice,
         favourites: favouritesSlice,
-        cart: cartSlice
+        cart: cartSlice,
+        user: authSlice,
     },
 });
 

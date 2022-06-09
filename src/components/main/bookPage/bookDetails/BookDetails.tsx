@@ -48,7 +48,7 @@ const BookDetails: React.FC = () => {
                 cNameBtn="ui_btn_bookDetails" 
                 //price={price}
                 isValidPrice={isValidPrice.current}
-                handleClick={handleCartClick}
+                onClick={handleCartClick}
             />
             {preview && !isEmptyPreview && <PreviewBook preview={Object.values(preview)[0]} />}
             {/* если не пустой берем первую ссылку */}
