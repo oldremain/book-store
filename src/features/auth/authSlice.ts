@@ -54,9 +54,8 @@ export const registerUser = createAsyncThunk<IAuthResponse, IQuerryParams, { rej
         try {
             const auth = getAuth();
             const {user} = await createUserWithEmailAndPassword(auth, userEmail, password)
-            //const response = user.toJSON() as IAuthResponse
             const {email, uid, stsTokenManager}= user.toJSON() as IAuthResponse
-            //console.log(response)
+
             return {email, stsTokenManager, uid} 
         } catch (e: any) {
            return rejectWithValue(e.message)
@@ -69,13 +68,11 @@ export const loginUser = createAsyncThunk<IAuthResponse, IQuerryParams, { reject
         try {
             const auth = getAuth();
             const {user} = await signInWithEmailAndPassword(auth, userEmail, password)
-            //const response = user.toJSON() as IAuthResponse
             const {email, uid, stsTokenManager}= user.toJSON() as IAuthResponse
-           // console.log(response)
+
             return {email, uid, stsTokenManager}
         } catch (e: any) {
            return rejectWithValue(e.message)
-            //throw new Error(e.message)
         }
     }
 )
@@ -85,14 +82,14 @@ const authSlice = createSlice({
     initialState,
     reducers: {
         setUser(state, { payload }) {
-            state.user.email = payload.email;
-            //state.user.token = payload.token;
-            state.user.id = payload.id;
+            // state.user.email = payload.email;
+            // //state.user.token = payload.token;
+            // state.user.id = payload.id;
         },
         removeUser(state) {
-            state.user.email = null;
-            //state.user.token = null;
-            state.user.id = null;
+            // state.user.email = null;
+            // //state.user.token = null;
+            // state.user.id = null;
         }
     },
     extraReducers: (builder) => {
