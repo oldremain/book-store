@@ -4,7 +4,8 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
 
 interface IAuthUser {
     email: string | null,
-    token: string | null,
+    accessToken: string | null,
+    refreshToken: string | null,
     id: string | null,
 }
 
@@ -17,7 +18,8 @@ interface IInitialState {
 const initialState: IInitialState = {
     user: {
         email: null,
-        token: null,
+        accessToken: null,
+        refreshToken: null,
         id: null
     },
     loading: false,
@@ -33,7 +35,7 @@ interface IAuthResponse {
     stsTokenManager: {
         accessToken: string,
         expirationTime: number,
-        refreshToken: number
+        refreshToken: string
     }
 }
 
@@ -104,7 +106,8 @@ const authSlice = createSlice({
             })
             .addCase(registerUser.fulfilled, (state, {payload}: PayloadAction<IAuthResponse>) => {
                 state.user.email = payload.email;
-                state.user.token = payload.stsTokenManager.accessToken;
+                state.user.accessToken = payload.stsTokenManager.accessToken;
+                state.user.refreshToken = payload.stsTokenManager.refreshToken;
                 state.user.id = payload.uid;
                 state.loading = false
             })
@@ -125,7 +128,8 @@ const authSlice = createSlice({
             })
             .addCase(loginUser.fulfilled, (state, {payload}: PayloadAction<IAuthResponse>) => {
                 state.user.email = payload.email;
-                state.user.token = payload.stsTokenManager.accessToken;
+                state.user.accessToken = payload.stsTokenManager.accessToken;
+                state.user.refreshToken = payload.stsTokenManager.refreshToken;
                 state.user.id = payload.uid;
                 state.loading = false
             })
