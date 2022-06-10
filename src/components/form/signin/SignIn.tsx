@@ -5,8 +5,15 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 import UIPrimaryButton from '../../UI/button/UiPrimaryButton'
 import FormInput from '../formInput/FormInput'
+import InputToolTip from '../formInput/InputTooltip'
 
 import s from './SignIn.module.scss'
+import { validateEmail, validatePassword, validateUsername } from '../../../helpers/validation';
+
+interface IValidation {
+    isValidEmail: boolean,
+    isValidPassword: boolean
+}
 
 export interface ISignInState {
     email: string,
@@ -17,6 +24,10 @@ const SignIn: React.FC = () => {
     const [value, setValue] = useState<ISignInState>({
         email: '', 
         password: '',
+    })
+    const [validation, setValidation] = useState<IValidation>({
+        isValidEmail: true,
+        isValidPassword: true
     })
 
     const dispatch = useAppDispatch()
@@ -29,21 +40,36 @@ const SignIn: React.FC = () => {
     }
 
     const handleSubmit = (e: React.FormEvent<EventTarget>) => {
-         e.preventDefault();
+        e.preventDefault();
+        const isValidEmail = validateEmail(value.email)
+        const isValidPassword = validatePassword(value.password)
+        const isValidValues = isValidEmail && isValidPassword
 
-        //  const email = value.email.trim()
-        //  const password = value.password.trim()
-
-        dispatch(loginUser({
-            email: value.email, 
-            password: value.password
-        }))
-
-        setValue({
-            email: '',
-            password: ''
-        })
+        if (isValidValues) {
+            dispatch(loginUser({
+                email: value.email, 
+                password: value.password
+            }))
+    
+            setValue({
+                email: '',
+                password: ''
+            })
+            setValidation({
+                isValidEmail: true,
+                isValidPassword: true
+            })
+        } else {
+            setValidation({
+                isValidEmail,
+                isValidPassword,
+            })
+        }
     }
+
+    useEffect(() => {
+        console.log(validation)
+    }, [validation])
 
     return (
       <>
@@ -53,19 +79,25 @@ const SignIn: React.FC = () => {
                     id='id_email' 
                     type='email' 
                     name='email'
+                    valid={validation.isValidEmail}
                     placeholder='Your email'
                     value={value}
                     onChange={handleChangeValue}
-                />
+                >
+                    <InputToolTip text={'Example: google@gmail.com'}/>
+                </FormInput>
                 <FormInput 
                     title='Password' 
                     id='id_password' 
                     type='password' 
                     name='password'
+                    valid={validation.isValidPassword}
                     placeholder='Your password'
                     value={value}
                     onChange={handleChangeValue}
-                />
+                >   
+                    <InputToolTip text={'More than 4 any characters'}/>
+                </FormInput>
                 <UIPrimaryButton 
                     text="Sign In" 
                     cNameBtn="ui_btn_signIn" 

@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ISignInState } from '../signin/SignIn'
 import { ISignUpState } from '../signup/SignUp'
+import cn from 'classnames'
 
 import s from './FormInput.module.scss'
 
@@ -11,15 +12,21 @@ interface IFormInput {
     name: string,
     placeholder: string,
     value: ISignInState | ISignUpState,
+    valid?: boolean,
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+    children?: React.ReactNode
 }
 
-const FormInput: React.FC<IFormInput> = ({ title, type, id, name, placeholder, value, onChange }) => {
+const FormInput: React.FC<IFormInput> = ({ title, type, id, name, placeholder, value, valid, onChange, children }) => {
     //const [value, setValue] = useState('')
 
     // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     //     setValue(e.target.value)
     // }
+
+    useEffect(() => {
+        console.log(valid)
+    }, [valid])
 
     return (
         <div className={s.field_container}>
@@ -34,8 +41,9 @@ const FormInput: React.FC<IFormInput> = ({ title, type, id, name, placeholder, v
                 placeholder={placeholder}
                 autoComplete="off"
                 onChange={onChange}
-                className={s.field_input}
+                className={cn(s.field_input, {[s['field_input--invalid']]: !valid})}
             />
+            {children}
         </div>
     )
 }
