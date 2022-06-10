@@ -11,6 +11,9 @@
     gap: 20px;
 }
 .content_image {
+    overflow: hidden;
+    box-shadow: 0px 0px 8px var(--system-secondary);
+    border-radius: 3px;
     position: relative;
     flex: 0 1 50%;
 }
