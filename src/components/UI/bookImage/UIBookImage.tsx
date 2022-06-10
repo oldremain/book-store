@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import cn from "classnames";
 
 import { UISize } from "../../../enums/enums";
@@ -13,9 +13,24 @@ export interface IBookImageProps {
 }
 
 const UiBookImage: React.FC<IBookImageProps> = ({ size, theme, image, cName = '' }) => {
+    const [loaded, setLoaded] = useState(false)
+
+    useEffect(() => {
+        const img = new Image()
+        img.src = image
+        img.onload = () => {
+            setLoaded(true)
+        }
+    }, [image])
+
     return (
         <div className={cn(s.book_image, s[`image_${size}`], s[`bg_${theme}`], s[cName])}>
-            <img src={image} alt="it-book-image" />
+            {loaded 
+                ? 
+                    <img src={image} alt="it-book-image" /> 
+                : 
+                    <div className={s.image_placeholder}></div>
+            }
         </div>
     );
 };

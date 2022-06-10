@@ -51,3 +51,13 @@
         }
     }
 }
+
+.book_image {
+    display: flex;
+    .image_placeholder {
+        background-color: antiquewhite;
+        width: 50%;
+        height: 80%;
+        margin: auto;
+    }
+}

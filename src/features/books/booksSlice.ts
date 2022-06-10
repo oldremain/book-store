@@ -82,7 +82,7 @@ const booksSlice = createSlice({
                 (state, { payload }: PayloadAction<IFetchBooksResponse>) => {
                     // console.log(action.payload);
                     state.data = payload.books;
-                    state.total = Math.min(1000, +payload.total) ;
+                    state.total = Math.min(+payload.total, 1000) ;
                     //state.page = payload.page;
                     state.loading = false;
                     state.isSubmited = false;
