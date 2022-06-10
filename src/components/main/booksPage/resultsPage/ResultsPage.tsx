@@ -98,7 +98,7 @@ const ResultsPage: React.FC = () => {
                     page={paginationPage}
                     pageSize={"10"}
                     handleChangePage={handleChangePage}
-                    itemsCount={+total}
+                    itemsCount={total}
                 />
             )}
         </section>

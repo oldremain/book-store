@@ -16,7 +16,7 @@ export interface IBookType {
 
 interface IInitialState {
     searchField: string;
-    total: string;
+    total: number;
     page: number;
     data: IBookType[];
     loading: boolean;
@@ -38,7 +38,7 @@ interface IQuerryParams {
 
 const initialState: IInitialState = {
     searchField: "",
-    total: "0",
+    total: 0,
     page: 1,
     data: [],
     loading: false,
@@ -82,7 +82,7 @@ const booksSlice = createSlice({
                 (state, { payload }: PayloadAction<IFetchBooksResponse>) => {
                     // console.log(action.payload);
                     state.data = payload.books;
-                    state.total = payload.total;
+                    state.total = Math.min(1000, +payload.total) ;
                     //state.page = payload.page;
                     state.loading = false;
                     state.isSubmited = false;
