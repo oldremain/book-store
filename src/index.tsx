@@ -7,6 +7,7 @@ import './firebase'
 import { store } from "./store/store";
 import { Provider } from "react-redux";
 
+// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import "./index.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);

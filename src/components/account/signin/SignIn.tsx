@@ -33,8 +33,7 @@ const SignIn: React.FC = () => {
     })
 
     const dispatch = useAppDispatch()
-    const isLoading = useAppSelector(state => state.auth.isLoading)
-    const isError = useAppSelector(state => state.auth.error)
+    const {isLoading, error, isLogged }= useAppSelector(state => state.auth)
 
     const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue({
@@ -71,9 +70,9 @@ const SignIn: React.FC = () => {
         }
     }
 
-    useEffect(() => {
-        console.log(isError)
-    }, [isError])
+    // useEffect(() => {
+    //     console.log(error)
+    // }, [error])
 
     return (
       <>

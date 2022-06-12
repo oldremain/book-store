@@ -12,6 +12,7 @@ import ResultsPage from "./components/main/booksPage/resultsPage/ResultsPage";
 import Favourites from "./components/main/favourites/Favourites";
 import Cart from "./components/main/cart/Cart";
 import Form from "./components/form/Form";
+import Account from "./components/account/Account";
 
 import s from "./App.module.scss";
 
@@ -37,7 +38,9 @@ const App: React.FC = () => {
                             <Route path="books/:isbn" element={<BookPage />} />
                             <Route path="favourites" element={<Favourites />} />
                             <Route path="cart" element={<Cart />} />
-                            <Route path="account" element={<Form />} />
+                            <Route path="account" element={<Account />}>
+                                <Route index element={<Form />}/>
+                            </Route>
                             <Route path="*" element={<Navigate to="/new/1" />} />
                         </Route>
                     </Routes>

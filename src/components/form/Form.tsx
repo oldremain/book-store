@@ -14,7 +14,7 @@ import s from './Form.module.scss'
 
 const Form: React.FC = () => {
     const [active, setActive] = useState('login')
-
+    
     const handleLoginClick = () => {
         setActive('login')
     }
@@ -47,10 +47,10 @@ const Form: React.FC = () => {
                     </Tab>
                   </TabList>
 
-                  <TabPanel className={cn(s.tab_panel, {[s['tab_item--selected']]: active === 'login' ? true : false})}>
+                  <TabPanel className={cn(s.tab_panel, {[s['tab_panel--selected']]: active === 'login' ? true : false})}>
                       <SignIn />
                   </TabPanel>
-                  <TabPanel className={cn(s.tab_panel, {[s['tab_item--selected']]: active === 'register' ? true : false})}>
+                  <TabPanel className={cn(s.tab_panel, {[s['tab_panel--selected']]: active === 'register' ? true : false})}>
                       <SignUp />
                   </TabPanel>
               </Tabs>

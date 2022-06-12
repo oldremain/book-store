@@ -16,7 +16,7 @@ export const store = configureStore({
         filter: filterSlice,
         favourites: favouritesSlice,
         cart: cartSlice,
-        user: authSlice,
+        auth: authSlice,
     },
 });
 

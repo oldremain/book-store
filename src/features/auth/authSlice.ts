@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+
+//const userAuth = localStorage.getItem('userLogged') || false
 
 interface IAuthUser {
     email: string | null,
@@ -11,7 +12,8 @@ interface IAuthUser {
 
 interface IInitialState {
     user: IAuthUser,
-    loading: boolean,
+    isLogged: boolean,
+    isLoading: boolean,
     error: IAuthError
 }
 
@@ -22,10 +24,11 @@ const initialState: IInitialState = {
         refreshToken: null,
         id: null
     },
-    loading: false,
+    isLogged: JSON.parse(localStorage.getItem('userLogged') || 'false') ,
+    isLoading: false,
     error: {
         message: undefined,
-        error: false
+        isError: false
     }
 }
 
@@ -41,7 +44,7 @@ interface IAuthResponse {
 
 interface IAuthError {
     message: string | undefined,
-    error: boolean
+    isError: boolean
 }
 
 interface IQuerryParams {
@@ -97,45 +100,49 @@ const authSlice = createSlice({
             .addCase(registerUser.pending, (state, action) => {
                 state.error = {
                     message: undefined,
-                    error: false
+                    isError: false
                 };
-                state.loading = true
+                state.isLoading = true
             })
             .addCase(registerUser.fulfilled, (state, {payload}: PayloadAction<IAuthResponse>) => {
                 state.user.email = payload.email;
                 state.user.accessToken = payload.stsTokenManager.accessToken;
                 state.user.refreshToken = payload.stsTokenManager.refreshToken;
                 state.user.id = payload.uid;
-                state.loading = false
+                state.isLoading = false
+
+                localStorage.setItem('userLogged', JSON.stringify(true))
             })
             .addCase(registerUser.rejected, (state, action) => {
                 state.error = {
                     message: action.payload,
-                    error: true
+                    isError: true
                 };
-                state.loading = false
+                state.isLoading = false
             })
 
             .addCase(loginUser.pending, (state, action) => {
                 state.error =  {
                     message: undefined,
-                    error: false
+                    isError: false
                 };;
-                state.loading = true
+                state.isLoading = true
             })
             .addCase(loginUser.fulfilled, (state, {payload}: PayloadAction<IAuthResponse>) => {
                 state.user.email = payload.email;
                 state.user.accessToken = payload.stsTokenManager.accessToken;
                 state.user.refreshToken = payload.stsTokenManager.refreshToken;
                 state.user.id = payload.uid;
-                state.loading = false
+                state.isLoading = false
+
+                localStorage.setItem('userLogged', JSON.stringify(true))
             })
             .addCase(loginUser.rejected, (state, action) => {
                 state.error =  {
                     message: action.error.message,
-                    error: true
+                    isError: true
                 };
-                state.loading = false
+                state.isLoading = false
             })
     }
 })
