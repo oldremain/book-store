@@ -5,11 +5,11 @@
     right: 15px;
     background-color: var(--bg-primary);
     z-index: 10000;
-    max-width: 1090px;
-    margin: auto;
 }
 
 .header_container {
+    max-width: 1090px;
+    margin: auto;
     height: 104px;
     padding: 24px 0px;
     border-bottom: 1px solid var(--bg-primary2);
