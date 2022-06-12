@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { UISize } from '../../enums/enums';
 import UIBackButton from '../UI/button/backButton/UiBackButton';
@@ -9,10 +9,20 @@ import Form from './form/Form'
 
 import s from './Account.module.scss'
 import { useAppSelector } from '../../hooks/reduxHooks';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 const Account: React.FC = () => {
     const isLogged = useAppSelector(state => state.auth.isLogged)
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!isLogged) {
+            navigate('/account/auth')
+        } else {
+            navigate('/account')
+        }
+    }, [isLogged])
    
     return (
       <section className={s.section_container}>
@@ -25,7 +35,6 @@ const Account: React.FC = () => {
               </h2> 
           </>}
           <Outlet/>
-          {/* <Form /> */}
       </section> 
     )
 }

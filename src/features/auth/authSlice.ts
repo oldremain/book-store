@@ -133,6 +133,7 @@ const authSlice = createSlice({
                 state.user.accessToken = payload.stsTokenManager.accessToken;
                 state.user.refreshToken = payload.stsTokenManager.refreshToken;
                 state.user.id = payload.uid;
+                state.isLogged = true
                 state.isLoading = false
 
                 localStorage.setItem('userLogged', JSON.stringify(true))

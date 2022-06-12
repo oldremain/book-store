@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import cn from 'classnames';
 
@@ -6,9 +6,11 @@ import SignIn from '../signin/SignIn';
 import SignUp from '../signup/SignUp';
 
 import s from './Form.module.scss'
+import { useNavigate } from 'react-router-dom';
 
 const Form:React.FC = () => {
     const [active, setActive] = useState('login')
+    const navigate = useNavigate()
     
     const handleLoginClick = () => {
         setActive('login')
@@ -16,6 +18,10 @@ const Form:React.FC = () => {
     const handleRegisterClick = () => {
         setActive('register')
     }
+
+    useEffect(() => {
+        navigate('/account/auth')
+    }, [])
 
     return (
       <div className={s.form_container}>
