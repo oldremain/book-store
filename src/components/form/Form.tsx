@@ -13,10 +13,13 @@ import s from './Form.module.scss'
 
 
 const Form: React.FC = () => {
-    const [active, setActive] = useState(true)
+    const [active, setActive] = useState('login')
 
-    const handleClick = () => {
-        setActive(!active)
+    const handleLoginClick = () => {
+        setActive('login')
+    }
+    const handleRegisterClick = () => {
+        setActive('register')
     }
 
     return (
@@ -31,23 +34,23 @@ const Form: React.FC = () => {
               <Tabs className={s.tabs}>
                   <TabList className={s.tabs_list}>
                     <Tab 
-                        className={cn(s.tab_item, {[s['tab_item--selected']]: active})}
-                        onClick={handleClick}
+                        className={cn(s.tab_item, {[s['tab_item--selected']]: active === 'login' ? true : false})}
+                        onClick={handleLoginClick}
                     >
                             Sign In
                     </Tab>
                     <Tab 
-                        className={cn(s.tab_item, {[s['tab_item--selected']]: !active})}
-                        onClick={handleClick}
+                        className={cn(s.tab_item, {[s['tab_item--selected']]: active === 'register' ? true : false})}
+                        onClick={handleRegisterClick}
                     >
                         Sign Up
                     </Tab>
                   </TabList>
 
-                  <TabPanel className={cn(s.tab_panel, {[s['tab_panel--selected']]: active})}>
+                  <TabPanel className={cn(s.tab_panel, {[s['tab_item--selected']]: active === 'login' ? true : false})}>
                       <SignIn />
                   </TabPanel>
-                  <TabPanel className={cn(s.tab_panel, {[s['tab_panel--selected']]: !active})}>
+                  <TabPanel className={cn(s.tab_panel, {[s['tab_item--selected']]: active === 'register' ? true : false})}>
                       <SignUp />
                   </TabPanel>
               </Tabs>
