@@ -46,6 +46,7 @@
 
 .tab_item--selected {
     color: var(--system-primary);
+    border-bottom: 2px solid var(--system-primary);
 }
 
 @media (max-width: 391px) {
