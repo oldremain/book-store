@@ -4,7 +4,6 @@ import { useAppDispatch, useAppSelector } from "../../../../hooks/reduxHooks";
 import { fetchBooks } from "../../../../features/books/booksSlice";
 import { setPage } from "../../../../features/filter/filterSlice";
 import {
-    PriceOrder,
     setInitialArray,
     setPageSize,
     sortByPrice,
@@ -20,7 +19,7 @@ import UIBackButton from "../../../UI/button/backButton/UiBackButton";
 import Loader from "../../../loader/Loader";
 import { SelectChangeEvent } from "@mui/material";
 
-import { UISize } from "../../../../enums/enums";
+import { UISize, PriceOrder } from "../../../../enums/enums";
 
 import s from "../BooksPage.module.scss";
 

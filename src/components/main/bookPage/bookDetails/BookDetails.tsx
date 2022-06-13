@@ -1,6 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
-import _isEmpty from "lodash.isempty";
+import React, { useRef } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/reduxHooks";
+import { addProduct } from "../../../../features/cart/cartSlice";
+import { ICartBook } from "../../../../features/cart/types";
+import _isEmpty from "lodash.isempty";
 
 import DetailsList from "./DetailsList";
 import MoreDetailsList from "./MoreDetailsList";
@@ -11,7 +13,6 @@ import PreviewBook from "./PreviewBook";
 import { UISize } from "../../../../enums/enums";
 
 import s from "./BookDetails.module.scss";
-import { addProduct, ICartBook } from "../../../../features/cart/cartSlice";
 
 const BookDetails: React.FC = () => {
     const { price, isbn13, title, subtitle, image  } = useAppSelector((state) => state.oneBook.book);
@@ -33,7 +34,7 @@ const BookDetails: React.FC = () => {
     }
 
     const handleCartClick = () => {
-        dispatch(addProduct( preparedData.current))
+        dispatch(addProduct(preparedData.current))
     }
 
     return (
@@ -46,7 +47,6 @@ const BookDetails: React.FC = () => {
             <UIPrimaryButton 
                 text="Add to cart" 
                 cNameBtn="ui_btn_bookDetails" 
-                //price={price}
                 isValidPrice={isValidPrice.current}
                 onClick={handleCartClick}
             />

@@ -1,8 +1,9 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxHooks'
-import { toggleFavourite, IFavouriteBook } from '../../../../features/favourites/favouritesSlice'
-import cn from 'classnames'
+import { toggleFavourite } from '../../../../features/favourites/favouritesSlice'
+import { IFavouriteBook } from '../../../../features/favourites/types'
 import { ReactComponent as AddFavouriteIcon } from '../../../../assets/AddFavouriteIcon.svg'
+import cn from 'classnames'
 
 import s from './UiLikeButton.module.scss'
 
@@ -29,6 +30,9 @@ const UiLikeButton: React.FC = () => {
         setFav(!fav)
     }
 
+    useEffect(() => {
+        console.log(fav)
+    })
     return (
       <div className={s.heart_container}>
          <button className={s.heart_btn} onClick={clickHandler}>

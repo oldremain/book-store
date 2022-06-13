@@ -1,22 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IFavouriteBook, IInitialState } from './types';
 
-const storageData: IFavouriteBook[] = JSON.parse(localStorage.getItem('cart') || '[]')
-
-export interface IFavouriteBook {
-    [key: string]: {
-        title: string,
-        subtitle: string,
-        price: string,
-        image: string,
-        isbn13: string
-    }
-}
-
-interface IInitialState {
-    books: IFavouriteBook[];
-    preparedData: IFavouriteBook[];
-    pageSize: string
-}
+const storageData: IFavouriteBook[] = JSON.parse(localStorage.getItem('favourites') || '[]')
 
 const initialState: IInitialState = {
     books: storageData,

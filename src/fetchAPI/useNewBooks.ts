@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { incrementArrayBy } from "../helpers/books";
-//import { IBook } from "../components/UI/bookCard/UiBookCard";
-import { IBookType } from './../features/books/booksSlice';
+import { IBookType } from './../features/books/types';
 
 //"https://api.itbook.store/1.0/new"
 
@@ -32,6 +31,7 @@ export const useNewBooks = (URL: string) => {
                 ...status,
                 newBooks: incrementArrayBy<IBookType, number>(response.data.books, 4), //увеличение числа элементов массива, по дефолту - 20
                 loading: false,
+                error: false
             });
         } catch (e: any) {
             setStatus({

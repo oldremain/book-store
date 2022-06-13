@@ -1,6 +1,6 @@
-import { ICartBook } from '../cart/cartSlice';
+import { ICartBook } from './../cart/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IFavouriteBook } from '../favourites/favouritesSlice';
+import { IFavouriteBook } from './../favourites/types';
 
 interface IInitialState {
     books: IFavouriteBook[] | ICartBook[];
@@ -35,6 +35,6 @@ const paginationFilterSlice = createSlice({
     }
 })
 
-export const {setInitialArray, removeItem, pageFilter } = paginationFilterSlice.actions
+//export const {setInitialArray, removeItem, pageFilter } = paginationFilterSlice.actions
 
 export default paginationFilterSlice.reducer

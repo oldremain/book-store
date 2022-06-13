@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/reduxHooks";
 import {
-    PriceOrder,
     setInitialArray,
     setPage,
     setPageSize,
@@ -20,7 +19,7 @@ import CustomPagination from "../../../UI/pagination/Pagination";
 import { SelectChangeEvent } from "@mui/material";
 import Loader from "../../../loader/Loader";
 
-import { UISize } from "../../../../enums/enums";
+import { UISize, PriceOrder } from "../../../../enums/enums";
 import { BASE_URL } from "../../../../constants/constants";
 
 import s from "../BooksPage.module.scss";

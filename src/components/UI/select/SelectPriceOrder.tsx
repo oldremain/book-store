@@ -1,5 +1,5 @@
 import React from "react";
-import { PriceOrder } from "../../../features/filter/filterSlice";
+import { PriceOrder } from "../../../enums/enums";
 
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";

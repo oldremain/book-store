@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // import { IBookType } from "../../components/UI/bookCard/UiBookCard";
-import { IBookType } from './../books/booksSlice';
+import { IBookType } from './../books/types';
 import { incrementArrayBy } from "../../helpers/books";
 import { fetchNewBooks } from "./newBooksThunk";
 

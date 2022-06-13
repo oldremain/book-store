@@ -1,5 +1,5 @@
 import { IPriceRef } from "../../components/main/cart/totalPrice/TotalPrice"
-import { ICartBook, IUserPriceBasket } from "./cartSlice"
+import { ICartBook, IUserPriceBasket } from './types';
 
 export const getBooksPriceInfo = (arr: ICartBook[]):  IUserPriceBasket => {
     const obj: IUserPriceBasket = {}

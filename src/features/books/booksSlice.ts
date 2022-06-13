@@ -1,40 +1,9 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { IFetchBooksResponse, IInitialState, IQuerryParams } from "./types";
+import { BASE_URL } from "../../constants/constants";
 import axios from "axios";
 
-import { BASE_URL } from "../../constants/constants";
-
 // BASE_URL = "https://api.itbook.store/1.0"
-
-export interface IBookType {
-    title: string;
-    subtitle: string;
-    isbn13: string;
-    price: string;
-    image: string;
-    url: string;
-}
-
-interface IInitialState {
-    searchField: string;
-    total: number;
-    page: number;
-    data: IBookType[];
-    loading: boolean;
-    error: boolean;
-    isSubmited: boolean;
-}
-
-interface IFetchBooksResponse {
-    books: IBookType[];
-    // error?: string;
-    page: string;
-    total: string;
-}
-
-interface IQuerryParams {
-    searchField: string;
-    page: number;
-}
 
 const initialState: IInitialState = {
     searchField: "",
@@ -80,7 +49,6 @@ const booksSlice = createSlice({
             .addCase(
                 fetchBooks.fulfilled,
                 (state, { payload }: PayloadAction<IFetchBooksResponse>) => {
-                    // console.log(action.payload);
                     state.data = payload.books;
                     state.total = Math.min(+payload.total, 1000) ;
                     //state.page = payload.page;

@@ -1,27 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-//import { IBook } from "../../components/UI/bookCard/UiBookCard";
-import { IBookType } from './../books/booksSlice';
 import { getPreparedData, getSortedData } from "./helpers";
-
-export enum PriceOrder {
-    INITIAL = "",
-    NONE = "none",
-    DESC = "desc",
-    ASC = "asc",
-}
-
-interface ISortParams {
-    books: IBookType[];
-    priceOrder: string;
-}
-
-interface IInitialState {
-    pageSize: string;
-    page: number;
-    priceOrder: string;
-    books: IBookType[];
-    preparedData: IBookType[];
-}
+import { IInitialState, ISortParams } from "./types";
+import { IBookType } from './../books/types';
+import { PriceOrder } from "../../enums/enums";
 
 const initialState: IInitialState = {
     pageSize: "5",

@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
+import { useAppSelector } from "../../../../hooks/reduxHooks";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
-import { useAppSelector } from "../../../../hooks/reduxHooks";
 import getPreparedData from "./helper";
 
 import ListItem from "./ListItem";
@@ -18,7 +18,9 @@ const MoreDetailsList: React.FC = () => {
     const handleClick = () => setOpen((prev) => !prev);
 
     const { book } = useAppSelector((state) => state.oneBook);
-    const preparedData = useMemo(() => getPreparedData(book, detailsFields), [book]);
+    const preparedData = useMemo(() => {
+        return getPreparedData(book, detailsFields)
+    }, [book]);
 
     const isMobile = useMediaQuery({ query: "(max-width: 472px)" });
 

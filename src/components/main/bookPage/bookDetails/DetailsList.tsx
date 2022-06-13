@@ -10,7 +10,9 @@ const detailsData: string[] = ["authors", "publisher", "year", "language"];
 
 const DetailsList: React.FC = () => {
     const { book } = useAppSelector((state) => state.oneBook);
-    const preparedData = useMemo(() => getPreparedData(book, detailsData), [book]);
+    const preparedData = useMemo(() => {
+        return getPreparedData(book, detailsData)
+    }, [book]);
 
     return (
         <ul className={s.details_list}>
