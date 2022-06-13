@@ -1,8 +1,8 @@
 import { FunctionComponent } from "react";
 
-import { ReactComponent as FavouritesIcon } from "../../../assets/headerIcons/FavouritesIcon.svg";
-import { ReactComponent as CartIcon } from "../../../assets/headerIcons/CartIcon.svg";
-import { ReactComponent as UserIcon } from "../../../assets/headerIcons/UserIcon.svg";
+import { ReactComponent as FavouritesIcon } from "../../../assets/FavouritesIcon.svg";
+import { ReactComponent as CartIcon } from "../../../assets/CartIcon.svg";
+import { ReactComponent as UserIcon } from "../../../assets/UserIcon.svg";
 
 type MenuDataType = {
     id: number;

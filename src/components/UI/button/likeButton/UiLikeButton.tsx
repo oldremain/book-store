@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import cn from 'classnames'
-import { ReactComponent as AddFavouriteIcon } from '../../../../assets/cardIcons/AddFavouriteIcon.svg'
+import { ReactComponent as AddFavouriteIcon } from '../../../../assets/AddFavouriteIcon.svg'
 import { toggleFavourite, IFavouriteBook } from '../../../../features/favourites/favouritesSlice'
 import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxHooks'
 

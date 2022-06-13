@@ -5,7 +5,7 @@ import { toggleVisibility } from "../../../features/sidebar/sidebarSlice";
 import MenuItem from "./menuItem/MenuItem";
 import MenuBtn from "./MenuBtn";
 import { menuData } from "./menuData";
-import { ReactComponent as MenuBurgerIcon } from "../../../assets/headerIcons/MenuBurger.svg";
+import { ReactComponent as MenuBurgerIcon } from "../../../assets/MenuBurgerIcon.svg";
 
 import s from "./Menu.module.scss";
 

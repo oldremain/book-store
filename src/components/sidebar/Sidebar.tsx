@@ -9,7 +9,7 @@ import Search from "../header/search/Search";
 import MenuBtn from "../header/menu/MenuBtn";
 import UIPrimaryButton from "../UI/button/UiPrimaryButton";
 import { ReactComponent as CartIcon } from "../../assets/headerIcons/CartIcon.svg";
-import { ReactComponent as CloseMenuIcon } from "../../assets/headerIcons/CloseMenu.svg";
+import { ReactComponent as CloseMenuIcon } from "../../assets/CloseMenuIcon.svg";
 
 import s from "./Sidebar.module.scss";
 import { logOut } from "../../features/auth/authSlice";

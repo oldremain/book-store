@@ -5,7 +5,7 @@ import { fetchBooks, setSearchField } from "../../../features/books/booksSlice";
 import { toggleVisibility } from "../../../features/sidebar/sidebarSlice";
 import cn from "classnames";
 
-import { ReactComponent as SearchIcon } from "../../../assets/headerIcons/SearchIcon.svg";
+import { ReactComponent as SearchIcon } from "../../../assets/SearchIcon.svg";
 
 import s from "./Search.module.scss";
 
