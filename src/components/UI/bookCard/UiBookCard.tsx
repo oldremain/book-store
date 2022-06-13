@@ -6,6 +6,7 @@ import UITitle from "../title/UiTitle";
 import UIBookImage from "../bookImage/UIBookImage";
 import UiBookRates from "../bookRates/UIBookRates";
 import CartCounter from "../../main/cart/cartCounter/CartCounter";
+
 import { UISize } from "../../../enums/enums";
 
 import s from "./UiBookCard.module.scss";

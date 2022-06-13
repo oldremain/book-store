@@ -4,7 +4,6 @@
     }
 }
 
-
 .book_image {
     position: relative;
     height: 100%;
@@ -44,14 +43,6 @@
         }
 }
 
-@media (max-width: 472px) {
-    .image_large {
-        & img {
-            max-width: 220px;
-        }
-    }
-}
-
 .book_image {
     display: flex;
     .image_placeholder {
@@ -61,3 +52,13 @@
         margin: auto;
     }
 }
+
+@media (max-width: 472px) {
+    .image_large {
+        & img {
+            max-width: 220px;
+        }
+    }
+}
+
+

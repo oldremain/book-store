@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useMediaQuery } from "react-responsive";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { toggleVisibility } from "../../features/sidebar/sidebarSlice";
+import { logOut } from "../../features/auth/authSlice";
 import { motion } from "framer-motion";
 
 import Logo from "../header/logo/Logo";
@@ -8,17 +10,15 @@ import MenuItem from "../header/menu/menuItem/MenuItem";
 import Search from "../header/search/Search";
 import MenuBtn from "../header/menu/MenuBtn";
 import UIPrimaryButton from "../UI/button/UiPrimaryButton";
-import { ReactComponent as CartIcon } from "../../assets/headerIcons/CartIcon.svg";
 import { ReactComponent as CloseMenuIcon } from "../../assets/CloseMenuIcon.svg";
+import { ReactComponent as CartIcon } from "../../assets/CartIcon.svg";
 
 import s from "./Sidebar.module.scss";
-import { logOut } from "../../features/auth/authSlice";
-import { useLocation } from "react-router-dom";
 
 const Sidebar: React.FC = () => {
     const dispatch = useAppDispatch();
     const isLogged = useAppSelector(state => state.auth.isLogged)
-    const location = useLocation()
+    const isMobile = useMediaQuery({ query: "(max-width: 576px)" });
 
     const handleCloseClick = () => {
         dispatch(toggleVisibility());
@@ -33,17 +33,24 @@ const Sidebar: React.FC = () => {
         dispatch(toggleVisibility(false));
     }
 
-    // useEffect(() => {
-    //     dispatch(toggleVisibility());
-    // }, [location.pathname])
-
     return (
         <>
             <motion.div className={s.sidebar} animate={{ x: ["100%", "0%"] }}>
                 <div className={s.sidebar_content}>
                     <div className={s.sidebar_nav}>
-                        {/* <Logo cName={s.logo} />
-                        <MenuItem href="/cart" cName={s.nav_link} children={<CartIcon />} /> */}
+                        {isMobile && 
+                        <>
+                            <Logo 
+                                cName={s.logo} 
+                                onClick={handleLinkClick}
+                            />
+                            <MenuItem 
+                                href="/cart" 
+                                cName={s.nav_link} 
+                                children={<CartIcon />} 
+                                onClick={handleLinkClick}
+                            />
+                        </>}
                         <MenuBtn
                             cName={s.close_menu}
                             children={<CloseMenuIcon />}

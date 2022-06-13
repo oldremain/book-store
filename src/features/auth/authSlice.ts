@@ -1,21 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-
-//const userAuth = localStorage.getItem('userLogged') || false
-
-interface IAuthUser {
-    email: string | null,
-    accessToken: string | null,
-    refreshToken: string | null,
-    id: string | null,
-}
-
-interface IInitialState {
-    user: IAuthUser,
-    isLogged: boolean,
-    isLoading: boolean,
-    error: IAuthError
-}
+import { IAuthResponse, IInitialState, IQuerryParams } from "./types";
 
 const initialState: IInitialState = {
     user: {
@@ -30,26 +15,6 @@ const initialState: IInitialState = {
         message: undefined,
         isError: false
     }
-}
-
-interface IAuthResponse {
-    email: string, 
-    uid: string, 
-    stsTokenManager: {
-        accessToken: string,
-        expirationTime: number,
-        refreshToken: string
-    }
-}
-
-interface IAuthError {
-    message: string | undefined,
-    isError: boolean
-}
-
-interface IQuerryParams {
-    email: string;
-    password: string;
 }
 
 export const registerUser = createAsyncThunk<IAuthResponse, IQuerryParams, { rejectValue: string }>(

@@ -14,7 +14,9 @@ interface ITitleProps {
 const UITitle: React.FC<ITitleProps> = ({ size, children, cName = "" }) => {
     return (
         <h2 className={cn(s.title, s[cName])}>
-            <span className={cn(s[`text_${size}`], s.text)}>{children}</span>
+            <span className={cn(s[`text_${size}`], s.text)}>
+                {children}
+            </span>
         </h2>
     );
 };

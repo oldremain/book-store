@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
+import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxHooks'
+import { toggleFavourite, IFavouriteBook } from '../../../../features/favourites/favouritesSlice'
 import cn from 'classnames'
 import { ReactComponent as AddFavouriteIcon } from '../../../../assets/AddFavouriteIcon.svg'
-import { toggleFavourite, IFavouriteBook } from '../../../../features/favourites/favouritesSlice'
-import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxHooks'
 
 import s from './UiLikeButton.module.scss'
 

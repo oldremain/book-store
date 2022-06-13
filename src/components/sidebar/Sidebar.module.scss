@@ -30,21 +30,32 @@
 
 .sidebar_nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    align-items: center;
     border-bottom: 1px solid var(--bg-primary2);
     margin-bottom: 56px;
     padding-bottom: 39px;
 
     .logo {
-        display: none;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: -0.05em;
+        color: var(--system-primary);
+        a {
+            color: inherit;
+        }
     }
 
     .nav_link {
-        display: none;
+        display: inline-block;
+        margin: 0 15px 0 auto;
+
+        &::after {
+            display: none;
+        }
     }
 
     .close_menu {
-        margin-left: auto;
         background-color: transparent;
     }
 }

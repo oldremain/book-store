@@ -1,34 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import cn from 'classnames';
 
-import 'react-tabs/style/react-tabs.scss';
-import  './BookTabs.scss'
+import s from './BookTabs.module.scss'
 
-interface ICustomTabs {
+interface IBookTabsProps {
     desc: string
 }
 
-const BookTabs: React.FC<ICustomTabs> = ({ desc }) => (
-    <Tabs>
-      <TabList>
-        <Tab >Description</Tab>
-        <Tab >Authors</Tab>
-        <Tab >Reviews</Tab>
-      </TabList>
-  
-      <TabPanel>
-        <p>{desc}</p>
-      </TabPanel>
-      <TabPanel>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores iste et soluta, fuga quidem consequuntur. Alias voluptatum et ipsum veritatis repudiandae, aliquid incidunt eum dolorem cum nobis unde iure consectetur!
-        </p>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa architecto, fugit, porro iste quidem eum possimus dicta inventore magnam eius nam dolore blanditiis numquam nihil quod recusandae natus eos dolorum.    
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto repudiandae ratione, optio animi delectus, maxime atque voluptas accusantium earum ipsum adipisci totam nesciunt cum reiciendis beatae sapiente corporis, id eos?</p>
-      </TabPanel>
-      <TabPanel>
-        <p style={{fontStyle: 'italic'}}>"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum in, officia deserunt asperiores, magni vel molestias alias, unde a quia vero iste! Mollitia, ipsum exercitationem odio ad beatae voluptatem ipsa!"</p>
-      </TabPanel>
-    </Tabs>
-  );
+const BookTabs: React.FC<IBookTabsProps> = ({ desc }) => {
+    const [active, setActive] = useState('desc')
+
+    const handleDescClick = () => {
+        setActive('desc')
+    }
+    const handleAuthorClick = () => {
+        setActive('author')
+    }
+    const handleReviewsClick = () => {
+        setActive('reviews')
+    }
+
+    return (
+        <Tabs className={s.tabs}>
+            <TabList className={s.tab_list}>
+                <Tab 
+                    className={cn(s.tab_item, {[s['tab_item--selected']]: active === 'desc' ? true : false})}
+                    onClick={handleDescClick}
+                    >
+                    Description
+                </Tab>
+                <Tab 
+                    className={cn(s.tab_item, {[s['tab_item--selected']]: active === 'author' ? true : false})}
+                    onClick={handleAuthorClick}
+                    >
+                        Authors
+                </Tab>
+                <Tab  
+                    className={cn(s.tab_item, {[s['tab_item--selected']]: active === 'reviews' ? true : false})}
+                    onClick={handleReviewsClick}
+                    >
+                        Reviews
+                </Tab>
+            </TabList>
+    
+            <TabPanel className={cn(s.tab_panel, {[s['tab_panel--selected']]: active === 'desc' ? true : false})}>
+                <p>{desc}</p>
+            </TabPanel >
+            <TabPanel className={cn(s.tab_panel, {[s['tab_panel--selected']]: active === 'author' ? true : false})}>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores iste et soluta, fuga quidem consequuntur. Alias voluptatum et ipsum veritatis repudiandae, aliquid incidunt eum dolorem cum nobis unde iure consectetur!
+                </p>
+            </TabPanel>
+            <TabPanel className={cn(s.tab_panel, {[s['tab_panel--selected']]: active === 'reviews' ? true : false})}>
+                <p style={{fontStyle: 'italic'}}>"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum in, officia deserunt asperiores, magni vel molestias alias, unde a quia vero iste! Mollitia, ipsum exercitationem odio ad beatae voluptatem ipsa!"</p>
+            </TabPanel>
+        </Tabs>
+    )   
+};
 
   export default BookTabs

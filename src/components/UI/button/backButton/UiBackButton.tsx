@@ -5,11 +5,11 @@ import { ReactComponent as ArrowBackIcon } from "../../../../assets/ArrowBackIco
 
 import s from "./UiBackButton.module.scss";
 
-interface IBackButton {
+interface IBackButtonProps {
     backTo?: string;
 }
 
-const UIBackButton: React.FC<IBackButton> = ({ backTo }) => {
+const UIBackButton: React.FC<IBackButtonProps> = ({ backTo }) => {
     const navigate = useNavigate();
 
     const handleBackClick = () => {

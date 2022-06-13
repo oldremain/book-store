@@ -11,8 +11,6 @@ import UIBookImage from "../../UI/bookImage/UIBookImage";
 import CustomTabs from './BookTabs/BookTabs'
 import UiLikeButton from '../../UI/button/likeButton/UiLikeButton'
 
-// import BookCard from '../booksPage/bookCard/BookCard'
-
 import { UISize } from "../../../enums/enums";
 
 import s from "./BookPage.module.scss";
@@ -26,8 +24,6 @@ const BookPage: React.FC = () => {
     useEffect(() => {
         dispatch(fetchOneBook(isbn));
     }, [isbn]);
-
-    // const preparedData = useAppSelector(state => state.filter.preparedData)
 
     return (
           <section className={s.section_container}>
@@ -49,7 +45,6 @@ const BookPage: React.FC = () => {
                     </>
                 )}
                 <CustomTabs desc={desc}/>
-                {/* <BookCard {...preparedData[0]}/> */}
           </section>
     );
 };

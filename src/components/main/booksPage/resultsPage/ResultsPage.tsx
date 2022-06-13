@@ -59,10 +59,9 @@ const ResultsPage: React.FC = () => {
 
     useEffect(() => {
         dispatch(fetchBooks({ searchField, page: paginationPage }));// при возврате с вкладки favourites не обновлялись данные
-
         const path = `/search/${searchField}?page=${paginationPage}`;
         navigate(path);
-    }, [searchField, paginationPage]); //навигация, строка поиска
+    }, [searchField, paginationPage]);
 
     useEffect(() => {
         setPaginationPage(1);
@@ -72,9 +71,9 @@ const ResultsPage: React.FC = () => {
     return (
         <section className={s.section_container}>
             <UIBackButton backTo={"/new/1"} />
-            <h2>
-                <UITitle size={UISize.Large}>{`"${searchField}" Search Results`}</UITitle>
-            </h2>
+            <UITitle size={UISize.Large}>
+                {`"${searchField}" Search Results`}
+            </UITitle>
             <div className={s.books_qty}>
                 <span>Found {total} books</span>
             </div>

@@ -1,5 +1,4 @@
 import React from 'react'
-import { IFavouriteBook } from '../../../features/favourites/favouritesSlice'
 
 import s from './UiBookAmount.module.scss'
 

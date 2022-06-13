@@ -9,9 +9,9 @@ import UITitle from '../../UI/title/UiTitle'
 import UiBookAmount from '../../UI/bookAmount/UiBookAmount'
 import TotalPrice from './totalPrice/TotalPrice'
 import UiEmptyPage from '../../UI/emptyPage/UiEmptyPage'
+import CustomPagination from '../../UI/pagination/Pagination'
 import ClearIcon from '@mui/icons-material/Clear';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import CustomPagination from '../../UI/pagination/Pagination'
 
 import { UISize } from '../../../enums/enums'
 
@@ -61,51 +61,49 @@ const Cart: React.FC = () => {
 
     return (
       <section className={s.section_container}>
-              <UIBackButton />
-              <h2>
-                  <UITitle size={UISize.Large}>
-                      {`Cart`}
-                  </UITitle>
-              </h2>
+            <UIBackButton />
+            <UITitle size={UISize.Large}>
+                {`Cart`}
+            </UITitle>
 
-              {!books.length 
-                  ? 
-                    <UiEmptyPage text='Cart is empty !'>
-                        <ShoppingBasketIcon />
-                    </UiEmptyPage>
-                  :  
-                    <>
-                       { books.length && 
-                           <UiBookAmount 
-                               amount={books.length}
-                           />
-                       }
-                      <div className={s.store_card}>
-                          {preparedData.map(book => 
-                            <UiBookCard 
-                                key={book.isbn13}
-                                cName='card__store'
-                                onLinkClick={handleLinkClick}
-                                onButtonClick={() => handleClearClick(book.isbn13)}
-                                {...book}
-                            >
-                                    <ClearIcon 
-                                      key={book.isbn13 + book.price}
-                                      className={s.clear_icon} 
-                                    />
-                            </UiBookCard>
-                            )
-                          }
-                      </div>
-                      <TotalPrice/>
-                      <CustomPagination 
-                          page={page}
-                          pageSize={pageSize} 
-                          itemsCount={books.length} 
-                          handleChangePage={handleChangePage}
-                      />
-                  </>
-              }
+            {!books.length 
+                ? 
+                  <UiEmptyPage text='Cart is empty !'>
+                      <ShoppingBasketIcon />
+                  </UiEmptyPage>
+                :  
+                  <>
+                     { books.length && 
+                         <UiBookAmount 
+                             amount={books.length}
+                         />
+                     }
+                    <div className={s.store_card}>
+                        {preparedData.map(book => 
+                          <UiBookCard 
+                              key={book.isbn13}
+                              cName='card__store'
+                              onLinkClick={handleLinkClick}
+                              onButtonClick={() => handleClearClick(book.isbn13)}
+                              {...book}
+                          >
+                                  <ClearIcon 
+                                    key={book.isbn13 + book.price}
+                                    className={s.clear_icon} 
+                                  />
+                          </UiBookCard>
+                          )
+                        }
+                    </div>
+                    <TotalPrice/>
+                    <CustomPagination 
+                        page={page}
+                        pageSize={pageSize} 
+                        itemsCount={books.length} 
+                        handleChangePage={handleChangePage}
+                    />
+                </>
+            }
           </section>
     )
 }

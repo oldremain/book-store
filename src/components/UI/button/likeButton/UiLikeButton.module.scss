@@ -23,9 +23,9 @@
 
 .heart_active {
     path {
-        stroke: red;
+        stroke: var(--contextual-color);
     }
-    fill: red;  
+    fill: var(--contextual-color);  
 }
 
 @media (max-width: 472px) {

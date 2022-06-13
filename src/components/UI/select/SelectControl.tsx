@@ -5,7 +5,11 @@ interface ISelectControlProps {
 }
 
 const SelectControl: React.FC<ISelectControlProps> = ({ children }) => {
-    return <>{children}</>;
-};
+    return (
+        <>
+            { children }
+        </>
+    );
+}
 
 export default SelectControl;

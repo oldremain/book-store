@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../../hooks/reduxHooks'
 import { decreaseProductQty, increaseProductQty } from '../../../../features/cart/cartSlice'
 import cn from 'classnames'
 
 import s from './CartCounter.module.scss'
 
-interface ICartCounter {
+interface ICartCounterProps {
     cName: string,
     isbn13: string,
 }
 
-const CartCounter: React.FC<ICartCounter> = ({ cName, isbn13 }) => {
+const CartCounter: React.FC<ICartCounterProps> = ({ cName, isbn13 }) => {
     const product = useAppSelector(state => state.cart.userPriceBasket)
     const [count, setCount] = useState(product[isbn13].count) // берем значение из store(redux)
     const dispatch = useAppDispatch()

@@ -12,12 +12,12 @@ import { useNewBooks } from "../../../../fetchAPI/useNewBooks";
 import _isEmpty from "lodash.isempty";
 
 import UITitle from "../../../UI/title/UiTitle";
+import UiBookCard from "../../../UI/bookCard/UiBookCard";
 import SelectControl from "../../../UI/select/SelectControl";
 import SelectSize from "../../../UI/select/SelectSize";
 import SelectPriceOrder from "../../../UI/select/SelectPriceOrder";
 import CustomPagination from "../../../UI/pagination/Pagination";
 import { SelectChangeEvent } from "@mui/material";
-import UiBookCard from "../../../UI/bookCard/UiBookCard";
 import Loader from "../../../loader/Loader";
 
 import { UISize } from "../../../../enums/enums";
@@ -62,9 +62,9 @@ const InitialPage: React.FC = () => {
 
     return (
         <section className={s.section_container}>
-            <h2>
-                <UITitle size={UISize.Large}>New Releases Books ({newBooks.length})</UITitle>
-            </h2>
+            <UITitle size={UISize.Large}>
+                New Releases Books ({newBooks.length})
+            </UITitle>
             <SelectControl>
                 <SelectSize pageSize={pageSize} handleChangeSize={handleChangeSize} />
                 <SelectPriceOrder priceOrder={priceOrder} handleChangePrice={handleChangePrice} />
@@ -92,29 +92,3 @@ const InitialPage: React.FC = () => {
 };
 
 export default InitialPage;
-
-
-{/* <h2>
-<UITitle size={UISize.Large}>New Releases Books ({newBooks.length})</UITitle>
-</h2>
-<SelectControl>
-<SelectSize pageSize={pageSize} handleChangeSize={handleChangeSize} />
-<SelectPriceOrder priceOrder={priceOrder} handleChangePrice={handleChangePrice} />
-</SelectControl>
-<div className={s.cards_container}>
-{loading && !isEmptyData ? (
-    <Loader />
-) : (
-    preparedData.map((book, i) => 
-        <UiBookCard 
-            key={book.isbn13 + i} 
-            {...book} 
-        />)
-)}
-</div>
-<CustomPagination
-itemsCount={newBooks.length}
-page={page}
-pageSize={pageSize}
-handleChangePage={handleChangePage}
-/> */}

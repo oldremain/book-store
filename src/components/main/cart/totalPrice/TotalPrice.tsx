@@ -1,10 +1,9 @@
 import React, { useRef } from 'react'
-import { calculateVAT, calculatePrice, calculateTotal } from '../../../../features/cart/cartHelpers'
 import { useAppSelector } from '../../../../hooks/reduxHooks'
+import { calculateVAT, calculatePrice, calculateTotal } from '../../../../features/cart/cartHelpers'
+import { VAT } from '../../../../constants/constants'
 
 import s from './TotalPrice.module.scss'
-
-const VAT = 0.2
 
 export interface IPriceRef {
     sum: number,
@@ -29,15 +28,15 @@ const TotalPrice: React.FC = () => {
         <div className={s.price_container}>
             <div className={s.sum_container}>
                 <span>Sum total</span>
-                <span>{ `$ ${priceRef.current.sum}` }</span>
+                <span>{`$ ${priceRef.current.sum}`}</span>
             </div>
             <div className={s.vat_container}>
                 <span>VAT</span>
-                <span>{ `$ ${priceRef.current.vat}` }</span>
+                <span>{`$ ${priceRef.current.vat}`}</span>
             </div>
             <div className={s.total_container}>
                 <span>TOTAL:</span>
-                <span>{ `$ ${priceRef.current.total}` }</span>
+                <span>{`$ ${priceRef.current.total}`}</span>
             </div>
         </div>
     )

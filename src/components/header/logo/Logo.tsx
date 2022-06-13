@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 
 interface ILogoProps {
     cName: string;
+    onClick?: () => void
 }
 
-const Logo: React.FC<ILogoProps> = ({ cName }) => {
+const Logo: React.FC<ILogoProps> = ({ cName, onClick }) => {
     return (
-        <div className={cName}>
+        <div className={cName} onClick={onClick}>
             <Link to="/new">BOOKSTORE</Link>
         </div>
     );

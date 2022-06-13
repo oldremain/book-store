@@ -6,12 +6,13 @@ import { getBookData } from './helpers'
 import UiBookCard from '../../UI/bookCard/UiBookCard'
 import UIBackButton from '../../UI/button/backButton/UiBackButton'
 import UITitle from '../../UI/title/UiTitle'
+import UiBookAmount from '../../UI/bookAmount/UiBookAmount';
+import CustomPagination from '../../UI/pagination/Pagination'
 import UiEmptyPage from '../../UI/emptyPage/UiEmptyPage'
 import ClearIcon from '@mui/icons-material/Clear';
-import { UISize } from '../../../enums/enums'
-import CustomPagination from '../../UI/pagination/Pagination'
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import UiBookAmount from '../../UI/bookAmount/UiBookAmount';
+
+import { UISize } from '../../../enums/enums'
 
 import s from './Favourites.module.scss'
 
@@ -55,11 +56,10 @@ const Favourites: React.FC = () => {
     return (
         <section className={s.section_container}>
             <UIBackButton />
-            <h2>
-                <UITitle size={UISize.Large}>
-                    {`Favourites`}
-                </UITitle>
-            </h2>
+
+            <UITitle size={UISize.Large}>
+                {`Favourites`}
+            </UITitle>
            
             {!books.length 
                 ? 
