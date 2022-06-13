@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../hooks/reduxHooks";
 import { addProduct } from "../../../../features/cart/cartSlice";
 import { ICartBook } from "../../../../features/cart/types";
@@ -17,6 +18,8 @@ import s from "./BookDetails.module.scss";
 const BookDetails: React.FC = () => {
     const { price, isbn13, title, subtitle, image  } = useAppSelector((state) => state.oneBook.book);
     const preview = useAppSelector((state) => state.oneBook.book.pdf); //объект со ссылками
+    const isLogged = useAppSelector(state => state.auth.isLogged)
+    const navigate = useNavigate()
     const isEmptyPreview = _isEmpty(preview); // проверка что не пустой
 
     const dispatch = useAppDispatch()
@@ -34,7 +37,11 @@ const BookDetails: React.FC = () => {
     }
 
     const handleCartClick = () => {
-        dispatch(addProduct(preparedData.current))
+        if (isLogged) {
+            dispatch(addProduct(preparedData.current))
+        } else {
+            navigate('/account/auth')
+        }
     }
 
     return (

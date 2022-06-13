@@ -7,7 +7,8 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 200%;
-    color: var(--system-primary);
+    //color: var(--system-primary);
+    color: var(--system-primary2);
     margin-bottom: 3px;
 }
 .field_input {
@@ -29,9 +30,10 @@
     }
 
     &:focus {
-        border: 1px solid var(--system-primary2);
+        border: 1px solid var(--system-secondary);
+        background-color: var(--additional-blue);
 
-         + .input_tooltip {
+        & + .input_tooltip {
             opacity: 1;
         }
     }

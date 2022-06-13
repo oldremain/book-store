@@ -32,6 +32,11 @@
             cursor: not-allowed;
         }
     }
+    &.ui_btn_signIn,
+    &.ui_btn_signUp {
+        border-radius: 5px;
+        overflow: hidden;
+    }
 }
 
 .ui_btn {
@@ -57,5 +62,6 @@
 
     &._disabled {
         cursor: not-allowed;
+        background-color: var(--bg-primary2);
     }
 }

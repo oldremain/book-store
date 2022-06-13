@@ -4,6 +4,7 @@ import InputTooltip from '../../formInput/InputTooltip'
 import { IProfileFormState, IProfileValidation } from './types'
 
 import s from '../Profile.module.scss'
+import ProfileTitle from '../profileTitle/ProfileTitle'
 
 const ProfileForm: React.FC = () => {
     const [value, setValue] = useState<IProfileFormState>({
@@ -29,7 +30,7 @@ const ProfileForm: React.FC = () => {
     return (
         <form className={s.profile_form} onSubmit={handleSubmit}>
                 <div className={s.profile}>
-                    <span className={s.profile_title}>Profile</span>
+                    <ProfileTitle text='Profile'/>
                     <FormInput 
                         title='Name' 
                         id='id_name' 
@@ -56,7 +57,7 @@ const ProfileForm: React.FC = () => {
                     </FormInput>
                 </div>
                 <div className={s.password}>
-                    <span className={s.password_title}>Password</span>
+                    <ProfileTitle text='Password'/>
                     <FormInput 
                         title='Password' 
                         id='id_password' 
