@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { ISignInState } from '../signin/SignIn'
-import { ISignUpState } from '../signup/SignUp'
+import React from 'react'
+import { ISignInState } from '../signin/types'
+import { ISignUpState } from '../signup/types'
 import cn from 'classnames'
 
 import s from './FormInput.module.scss'
@@ -18,16 +18,6 @@ interface IFormInput {
 }
 
 const FormInput: React.FC<IFormInput> = ({ title, type, id, name, placeholder, value, valid, onChange, children }) => {
-    //const [value, setValue] = useState('')
-
-    // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     setValue(e.target.value)
-    // }
-
-    // useEffect(() => {
-    //     console.log(valid)
-    // }, [valid])
-
     return (
         <div className={s.field_container}>
             <label htmlFor={id} className={s.field_label}>

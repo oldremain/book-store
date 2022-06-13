@@ -1,6 +1,5 @@
 import React from 'react'
 import { MdLogout } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
 import { logOut } from '../../../features/auth/authSlice';
 import { useAppDispatch } from '../../../hooks/reduxHooks';
 

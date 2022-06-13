@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useAppSelector } from '../../hooks/reduxHooks';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
-import { UISize } from '../../enums/enums';
 import UIBackButton from '../UI/button/backButton/UiBackButton';
-import UITitle from '../UI/title/UiTitle';
-import SignIn from './signin/SignIn';
-import SignUp from './signup/SignUp';
-import Form from './form/Form'
+import AccountHeader from './header/AccountHeader';
+import Greeting from './Greeting';
+import Profile from './profile/Profile';
 
 import s from './Account.module.scss'
-import HomeButton from './header/HomeButton';
-import Greeting from './Greeting';
-import LogOut from './header/LogOut';
-import AccountHeader from './header/AccountHeader';
-import Profile from './profile/Profile';
 
 const Account: React.FC = () => {
     const isLogged = useAppSelector(state => state.auth.isLogged)
@@ -32,11 +25,12 @@ const Account: React.FC = () => {
    
     return (
       <section className={s.section_container}>
-          {isLogged && <>
-              <AccountHeader/>
-              <Greeting/>
-              <Profile/>
-          </>}
+            {isLogged && <>
+                <UIBackButton backTo='/new'/>
+                <AccountHeader/>
+                <Greeting/>
+                <Profile/>
+            </>}
           <Outlet/>
       </section> 
     )

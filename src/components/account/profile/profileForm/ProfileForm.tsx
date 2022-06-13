@@ -1,19 +1,9 @@
 import React, { useState } from 'react'
 import FormInput from '../../formInput/FormInput'
 import InputTooltip from '../../formInput/InputTooltip'
+import { IProfileFormState, IProfileValidation } from './types'
 
 import s from '../Profile.module.scss'
-
-interface IProfileFormState {
-    email: string,
-    password: string,
-}
-
-interface IProfileValidation {
-    isValidUsername: boolean,
-    isValidEmail: boolean,
-    isValidPassword: boolean
-}
 
 const ProfileForm: React.FC = () => {
     const [value, setValue] = useState<IProfileFormState>({

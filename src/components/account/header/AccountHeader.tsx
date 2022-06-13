@@ -1,11 +1,10 @@
 import React from 'react'
-import { UISize } from '../../../enums/enums'
+
 import UITitle from '../../UI/title/UiTitle'
-import HomeButton from './HomeButton'
-import LogOut from './LogOut'
+import HeaderControls from './HeaderControls'
+import { UISize } from '../../../enums/enums'
 
 import s from '../Account.module.scss'
-import HeaderControls from './HeaderControls'
 
 const AccountHeader: React.FC = () => {
     return (

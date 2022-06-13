@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
 }
-
 .field_label {
     font-family: 'Helios';
     font-weight: 700;
@@ -11,7 +10,6 @@
     color: var(--system-primary);
     margin-bottom: 3px;
 }
-
 .field_input {
     border: 1px solid var(--bg-primary2);
     border-radius: 3px;
@@ -38,7 +36,6 @@
         }
     }
 }
-
 .input_tooltip {
     font-family: 'Helios';
     font-weight: 400;

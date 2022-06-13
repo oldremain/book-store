@@ -1,28 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
+import { registerUser } from '../../../features/auth/authSlice';
+import { validateEmail, validatePassword, validateUsername } from '../../../helpers/validation';
+import { ISignUpState, IValidation } from './types';
+
 import UIPrimaryButton from '../../UI/button/UiPrimaryButton';
 import FormInput from '../formInput/FormInput';
-
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { registerUser, setUser } from '../../../features/auth/authSlice';
-
-import s from './SignUp.module.scss'
-import { validateEmail, validatePassword, validateUsername } from '../../../helpers/validation';
 import InputTooltip from '../formInput/InputTooltip';
 import Loader from '../../loader/Loader';
 
-export interface ISignUpState {
-    email: string,
-    password: string,
-    confirmPassword: string,
-    username: string
-}
-
-export interface IValidation {
-    isValidUsername: boolean,
-    isValidEmail: boolean,
-    isValidPassword: boolean
-}
+import s from './SignUp.module.scss'
 
 const SignUp = () => {
     const [value, setValue] = useState<ISignUpState>({

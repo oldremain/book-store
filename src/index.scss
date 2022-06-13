@@ -26,7 +26,6 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: var(--system-primary);
-    //background-color: var(--bg-secondary);
     font-weight: 400;
 }
 
@@ -34,6 +33,7 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 #root {
-    // position: relative;
+    position: relative;
     height: inherit;
 }
+

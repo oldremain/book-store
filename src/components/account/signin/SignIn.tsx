@@ -1,27 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { clearError, loginUser, setUser } from '../../../features/auth/authSlice'
+import { clearError, loginUser} from '../../../features/auth/authSlice'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks'
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { validateEmail, validatePassword} from '../../../helpers/validation';
 
 import UIPrimaryButton from '../../UI/button/UiPrimaryButton'
 import FormInput from '../formInput/FormInput'
 import InputToolTip from '../formInput/InputTooltip'
-// import { BallTriangle } from  'react-loader-spinner'
 import Loader from '../../loader/Loader'
+import SignInError from './SignInError';
+import { ISignInState, IValidation } from './types';
 
 import s from './SignIn.module.scss'
-import { validateEmail, validatePassword, validateUsername } from '../../../helpers/validation';
-import SignInError from './SignInError';
-
-interface IValidation {
-    isValidEmail: boolean,
-    isValidPassword: boolean
-}
-
-export interface ISignInState {
-    email: string,
-    password: string,
-}
 
 const SignIn: React.FC = () => {
     const [value, setValue] = useState<ISignInState>({
@@ -34,7 +23,7 @@ const SignIn: React.FC = () => {
     })
 
     const dispatch = useAppDispatch()
-    const {isLoading, error, isLogged }= useAppSelector(state => state.auth)
+    const {isLoading, error }= useAppSelector(state => state.auth)
 
     const handleChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue({
