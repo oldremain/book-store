@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { loginUser, setUser } from '../../../features/auth/authSlice'
+import { clearError, loginUser, setUser } from '../../../features/auth/authSlice'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
@@ -11,6 +11,7 @@ import Loader from '../../loader/Loader'
 
 import s from './SignIn.module.scss'
 import { validateEmail, validatePassword, validateUsername } from '../../../helpers/validation';
+import SignInError from './SignInError';
 
 interface IValidation {
     isValidEmail: boolean,
@@ -70,9 +71,11 @@ const SignIn: React.FC = () => {
         }
     }
 
-    // useEffect(() => {
-    //     console.log(error)
-    // }, [error])
+    useEffect(() => {
+        if (error.isError) {
+            dispatch(clearError())
+        }
+    }, [])
 
     return (
       <>
@@ -109,6 +112,7 @@ const SignIn: React.FC = () => {
                 />
                 {isLoading && <Loader />}
           </form>
+          {error.isError && <SignInError />}
       </>
     )
 }

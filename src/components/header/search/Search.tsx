@@ -11,9 +11,10 @@ import s from "./Search.module.scss";
 
 interface ISearchProps {
     cName: string[];
+    id: string
 }
 
-const Search: React.FC<ISearchProps> = ({ cName }) => {
+const Search: React.FC<ISearchProps> = ({ cName, id }) => {
     const [book, setBook] = useState<string>("");
 
     const dispatch = useAppDispatch();
@@ -39,14 +40,14 @@ const Search: React.FC<ISearchProps> = ({ cName }) => {
         <>
             <div className={cn(s[cName[0]], s[cName[1]], s[cName[2]])}>
                 <form className={s.search_form} onSubmit={handleFormSubmit}>
-                    <label htmlFor="search-input" hidden={true}>
+                    <label htmlFor={id} hidden={true}>
                         Search by book title
                     </label>
                     <input
                         value={book}
                         onChange={handleInputChange}
                         type="text"
-                        id="search-input"
+                        id={id}
                         placeholder="Search books by Title, Author or ISBN"
                         autoComplete="off"
                         className={s.search_input}

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { useAppSelector } from "./hooks/reduxHooks";
 
 import Header from "./components/header/Header";
@@ -18,6 +18,7 @@ import s from "./App.module.scss";
 
 const App: React.FC = () => {
     const showSidebar = useAppSelector((state) => state.sidebar.show);
+    const isLogged = useAppSelector(state => state.auth.isLogged)
 
     return (
         <BrowserRouter>
@@ -37,7 +38,7 @@ const App: React.FC = () => {
                             <Route path="search/:book/*" element={<ResultsPage />} />
                             <Route path="books/:isbn" element={<BookPage />} />
                             <Route path="favourites" element={<Favourites />} />
-                            <Route path="cart" element={<Cart />} />
+                            <Route path="cart" element={isLogged ? <Cart /> : <Navigate to={'/account/auth'}/>} />
                             <Route path="account" element={<Account />}>
                                 <Route path="auth" element={<Form />}/>
                             </Route>
@@ -51,3 +52,5 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+// : <Navigate to={'/account/auth'}/>

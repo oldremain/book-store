@@ -93,6 +93,22 @@ const authSlice = createSlice({
             // state.user.email = null;
             // //state.user.token = null;
             // state.user.id = null;
+        },
+        clearError(state) {
+            state.error =  {
+                message: undefined,
+                isError: false
+            }
+        },
+        logOut(state) {
+            state.user = {
+                email: null,
+                accessToken: null,
+                refreshToken: null,
+                id: null
+            }
+            state.isLogged = false
+            localStorage.removeItem('userLogged')
         }
     },
     extraReducers: (builder) => {
@@ -125,7 +141,7 @@ const authSlice = createSlice({
                 state.error =  {
                     message: undefined,
                     isError: false
-                };;
+                };
                 state.isLoading = true
             })
             .addCase(loginUser.fulfilled, (state, {payload}: PayloadAction<IAuthResponse>) => {
@@ -148,6 +164,6 @@ const authSlice = createSlice({
     }
 })
 
-export const { setUser,  removeUser} = authSlice.actions
+export const { setUser,  removeUser, clearError, logOut} = authSlice.actions
 
 export default authSlice.reducer

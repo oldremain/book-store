@@ -66,6 +66,9 @@
         &:visited {
             color: inherit;
         }
+        &::after {
+            display: none;
+        }
     }
 }
 

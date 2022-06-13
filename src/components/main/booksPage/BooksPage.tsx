@@ -8,14 +8,17 @@ import s from "./BooksPage.module.scss";
 
 const BooksPage: React.FC = () => {
     const location = useLocation()
-    const isAccountPage = location.pathname === '/account'
+    const isAccountPage = location.pathname.startsWith('/account')
 
     const isThablet = useMediaQuery({ query: "(max-width: 768px)" });
 
     return (
         <div className={s.page_containter}>
             {isThablet && !isAccountPage && 
-                <Search cName={["search", "search_main"]} />}
+                <Search 
+                    cName={["search", "search_main"]} 
+                    id={'search-input-main'}
+                />}
             <Outlet />
         </div>
     );

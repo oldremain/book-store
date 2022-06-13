@@ -14,7 +14,7 @@ const Header: React.FC = () => {
         <header id={s.header}>
             <div className={s.header_container}>
                 <Logo cName={s.header_logo} />
-                {!isThablet && <Search cName={["search"]} />} 
+                {!isThablet && <Search cName={["search"]}  id={'search-input-main'}/>} 
                 {/* // использую хук useMediaQuery массив классов вроде не обязателен */}
                 <Menu />
             </div>
