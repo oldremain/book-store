@@ -15,7 +15,6 @@ const Header: React.FC = () => {
             <div className={s.header_container}>
                 <Logo cName={s.header_logo} />
                 {!isThablet && <Search cName={["search"]}  id={'search-input-main'}/>} 
-                {/* // использую хук useMediaQuery массив классов вроде не обязателен */}
                 <Menu />
             </div>
         </header>

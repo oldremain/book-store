@@ -4,7 +4,7 @@ import { ReactComponent as FavouritesIcon } from "../../../assets/FavouritesIcon
 import { ReactComponent as CartIcon } from "../../../assets/CartIcon.svg";
 import { ReactComponent as UserIcon } from "../../../assets/UserIcon.svg";
 
-type MenuDataType = {
+interface MenuDataType {
     id: number;
     title: string;
     path: string;
