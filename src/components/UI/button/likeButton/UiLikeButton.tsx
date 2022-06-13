@@ -29,10 +29,7 @@ const UiLikeButton: React.FC = () => {
         dispatch(toggleFavourite({...preparedData.current}))
         setFav(!fav)
     }
-
-    useEffect(() => {
-        console.log(fav)
-    })
+    
     return (
       <div className={s.heart_container}>
          <button className={s.heart_btn} onClick={clickHandler}>

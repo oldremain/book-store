@@ -32,9 +32,7 @@ const BookPage: React.FC = () => {
                     <Loader />
                 ) : (
                     <>
-                        <h2 className={s.title}>
-                            <UITitle size={UISize.Large} children={title} />
-                        </h2>
+                        <UITitle size={UISize.Large} children={title} cName='book-page_title'/>
                         <div className={s.content}>
                             <div className={s.content_image}>
                                 <UIBookImage size={UISize.Large} theme="orange" image={image} />

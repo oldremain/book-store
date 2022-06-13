@@ -22,7 +22,9 @@
     line-height: 133%;
     color: var(--system-primary);
 }
-
+.book-page_title {
+    margin-bottom: 48px;
+}
 @media (max-width: 525px) {
     .text_large {
         font-size: 48px;
