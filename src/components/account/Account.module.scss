@@ -12,4 +12,45 @@
     //     opacity: 0.5;
     // }
 }
+.account_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--system-secondary);
+}
+.controls_container {
+    display: flex;
+}
+.home_button,
+.logout_button {
+    background-color: transparent;
+    font-size: 25px;
+    padding: 10px 10px 0;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.15s;
 
+    &:hover {
+        background-color: var(--bg-primary2);
+        color: var( --contextual-color);
+    }
+}
+.greeting_container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 25px;
+
+    .greeting {
+        font-family: "Bebas Neue";
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 150%;
+        color: var(--system-primary);
+    }
+    .user {
+        font-size: 25px;
+        font-style: italic;
+        font-weight: bolder;
+    }
+}

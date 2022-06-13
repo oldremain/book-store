@@ -18,7 +18,7 @@ export interface ISignUpState {
     username: string
 }
 
-interface IValidation {
+export interface IValidation {
     isValidUsername: boolean,
     isValidEmail: boolean,
     isValidPassword: boolean

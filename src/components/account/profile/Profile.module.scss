@@ -1,0 +1,96 @@
+.profile_container {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid var(--system-secondary);
+}
+
+.profile_ui {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+
+    .avatar {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .username {
+        margin-top: 20px;
+
+        span {
+            font-family: "Bebas Neue";
+            font-weight: 700;
+            font-size: 21px;
+            line-height: 120%;
+            color: var(--system-primary);
+        }
+    }
+}
+
+.profile_form {
+    margin-left: auto;
+    width: 60%;
+
+    .profile,
+    .password {
+        .profile_title,
+        .password_title {
+            font-family: 'Helios';
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 200%;
+            color: var(--system-primary);
+            text-decoration: underline;
+        }
+    } 
+}
+
+.profile_controls {
+    display: flex;
+    gap: 20px;
+    width: 40%;
+    margin: 40px 0 0 auto;
+}
+
+@media (max-width: 992px) {
+    .profile_controls {
+        width: 60%;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile_container {
+        flex-direction: column;
+        margin-top: 30px;
+    }
+    .profile_ui,
+    .profile_form  {
+        width: 100%;
+    }
+    .profile_controls {
+        width: 80%;
+    }
+}
+
+@media (max-width: 576px) {
+    .profile_controls {
+        width: 100%;
+    }
+}
+@media (max-width: 380px) {
+    .profile_controls {
+        flex-direction: column;
+    }
+}

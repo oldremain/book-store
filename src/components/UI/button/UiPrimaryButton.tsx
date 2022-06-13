@@ -5,10 +5,10 @@ import s from "./UiPrimaryButton.module.scss";
 
 interface IButtonProps {
     cNameBtn?: string;
-    cNameLink?: string;
+    //cNameLink?: string;
     text: string;
     type?: 'button' | 'submit';
-    path?: string;
+    //path?: string;
     isValidPrice?: boolean;
     onClick?: (e: React.FormEvent<EventTarget>) => void
 }

@@ -10,6 +10,11 @@ import SignUp from './signup/SignUp';
 import Form from './form/Form'
 
 import s from './Account.module.scss'
+import HomeButton from './header/HomeButton';
+import Greeting from './Greeting';
+import LogOut from './header/LogOut';
+import AccountHeader from './header/AccountHeader';
+import Profile from './profile/Profile';
 
 const Account: React.FC = () => {
     const isLogged = useAppSelector(state => state.auth.isLogged)
@@ -28,12 +33,9 @@ const Account: React.FC = () => {
     return (
       <section className={s.section_container}>
           {isLogged && <>
-              {/* <UIBackButton /> */}
-              <h2>
-                  <UITitle size={UISize.Large}>
-                      {`My account`}
-                  </UITitle>
-              </h2> 
+              <AccountHeader/>
+              <Greeting/>
+              <Profile/>
           </>}
           <Outlet/>
       </section> 

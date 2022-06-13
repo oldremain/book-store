@@ -14,6 +14,24 @@
         border-radius: 3px;
         overflow: hidden;
     }
+    &.ui_btn__cancel {
+        background-color: var(--bg-primary);
+        border: 1px solid var(--bg-primary2);
+        cursor: not-allowed;
+
+        .ui_btn {
+            color: var(--system-primary);
+            &:hover {
+                background-color: var(--bg-primary2);
+            }
+        }
+    }
+    &.ui_btn__cancel, 
+    &.ui_btn__save {
+        .ui_btn {
+            cursor: not-allowed;
+        }
+    }
 }
 
 .ui_btn {
