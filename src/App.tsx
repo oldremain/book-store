@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useAppSelector } from "./hooks/reduxHooks";
 
@@ -20,12 +20,18 @@ const App: React.FC = () => {
     const showSidebar = useAppSelector((state) => state.sidebar.show);
     const isLogged = useAppSelector(state => state.auth.isLogged)
 
+    const bodyRef = useRef<HTMLBodyElement | null>(null)
+
+    useEffect(() => {
+        bodyRef.current = document.querySelector('body')
+        if (bodyRef.current) {
+            bodyRef.current.style.overflow = showSidebar ? 'hidden' : ''
+        }
+    }, [showSidebar])
+
     return (
         <BrowserRouter>
-            <div
-                className={s.app_container}
-                style={{ overflow: showSidebar ? "hidden" : "visible" }}>
-                    
+            <div className={s.app_container}>
                 <Header />
 
                 {showSidebar && <Sidebar />}

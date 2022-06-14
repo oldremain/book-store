@@ -1,6 +1,43 @@
 @import url("./normalize.scss");
-@import url("http://fonts.cdnfonts.com/css/bebas-neue"); //font-family: 'Bebas Neue', sans-serif;
-@import url("http://fonts.cdnfonts.com/css/helios-antique?styles=48839,48838,48831,48857,48856,48849"); //font-family: 'Helios Antique', sans-serif; font-family: 'Helios Stencil', sans-serif;
+// @import url("http://fonts.cdnfonts.com/css/bebas-neue"); //font-family: 'Bebas Neue', sans-serif;
+// @import url("http://fonts.cdnfonts.com/css/helios-antique?styles=48839,48838,48831,48857,48856,48849"); //font-family: 'Helios Antique', sans-serif; font-family: 'Helios Stencil', sans-serif;
+
+@font-face {
+	font-family: 'Bebas Neue';
+	src: url('fonts/Bebas/Bebas Neue Cyrillic.eot');
+	src: local('☺'), url('fonts/Bebas/Bebas Neue Cyrillic.woff') format('woff'), url('fonts/Bebas/Bebas Neue Cyrillic.ttf') format('truetype'), url('fonts/Bebas/Bebas Neue Cyrillic.svg') format('svg');
+	font-weight: 700;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Bebas Neue';
+	src: url('fonts/Bebas/BebasNeue-Regular.eot');
+	src: local('☺'), url('fonts/Bebas/BebasNeue-Regular.woff') format('woff'), url('fonts/Bebas/BebasNeue-Regular.ttf') format('truetype'), url('fonts/Bebas/BebasNeue-Regular.svg') format('svg');
+	font-weight: 700;
+	font-style: normal;
+} 
+@font-face {
+	font-family: 'Helios', sans-serif;
+	src: url('fonts/Helios/helios.eot');
+	src: local('☺'), url('fonts/Helios/helios.woff') format('woff'), url('fonts/Helios/helios.ttf') format('truetype'), url('fonts/Helios/helios.svg') format('svg');
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Helios', sans-serif;
+	src: url('fonts/Helios/heliosbold.eot');
+	src: local('☺'), url('fonts/Helios/heliosbold.woff') format('woff'), url('fonts/Helios/heliosbold.ttf') format('truetype'), url('fonts/Helios/heliosbold.svg') format('svg');
+	font-weight: 700;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Helios', sans-serif;
+	src: url('fonts/Helios/heliosbolditalic.eot');
+	src: local('☺'), url('fonts/Helios/heliosbolditalic.woff') format('woff'), url('fonts/Helios/heliosbolditalic.ttf') format('truetype'), url('fonts/Helios/heliosbolditalic.svg') format('svg');
+	font-weight: 400;
+	font-style: italic;
+}
+
 
 :root {
     --system-primary: #313037;
@@ -20,7 +57,7 @@
 }
 
 body {
-    font-family: "Helios Antique", "Helios Stencil", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    font-family: 'Helios', -apple-system, BlinkMacSystemFont, "Segoe UI",
         "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
         sans-serif;
     -webkit-font-smoothing: antialiased;

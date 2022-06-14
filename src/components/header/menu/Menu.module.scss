@@ -12,6 +12,7 @@
     display: flex;
 }
 .menu_items {
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,10 +24,11 @@
     transition: all 0.15s;
     cursor: pointer;
 
-    .fav_link,
-    .acc_link,
-    .cart_link {
-        display: block;
+    & .fav_link,
+    & .acc_link,
+    & .cart_link {
+        display: flex;
+        //display: block;
         padding: 15px;
     }
 
@@ -37,7 +39,9 @@
 
 @media (max-width: 768px) {
     .burger_menu {
-        display: block;
+        display: flex;
+        align-items: center;
+        //display: block;
     }
     .nav_menu {
         display: block;
@@ -48,12 +52,12 @@
         gap: 0;
     }
     .menu_item {
-        .fav_link,
-        .acc_link {
+        & .fav_link,
+        & .acc_link {
             display: none;
         }
-        .cart_link {
-            display: block;
+        & .cart_link {
+            //display: block;
             padding: 0;
         }
     }  
