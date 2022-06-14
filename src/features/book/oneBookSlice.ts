@@ -39,7 +39,7 @@ export const fetchOneBook = createAsyncThunk<
         const response = await axios.get(`${BASE_URL}/books/${isbn}`);
         return response.data;
     } catch (e: any) {
-        rejectWithValue(e.message);
+       return rejectWithValue(e.message);
     }
 });
 

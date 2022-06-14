@@ -14,7 +14,7 @@ export interface IInitialState {
     data: IBookType[];
     loading: boolean;
     error: boolean;
-    isSubmited: boolean;
+    //isSubmited: boolean;
 }
 
 export interface IFetchBooksResponse {

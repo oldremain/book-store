@@ -12,7 +12,7 @@ const initialState: IInitialState = {
     data: [],
     loading: false,
     error: false,
-    isSubmited: false,
+    //isSubmited: false,
 };
 
 export const fetchBooks = createAsyncThunk<
@@ -24,7 +24,7 @@ export const fetchBooks = createAsyncThunk<
         const response = await axios.get(`${BASE_URL}/search/${searchField}?page=${page}`);
         return response.data;
     } catch (e: any) {
-        rejectWithValue("Not such a book yet");
+       return rejectWithValue("Not such a book yet");
     }
 });
 
@@ -35,16 +35,16 @@ const booksSlice = createSlice({
         setSearchField(state, { payload }: PayloadAction<string>) {
             state.searchField = payload;
         },
-        setPage(state, { payload }: PayloadAction<number>) {
-            state.page = payload;
-        },
+        // setPage(state, { payload }: PayloadAction<number>) {
+        //     state.page = payload;
+        // },
     },
     extraReducers: (builder) => {
         builder
             .addCase(fetchBooks.pending, (state, action) => {
                 state.error = false;
                 state.loading = true;
-                state.isSubmited = true;
+                //state.isSubmited = true;
             })
             .addCase(
                 fetchBooks.fulfilled,
@@ -53,17 +53,17 @@ const booksSlice = createSlice({
                     state.total = Math.min(+payload.total, 1000) ;
                     //state.page = payload.page;
                     state.loading = false;
-                    state.isSubmited = false;
+                    //state.isSubmited = false;
                 }
             )
             .addCase(fetchBooks.rejected, (state, action) => {
                 state.error = true;
                 state.loading = false;
-                state.isSubmited = false;
+                //state.isSubmited = false;
             });
     },
 });
 
-export const { setSearchField, setPage } = booksSlice.actions;
+export const { setSearchField } = booksSlice.actions;
 
 export default booksSlice.reducer;
