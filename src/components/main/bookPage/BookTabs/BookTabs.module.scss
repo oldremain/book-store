@@ -8,6 +8,8 @@
     border-radius: 10px 10px 0 0 ;
 }
 .tab_item {
+    position: relative;
+    top: 1px;
     font-size: 16px;
     line-height: 150% ;
     padding: 0 30px 14px;
@@ -44,11 +46,14 @@
 @media (max-width: 504px) {
     .tabs {
         margin-top: 52px;
-    }
-    .tab-list {
-       text-align: center;
-    }
-    .tab_item {
-        padding: 10px 16px 6px;
+
+        & .tab_list {
+            justify-content: space-between !important;
+            //text-align: center;
+
+            & .tab_item {
+                padding: 10px 16px 6px;
+            }
+        }
     }
 }
