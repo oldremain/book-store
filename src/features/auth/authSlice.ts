@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore"; 
+import { auth, db } from "../../firebase";
 import { checkUser } from "./authHelpers";
 import { IAuthResponse, IInitialState, IQuerryParams } from "./types";
 
@@ -19,12 +21,20 @@ const initialState: IInitialState = {
 }
 
 export const registerUser = createAsyncThunk<IAuthResponse, IQuerryParams, { rejectValue: string }>(
-    "user/registerUser", async ({email: userEmail, password}, { rejectWithValue }) => {
+    "user/registerUser", async ({email: userEmail, password, username}, { rejectWithValue }) => {
         try {
-            const auth = getAuth();
             const {user} = await createUserWithEmailAndPassword(auth, userEmail, password)
             const {email, uid, stsTokenManager}= user.toJSON() as IAuthResponse
 
+            const docRef = await addDoc(collection(db, "users"), {
+                username,
+                email,
+                password,
+                uid,
+                stsTokenManager,
+                timeStamp: serverTimestamp()
+              });
+              console.log(docRef)
             return {email, stsTokenManager, uid} 
         } catch (e: any) {
            return rejectWithValue(e.message)
@@ -35,7 +45,6 @@ export const registerUser = createAsyncThunk<IAuthResponse, IQuerryParams, { rej
 export const loginUser = createAsyncThunk<IAuthResponse, IQuerryParams, { rejectValue: string }>(
     "user/loginUser", async ({email: userEmail, password}, { rejectWithValue }) => {
         try {
-            const auth = getAuth();
             const {user} = await signInWithEmailAndPassword(auth, userEmail, password)
             const {email, uid, stsTokenManager}= user.toJSON() as IAuthResponse
 

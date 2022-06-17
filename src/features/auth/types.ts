@@ -27,4 +27,5 @@ export interface IAuthResponse {
 export interface IQuerryParams {
     email: string;
     password: string;
+    username?: string
 }

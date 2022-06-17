@@ -1,5 +1,5 @@
 export const validateUsername = (value: string): boolean => {
-    return !!value.match(/^[A-Za-z0-9]{4,40}$/) ? true : false
+    return !!value.match(/^[A-Za-z0-9\s]{4,40}$/) ? true : false
 }
 
 export const validateEmail = (value: string): boolean => {

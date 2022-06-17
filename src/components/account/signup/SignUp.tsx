@@ -45,6 +45,7 @@ const SignUp = () => {
             dispatch(registerUser({
                 email: value.email, 
                 password: value.password,
+                username: value.username
             }))
     
             setValue({
