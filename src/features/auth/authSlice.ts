@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore"; 
+import { serverTimestamp, setDoc, doc } from "firebase/firestore"; 
 import { auth, db } from "../../firebase";
 import { checkUser } from "./authHelpers";
 import { IAuthResponse, IInitialState, IQuerryParams } from "./types";
@@ -26,7 +26,7 @@ export const registerUser = createAsyncThunk<IAuthResponse, IQuerryParams, { rej
             const {user} = await createUserWithEmailAndPassword(auth, userEmail, password)
             const {email, uid, stsTokenManager}= user.toJSON() as IAuthResponse
 
-            const docRef = await addDoc(collection(db, "users"), {
+            const docRef = await setDoc(doc(db, "users", uid), {
                 username,
                 email,
                 password,
@@ -34,7 +34,6 @@ export const registerUser = createAsyncThunk<IAuthResponse, IQuerryParams, { rej
                 stsTokenManager,
                 timeStamp: serverTimestamp()
               });
-              console.log(docRef)
             return {email, stsTokenManager, uid} 
         } catch (e: any) {
            return rejectWithValue(e.message)
