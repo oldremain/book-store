@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { checkUser } from "./authHelpers";
 import { IAuthResponse, IInitialState, IQuerryParams } from "./types";
 
 const initialState: IInitialState = {
@@ -9,7 +10,7 @@ const initialState: IInitialState = {
         refreshToken: null,
         id: null
     },
-    isLogged: JSON.parse(localStorage.getItem('userLogged') || 'false') ,
+    isLogged: checkUser(localStorage.getItem('user')),
     isLoading: false,
     error: {
         message: undefined,
@@ -73,7 +74,7 @@ const authSlice = createSlice({
                 id: null
             }
             state.isLogged = false
-            localStorage.removeItem('userLogged')
+            localStorage.removeItem('user')
         }
     },
     extraReducers: (builder) => {
@@ -93,7 +94,7 @@ const authSlice = createSlice({
                 state.isLogged = true
                 state.isLoading = false
 
-                localStorage.setItem('userLogged', JSON.stringify(true))
+                localStorage.setItem('user', JSON.stringify(payload))
             })
             .addCase(registerUser.rejected, (state, action) => {
                 state.error = {
@@ -118,7 +119,7 @@ const authSlice = createSlice({
                 state.isLogged = true
                 state.isLoading = false
 
-                localStorage.setItem('userLogged', JSON.stringify(true))
+                localStorage.setItem('user', JSON.stringify(payload))
             })
             .addCase(loginUser.rejected, (state, action) => {
                 state.error =  {

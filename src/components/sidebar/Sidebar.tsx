@@ -12,6 +12,7 @@ import MenuBtn from "../header/menu/MenuBtn";
 import UIPrimaryButton from "../UI/button/UiPrimaryButton";
 import { ReactComponent as CloseMenuIcon } from "../../assets/CloseMenuIcon.svg";
 import { ReactComponent as CartIcon } from "../../assets/CartIcon.svg";
+import { ReactComponent as UserIcon } from "../../assets/UserIcon.svg";
 
 import s from "./Sidebar.module.scss";
 
@@ -74,6 +75,12 @@ const Sidebar: React.FC = () => {
                             onClick={handleLinkClick}
                             children={"Cart"} 
                         />
+                        <MenuItem 
+                                href="/account" 
+                                cName={s.link} 
+                                children={"Account"}
+                                onClick={handleLinkClick}
+                            />
                     </div>
                     <UIPrimaryButton 
                         text={`${isLogged ? "Log Out" : "Sign In"}`} 
