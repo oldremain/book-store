@@ -1,11 +1,15 @@
+import { useAppSelector } from './reduxHooks';
 import { useEffect,  useState  } from 'react';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { storage } from '../firebase';
+import { doc, updateDoc } from "firebase/firestore";
+import { db, storage } from '../firebase';
 
 const useProfileImage = () => {
     const [file, setFile] = useState<any>('')
     const [url, setURL] = useState('')
     const [isLoading, setLoading] = useState(false)
+
+    const userId = useAppSelector(state => state.auth.user.id)
 
     const handleUploadImage = (e: any) => {
         setFile(e.target.files[0])
@@ -40,6 +44,14 @@ const useProfileImage = () => {
             });
         }
     }, [file])
+
+    useEffect(() => {
+        if(userId && url) {
+            updateDoc(doc(db, "users", userId), {
+                image: url
+              });
+        } //для обновления базы users(добавление картинки)
+    }, [userId, url])
 
     return {
         url,
