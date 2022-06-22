@@ -17,19 +17,14 @@ const useProfileImage = () => {
 
     useEffect(() => {
         if (file) {
-            setLoading(true)
-
             const storageRef = ref(storage, file.name);
             const uploadTask = uploadBytesResumable(storageRef, file);
         
             uploadTask.on('state_changed', (snapshot) => {
             switch (snapshot.state) {
-                case 'paused':
-                  console.log('Upload is paused');
-                  break;
                 case 'running':
-                  console.log('Upload is running');
-                  break;
+                    setLoading(true)
+                    break;
                 }
             }, 
             (error: any) => {
@@ -47,9 +42,10 @@ const useProfileImage = () => {
 
     useEffect(() => {
         if(userId && url) {
+            console.log('updating')
             updateDoc(doc(db, "users", userId), {
                 image: url
-              });
+              }).then(console.log)
         } //для обновления базы users(добавление картинки)
     }, [userId, url])
 

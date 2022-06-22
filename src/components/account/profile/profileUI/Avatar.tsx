@@ -10,9 +10,9 @@ import s from '../Profile.module.scss'
 const Avatar: React.FC = () => {
     const { url, handleUploadImage, isLoading } = useProfileImage()
 
-    useEffect(() => {
-        console.log(isLoading)
-    }, [isLoading])
+    // useEffect(() => {
+    //     console.log(isLoading)
+    // }, [isLoading])
 
     return (
         <>

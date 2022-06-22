@@ -1,15 +1,20 @@
 import React, { useState } from 'react'
+import { useAppSelector } from '../../../../hooks/reduxHooks'
+
+import ProfileTitle from '../profileTitle/ProfileTitle'
 import FormInput from '../../formInput/FormInput'
 import InputTooltip from '../../formInput/InputTooltip'
-import { IProfileFormState, IProfileValidation } from './types'
+import { IProfileValidation } from './types'
 
 import s from '../Profile.module.scss'
-import ProfileTitle from '../profileTitle/ProfileTitle'
+import EditControl from '../profileControls/EditControl'
 
 const ProfileForm: React.FC = () => {
-    const [value, setValue] = useState<IProfileFormState>({
-        email: '', 
+    const userEmail = useAppSelector(state => state.auth.user.email)
+    const [value, setValue] = useState({
+        email: userEmail || '', 
         password: '',
+        username: ''
     })
 
     const [validation, setValidation] = useState<IProfileValidation>({
@@ -40,8 +45,10 @@ const ProfileForm: React.FC = () => {
                         placeholder='Your name'
                         value={value}
                         onChange={handleChangeValue}
+                        disabled={true}
                     >
                         <InputTooltip text={'Only [A-Za-z0-9], 4-40 symbols'}/>
+                        <EditControl/>
                     </FormInput>
                     <FormInput 
                         title='Email' 
@@ -52,6 +59,7 @@ const ProfileForm: React.FC = () => {
                         placeholder='Your email'
                         value={value}
                         onChange={handleChangeValue}
+                        disabled={true}
                     >
                         <InputTooltip text={'Example: google@gmail.com'}/>
                     </FormInput>

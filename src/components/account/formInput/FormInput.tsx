@@ -3,6 +3,8 @@ import { ISignInState } from '../signin/types'
 import { ISignUpState } from '../signup/types'
 import cn from 'classnames'
 
+import BiEdit from 'react-icons/bi';
+
 import s from './FormInput.module.scss'
 
 interface IFormInput {
@@ -12,12 +14,25 @@ interface IFormInput {
     name: string,
     placeholder: string,
     value: ISignInState | ISignUpState,
-    valid?: boolean,
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-    children?: React.ReactNode
+    valid?: boolean,
+    disabled?: boolean,
+    children?: React.ReactNode,
 }
 
-const FormInput: React.FC<IFormInput> = ({ title, type, id, name, placeholder, value, valid, onChange, children }) => {
+const FormInput: React.FC<IFormInput> = ({ 
+    title, 
+    type, 
+    id,
+    name, 
+    placeholder, 
+    value, 
+    valid, 
+    onChange, 
+    children, 
+    disabled = false,
+}) => {
+
     return (
         <div className={s.field_container}>
             <label htmlFor={id} className={s.field_label}>
@@ -32,8 +47,9 @@ const FormInput: React.FC<IFormInput> = ({ title, type, id, name, placeholder, v
                 autoComplete="off"
                 onChange={onChange}
                 className={cn(s.field_input, {[s['field_input--invalid']]: !valid})}
+                disabled={disabled}
             />
-            {children}
+            { children }
         </div>
     )
 }

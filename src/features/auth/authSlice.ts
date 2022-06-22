@@ -2,15 +2,17 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { serverTimestamp, setDoc, doc } from "firebase/firestore"; 
 import { auth, db } from "../../firebase";
-import { checkUser } from "./authHelpers";
+import { checkUser, getUserData } from "./authHelpers";
 import { IAuthResponse, IInitialState, IQuerryParams } from "./types";
+
+const user = localStorage.getItem('user')
 
 const initialState: IInitialState = {
     user: {
-        email: null,
+        email: getUserData(user, 'email'),
         accessToken: null,
         refreshToken: null,
-        id: null
+        id: getUserData(user, 'uid')
     },
     isLogged: checkUser(localStorage.getItem('user')),
     isLoading: false,
